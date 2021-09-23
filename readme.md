@@ -1,8 +1,8 @@
-## для билда запустить
+### для билда запустить
 
 ```npx tailwindcss -i src/tailwind.css -o css/tailwind.css```
 
-## если нужно следить за изменениями в реальном времени
+### если нужно следить за изменениями в реальном времени
 
 ```npx tailwindcss -i src/tailwind.css -o css/tailwind.css -w```
 
