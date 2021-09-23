@@ -24,11 +24,11 @@
 
 </head>
 
-<body>
+<body class="pt-[109px]">
 
-	<header>
-		<div class="border-b berder-gray-400 md:border-0">
-			<div class="container mx-auto">
+	<header class="fixed w-screen top-0 z-50 bg-white shadow-md">
+		<div class="border-b berder-gray-400 md:border-0 relative z-40">
+			<div class="container mx-auto px-3">
 				<div class="flex flex-col md:flex-row flex-wrap items-center justify-between py-4 space-x-5 md:space-y-0 space-y-2">
 					<a href="/" class="flex items-center flex-0">
 						<img src="img/hyundai-logo.svg" alt="ALT" class="w-[100px] md:w-[170px] hidden md:block">
@@ -68,6 +68,12 @@
 		</nav>
 	</header>
 	
+	<div class="banner h-[calc(100vh-109px)] min-h-[600px] bg-gray-300 relative">
+		<div class="banner-slider h-full w-full">
+			<img src="img/slider/1.jpg" alt="ALT" class="absolute h-full w-full object-cover object-right sm:object-center">
+		</div>
+		<div class="banner-title absolute bottom-0 left-0 bg-blue-800 py-5 px-3 w-full text-center text-xl sm:text-3xl text-white uppercase z-20">Принимаем автомобили всех марок <br class="hidden sm:block">на любые виды ремонта и ТО</div>
+	</div>
 
 </body>
 </html>
