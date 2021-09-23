@@ -23,20 +23,6 @@ module.exports = {
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
     },
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      black: colors.black,
-      white: colors.white,
-      gray: colors.trueGray,
-      indigo: colors.indigo,
-      red: {
-        300: '#dc453b',
-        500: '#d63a30',
-        700: '#b1261d',
-      },
-      yellow: colors.amber,
-    },
     extend: {},
   },
   variants: {

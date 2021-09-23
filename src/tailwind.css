@@ -4,5 +4,5 @@
 
 
 .btn-red{
-	@apply bg-red-500 uppercase text-sm md:text-[1rem] text-white py-2 px-5 rounded font-normal transition hover:bg-red-700 focus:bg-red-300; 
+	@apply bg-red-600 uppercase text-sm md:text-[1rem] text-white py-2 px-5 rounded font-normal transition hover:bg-red-500 focus:bg-red-700; 
 }
