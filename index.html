@@ -244,7 +244,7 @@
 			<template x-for="faq in faqs" :key="faq.id">
 				<div class="bg-gray-100 px-5 py-4 rounded-sm mb-3">
 					<div class="flex items-center justify-between cursor-pointer"
-						 @click="toggleFaq(faq.id)"
+						 @click="toggleItem(faq.id, faqs)"
 						 :class="{'open': faq.open}">
 
 						<div class="font-medium text-sm md:text-lg" x-text="faq.question"></div>
@@ -337,9 +337,9 @@
 						open: false
 					},
 				],
-				toggleFaq: function (id) {
-					let faq = this.faqs.find((faq) => faq.id === id);
-					faq.open = !faq.open;
+				toggleItem: function (id, arr) {
+					let item = arr.find((item) => item.id === id);
+					item.open = !item.open;
 				}
 			}))
 		})
