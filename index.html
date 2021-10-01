@@ -74,7 +74,7 @@
 		<div class="banner-title absolute bottom-0 left-0 bg-blue-500 py-5 px-3 w-full text-center text-xl sm:text-3xl text-white uppercase z-20">Принимаем автомобили всех марок <br class="hidden sm:block">на любые виды ремонта и ТО</div>
 	</div>
 
-	<section class="calculation pt-16">
+	<section class="calculation pt-16" x-data="data">
 		<div class="container sm:px-3 mx-auto">
 
 			<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3">
@@ -85,50 +85,12 @@
 
 
 			<div class="flex justify-center flex-wrap mt-8 sm:mt-10">
-				<a href="#params" class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group">
-					<img src="img/cars/1.png" alt="ALT" class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110">
-					<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500">Solaris</h3>
-				</a>
-				<a href="#params" class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group">
-					<img src="img/cars/2.png" alt="ALT" class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110">
-					<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500">i30</h3>
-				</a>
-				<a href="#params" class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group">
-					<img src="img/cars/3.png" alt="ALT" class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110">
-					<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500">Elantra</h3>
-				</a>
-				<a href="#params" class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group">
-					<img src="img/cars/4.png" alt="ALT" class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110">
-					<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500">Sonata</h3>
-				</a>
-				<a href="#params" class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group">
-					<img src="img/cars/5.png" alt="ALT" class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110">
-					<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500">i40</h3>
-				</a>
-				<a href="#params" class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group">
-					<img src="img/cars/6.png" alt="ALT" class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110">
-					<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500">Creta</h3>
-				</a>
-				<a href="#params" class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group">
-					<img src="img/cars/7.png" alt="ALT" class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110">
-					<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500">ix35</h3>
-				</a>
-				<a href="#params" class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group">
-					<img src="img/cars/8.png" alt="ALT" class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110">
-					<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500">Tucson</h3>
-				</a>
-				<a href="#params" class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group">
-					<img src="img/cars/9.png" alt="ALT" class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110">
-					<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500">Santa Fe</h3>
-				</a>
-				<a href="#params" class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group">
-					<img src="img/cars/10.png" alt="ALT" class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110">
-					<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500">H1</h3>
-				</a>
-				<a href="#params" class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group">
-					<img src="img/cars/11.png" alt="ALT" class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110">
-					<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500">Palisade</h3>
-				</a>
+				<template x-for="car in cars">
+					<a href="#params" class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group">
+						<img :src="`img/cars/${car.id}.png`" :alt="car.title" class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110">
+						<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500" x-text="car.title"></h3>
+					</a>
+				</template>
 			</div>
 
 			<div class="calculation-params max-w-[1400px] mx-auto bg-gray-100 rounded pt-5 pb-7" id="params">
@@ -197,7 +159,7 @@
 	</section>
 
 
-	<section class="py-16" x-data="presents()">
+	<section class="py-16" x-data="data">
 		<div class="container px-3 mx-auto">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
 
@@ -217,27 +179,9 @@
 		</div>
 	</section>
 
-	<div x-data="todos()">
-		<h1>Планы на сегодня:</h1>
-		<ul>
-			<template x-for="todo in todos" :key="todo.id">
-				<li
-				x-text="todo.title"
-				@click="toggleTodo(todo.id)"
-				:class="{'completed': todo.completed}"
-				></li>
-			</template>
-		</ul>
-	</div>
-
 	<script>
-		function showModal() {			
-			alert('MODAL');
-			return false;
-		}
-
-		function presents(){
-			return {
+		document.addEventListener('alpine:init', () => {
+			Alpine.data('data', () => ({ 
 				presents: [
 					{icon: 'https://via.placeholder.com/150', title: 'Шиномонтаж', text: 'от 2000₽'},
 					{icon: 'https://via.placeholder.com/150', title: 'В подарок <br class="hidden sm:block"> при шиномонтаже', text: 'осмотр ходовой <br>системы'},
@@ -245,24 +189,26 @@
 					{icon: 'https://via.placeholder.com/150', title: 'Бесплатно', text: 'Замена масла в ДВС'},
 					{icon: 'https://via.placeholder.com/150', title: 'А/М HYUNDAI <br>старше 3 лет', text: '-25% на услуги <br>-20% на запчасти'},
 					{icon: 'https://via.placeholder.com/150', title: 'Замена масла', text: 'АКПП от 8900₽ <br>МКПП от 2900₽'},
-				]
-			}
-		}
-
-		function todos() {
-			return {
-				todos: [
-				{ id: 1, title: 'купить хлеб', completed: false },
-				{ id: 2, title: 'продать айфон', completed: false },
-				{ id: 3, title: 'закончить этот курс', completed: false },
-				{ id: 4, title: 'перестать быть банальным', completed: false },
 				],
-				toggleTodo: function (id) {
-					var todo = this.todos.find((todo) => todo.id === id);
-					todo.completed = !todo.completed;
-				},
-			};
-		}
+				cars: [
+					{id: 1, title: 'Solaris'},
+					{id: 2, title: 'i30'},
+					{id: 3, title: 'Elantra'},
+					{id: 4, title: 'Sonata'},
+					{id: 5, title: 'i40'},
+					{id: 6, title: 'Creta'},
+					{id: 7, title: 'ix35'},
+					{id: 8, title: 'Tucson'},
+					{id: 9, title: 'Santa Fe'},
+					{id: 10, title: 'H1'},
+					{id: 11, title: 'Polisade'},
+				],
+				showModal() {			
+					alert('MODAL');
+					return false;
+				}
+			}))
+		})
 	</script>
 
 
