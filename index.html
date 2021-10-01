@@ -85,12 +85,14 @@
 
 
 			<div class="flex justify-center flex-wrap mt-8 sm:mt-10">
+
 				<template x-for="car in cars">
 					<a href="#params" class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group">
 						<img :src="`img/cars/${car.id}.png`" :alt="car.title" class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110">
 						<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500" x-text="car.title"></h3>
 					</a>
 				</template>
+
 			</div>
 
 			<div class="calculation-params max-w-[1400px] mx-auto bg-gray-100 rounded pt-5 pb-7" id="params">
@@ -164,7 +166,7 @@
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
 
 				<template x-for="present in presents">
-				<div class="border-4 border-blue-500 px-4 pt-6 pb-8 sm:px-5 sm:pt-8 sm:pb-12 cursor-pointer transition hover:bg-gray-100" @click="showModal()">
+				<div class="border-4 border-blue-500 px-4 pt-6 pb-8 sm:px-5 sm:pt-8 sm:pb-12 cursor-pointer transition hover:bg-gray-100" @click="alert('MODAL');">
 					<div class="flex items-center">
 						<img :src="present.icon" :alt="present.title" class="rounded-full relative z-10 border-4 border-blue-500 w-[100px] h-[100px] sm:w-[150px] sm:h-[150px]">
 						<div class="relative flex-grow">
@@ -179,9 +181,43 @@
 		</div>
 	</section>
 
+	<section class="services pb-16" x-data="data">
+		<div class="container px-3 mx-auto">
+			<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3">
+				Услуги
+				<span class="absolute left-[50%] bottom-0 w-24 h-0.5 bg-blue-500 transform translate-x-[-50%]"></span>
+			</h2>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-x-5 mt-8">
+				<div>
+
+					<template  x-for="service in services">
+						<div class="flex items-center justify-between bg-gray-100 cursor-pointer transition hover:bg-gray-200 mb-3">
+							<div class="flex items-center">	
+								<div class="flex-shrink-0 bg-blue-500 w-12 h-12 p-1 mr-3">
+									<img :src="`img/icons/services/${service.id}.png`" :alt="service.title" class="w-full h-auto">
+								</div>
+								<h3 class="text-sm lg:text-lg lg:text-xl" x-text="service.title"></h3>
+							</div>
+							<div class="w-12 h-12 flex items-center justify-center">
+								<img src="img/icons/triangel.png" alt="ALT">
+							</div>
+						</div>
+					</template>
+					
+				</div>
+
+				<div class="bg-gray-100 flex items-center justify-center md:mb-3 p-4">
+					<h3 class="text-sm sm:text-lg">Выберите интересующую Вас услугу</h3>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
 	<script>
 		document.addEventListener('alpine:init', () => {
-			Alpine.data('data', () => ({ 
+			Alpine.data('data', () => ({
 				presents: [
 					{icon: 'https://via.placeholder.com/150', title: 'Шиномонтаж', text: 'от 2000₽'},
 					{icon: 'https://via.placeholder.com/150', title: 'В подарок <br class="hidden sm:block"> при шиномонтаже', text: 'осмотр ходовой <br>системы'},
@@ -203,10 +239,18 @@
 					{id: 10, title: 'H1'},
 					{id: 11, title: 'Polisade'},
 				],
-				showModal() {			
-					alert('MODAL');
-					return false;
-				}
+				services: [
+					{id: 1, title: 'Шиномонтаж'},
+					{id: 2, title: 'Замена эксплуатационных жидкостей'},
+					{id: 3, title: 'Ремонт тормозной системы'},
+					{id: 4, title: 'Малярно-кузовные работы'},
+					{id: 5, title: 'Ремонт подвески'},
+					{id: 6, title: 'Автомойка'},
+					{id: 7, title: 'Ремонт электрооборудования'},
+					{id: 8, title: 'Агрегатный ремонт'},
+					{id: 9, title: 'Прочее'},
+				],
+				
 			}))
 		})
 	</script>
