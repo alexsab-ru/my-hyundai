@@ -161,7 +161,7 @@
 	</section>
 
 
-	<section class="py-16" x-data="data">
+	<section class="pt-16 pb-9" x-data="data">
 		<div class="container px-3 mx-auto">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
 
@@ -192,6 +192,7 @@
 				<div>
 
 					<template  x-for="service in services">
+
 						<div class="flex items-center justify-between bg-gray-100 cursor-pointer transition hover:bg-gray-200 mb-3">
 							<div class="flex items-center">	
 								<div class="flex-shrink-0 bg-blue-500 w-12 h-12 p-1 mr-3">
@@ -199,10 +200,11 @@
 								</div>
 								<h3 class="text-sm lg:text-lg lg:text-xl" x-text="service.title"></h3>
 							</div>
-							<div class="w-12 h-12 flex items-center justify-center">
+							<div class="flex-shrink-0 w-12 h-12 flex items-center justify-center">
 								<img src="img/icons/triangel.png" alt="ALT">
 							</div>
 						</div>
+
 					</template>
 					
 				</div>
@@ -213,6 +215,23 @@
 			</div>
 
 		</div>
+	</section>
+
+	<section class="advantages py-16 bg-blue-500" x-data="data">
+		<div class="container mx-auto px-3">
+			<div class="flex flex-wrap justify-center">
+
+				<template x-for="advantage in advantages">
+
+					<div class="text-center w-1/2 sm:w-1/3 md:w-1/5 mb-5 px-3">
+						<img :src="`img/icons/advantages/${advantage.id}.svg`" :alt="advantage.title" class="mx-auto mb-3 w-20 lg:w-24">
+						<h3 class="text-xs sM: text-sm lg:text-lg text-white font-medium" x-html="advantage.title"></h3>
+					</div>
+					
+				</template>
+
+			</div>
+		</div>	
 	</section>
 
 	<script>
@@ -250,7 +269,13 @@
 					{id: 8, title: 'Агрегатный ремонт'},
 					{id: 9, title: 'Прочее'},
 				],
-				
+				advantages: [
+					{id: 1, title: 'Первый ДЦ Hyundai в СПБ. Обслуживаем Hyundai с 1997 г.'},
+					{id: 2, title: 'Присутствуйте <br class="hidden sm:block">в ремзоне'},
+					{id: 3, title: 'Официальный <br class="hidden sm:block">сервис-лоукостер'},
+					{id: 4, title: '2 года <br class="hidden sm:block">гарантии'},
+					{id: 5, title: 'Внутренняя <br class="hidden sm:block">сертификация <br class="hidden sm:block">мастеров'},
+				],
 			}))
 		})
 	</script>
