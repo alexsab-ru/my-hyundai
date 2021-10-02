@@ -19,11 +19,11 @@
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	<!-- Style -->
-	<link rel="stylesheet" href="css/tailwind.css">
+	<link rel="stylesheet" href="dist/css/styles.css">
 
 </head>
 
-<body>
+<body class="font-sans">
 
 	<header class="bg-white">
 		<div class="border-b berder-gray-400 md:border-0 relative z-40">
@@ -167,15 +167,15 @@
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
 
 				<template x-for="present in presents">
-				<div class="border-4 border-blue-500 px-4 pt-6 pb-8 sm:px-5 sm:pt-8 sm:pb-12 cursor-pointer transition hover:bg-gray-100" @click="alert('MODAL');">
-					<div class="flex items-center">
-						<img :src="present.icon" :alt="present.title" class="rounded-full relative z-10 border-4 border-blue-500 w-[100px] h-[100px] sm:w-[150px] sm:h-[150px]">
-						<div class="relative flex-grow">
-							<h2 class="bg-blue-500 text-white px-8 sm:px-6 -ml-6 sm:-ml-3 text-sm sm:text-lg xl:text-3xl font-bold uppercase flex items-center h-[60px] sm:h-[80px] leading-1" x-html="present.title"></h2>
-							<h3 class="absolute top-full pl-2 sm:pl-3 text-sm sm:text-lg xl:text-2xl font-medium text-gray-600 mt-1 leading-[1]" x-html="present.text"></h3>
-						</div>						
+					<div class="border-4 border-blue-500 px-4 pt-6 pb-8 sm:px-5 sm:pt-8 sm:pb-12 cursor-pointer transition hover:bg-gray-100" @click="alert('MODAL');">
+						<div class="flex items-center">
+							<img :src="present.icon" :alt="present.title" class="rounded-full relative z-10 border-4 border-blue-500 w-[100px] h-[100px] sm:w-[150px] sm:h-[150px]">
+							<div class="relative flex-grow">
+								<h2 class="bg-blue-500 text-white px-8 sm:px-6 -ml-6 sm:-ml-3 text-sm sm:text-lg xl:text-3xl font-bold uppercase flex items-center h-[60px] sm:h-[80px] leading-1" x-html="present.title"></h2>
+								<h3 class="absolute top-full pl-2 sm:pl-3 text-sm sm:text-lg xl:text-2xl font-medium text-gray-600 mt-1 leading-[1]" x-html="present.text"></h3>
+							</div>						
+						</div>
 					</div>
-				</div>
 				</template>
 
 			</div>
@@ -245,163 +245,162 @@
 			<template x-for="faq in faqs" :key="faq.id">
 				<div class="bg-gray-100 px-5 py-4 rounded-md mb-3 transition hover:bg-gray-200" :class="{'!bg-gray-200': faq.open}">
 					<div class="flex items-center justify-between cursor-pointer"
-						 @click="toggleItem(faq.id, faqs)">
+					@click="toggleItem(faq.id, faqs)">
 
-						<div class="font-medium text-sm md:text-lg" x-text="faq.question"></div>
+					<div class="font-medium text-sm md:text-lg" x-text="faq.question"></div>
 
-						<img src="img/icons/down.png" 
-							 alt="Down"
-							 class="transition" 
-							 :style="faq.open ? 'transform: rotate(180deg)' : ''">
-					</div>
-					<div class="mt-3 text-xs md:text-base" x-show="faq.open" x-transition.opacity.duration.200ms x-html="faq.answer"></div>
+					<img src="img/icons/down.png" 
+					alt="Down"
+					class="transition" 
+					:style="faq.open ? 'transform: rotate(180deg)' : ''">
 				</div>
-			</template>
-
-		</div>
-	</section>
-
-	<section class="clients bg-gray-50 py-16">
-		<div class="container px-3 mx-auto">
-			<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3 mb-8">
-				Наши корпоративные клиенты
-				<span class="absolute left-[50%] bottom-0 w-24 h-0.5 bg-blue-500 transform translate-x-[-50%]"></span>
-			</h2>
-
-			<div class="text-center text-3xl py-10 border border-gray-600">Slider</div>
-
-		</div>
-	</section>
-
-	<section>
-		<img src="img/photo.jpg" alt="Hyundai" class="h-64 md:h-auto object-cover object-left">
-	</section>
-
-	<section class="contacts pt-16">
-		<div class="container px-3 mx-auto">
-			<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3 mb-8">
-				Наши контакты
-				<span class="absolute left-[50%] bottom-0 w-24 h-0.5 bg-blue-500 transform translate-x-[-50%]"></span>
-			</h2>
-			<p class="text-gray-800 text-md sm:text-xl text-center font-medium mt-4 sm:mt-8">Свяжитесь с нами любым удобным для Вас способом.</p>
-
-			<div class="text-center my-8">
-				<button class="btn-blue">Заказать звонок</button>
+				<div class="mt-3 text-xs md:text-base" x-show="faq.open" x-transition.opacity.duration.200ms x-html="faq.answer"></div>
 			</div>
+		</template>
 
-			<div class="max-w-[530px] w-full mx-auto mb-8">
-				<h2 class="uppercase text-2xl mb-3 font-bold">Самара авто</h2>
-				<a href="tel:+79991234567" class="text-gray-700 font-medium mb-2 inline-block underline">+7(999) 123-45-67</a>
-				<p class="font-medium text-gray-700 mb-2">ул.Уличная, д.1</p>
-				<p class="font-medium text-gray-700 mb-2">c 8.30 до 21.00 <span class="text-xs">(ежедневно)</span></p>
-			</div>
+	</div>
+</section>
 
+<section class="clients bg-gray-50 py-16">
+	<div class="container px-3 mx-auto">
+		<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3 mb-8">
+			Наши корпоративные клиенты
+			<span class="absolute left-[50%] bottom-0 w-24 h-0.5 bg-blue-500 transform translate-x-[-50%]"></span>
+		</h2>
+
+		<div class="text-center text-3xl py-10 border border-gray-600">Slider</div>
+
+	</div>
+</section>
+
+<section>
+	<img src="img/photo.jpg" alt="Hyundai" class="h-64 md:h-auto object-cover object-left">
+</section>
+
+<section class="contacts pt-16">
+	<div class="container px-3 mx-auto">
+		<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3 mb-8">
+			Наши контакты
+			<span class="absolute left-[50%] bottom-0 w-24 h-0.5 bg-blue-500 transform translate-x-[-50%]"></span>
+		</h2>
+		<p class="text-gray-800 text-md sm:text-xl text-center font-medium mt-4 sm:mt-8">Свяжитесь с нами любым удобным для Вас способом.</p>
+
+		<div class="text-center my-8">
+			<button class="btn-blue">Заказать звонок</button>
 		</div>
-		<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A1fbae06183dfa655d42d653dc2acff6c6d272bbccef38d495d42d7afa2a5d512&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=false"></script>
-	</section>
 
-	<footer class="py-10 bg-gray-800 text-white text-opacity-60">
-		<div class="container px-3 mx-auto text-base">
-			<a href="/" class="flex items-center flex-0">
-				<img src="img/hyundai-logo.svg" alt="ALT" class="w-[100px] md:w-[170px] hidden md:block mx-auto mb-10">
-				<img src="img/hyundai-logo-small.svg" alt="ALT" class="md:hidden mx-auto mb-10">
-			</a>
-			<p class="mb-4">Мы не разделяем автомобили на новые или старые, автомобили на заводской гарантии или после ее окончания. Для всех владельцев Hyundai и на автомобили Hyundai любого года выпуска мы готовы предоставить обслуживание любого типа, по одинаково низким ценам, но со всеми преимуществами Официального дилера.</p>
-			<p>Стоимость ТО, указанная на сайте, является ориентировочной. Не является офертой</p>
-			<hr class="my-8">
-			<div class="text-center text-sm">
-				<a href="#" class="underline transition hover:no-underline inline-block mb-3">Политика в области обработки персональных данных</a>
-				<p>Данный интернет-сайт носит информационный характер и не является публичной офертой, определяемой положениями Статьи 437 ГК РФ.</p>
-			</div>
-		</div>		
-	</footer>
+		<div class="max-w-[530px] w-full mx-auto mb-8">
+			<h2 class="uppercase text-2xl mb-3 font-bold">Самара авто</h2>
+			<a href="tel:+79991234567" class="text-gray-700 font-medium mb-2 inline-block underline">+7(999) 123-45-67</a>
+			<p class="font-medium text-gray-700 mb-2">ул.Уличная, д.1</p>
+			<p class="font-medium text-gray-700 mb-2">c 8.30 до 21.00 <span class="text-xs">(ежедневно)</span></p>
+		</div>
 
-	<script>
-		document.addEventListener('alpine:init', () => {
-			Alpine.data('data', () => ({
-				cars: [
-					{id: 1, title: 'Solaris'},
-					{id: 2, title: 'i30'},
-					{id: 3, title: 'Elantra'},
-					{id: 4, title: 'Sonata'},
-					{id: 5, title: 'i40'},
-					{id: 6, title: 'Creta'},
-					{id: 7, title: 'ix35'},
-					{id: 8, title: 'Tucson'},
-					{id: 9, title: 'Santa Fe'},
-					{id: 10, title: 'H1'},
-					{id: 11, title: 'Polisade'},
-				],
-				presents: [
-					{icon: 'https://via.placeholder.com/150', title: 'Шиномонтаж', text: 'от 2000₽'},
-					{icon: 'https://via.placeholder.com/150', title: 'В подарок <br class="hidden sm:block"> при шиномонтаже', text: 'осмотр ходовой <br>системы'},
-					{icon: 'https://via.placeholder.com/150', title: 'В подарок', text: 'Мойка люкс <br>новым клиентам'},
-					{icon: 'https://via.placeholder.com/150', title: 'Бесплатно', text: 'Замена масла в ДВС'},
-					{icon: 'https://via.placeholder.com/150', title: 'А/М HYUNDAI <br>старше 3 лет', text: '-25% на услуги <br>-20% на запчасти'},
-					{icon: 'https://via.placeholder.com/150', title: 'Замена масла', text: 'АКПП от 8900₽ <br>МКПП от 2900₽'},
-				],
-				services: [
-					{id: 1, title: 'Шиномонтаж'},
-					{id: 2, title: 'Замена эксплуатационных жидкостей'},
-					{id: 3, title: 'Ремонт тормозной системы'},
-					{id: 4, title: 'Малярно-кузовные работы'},
-					{id: 5, title: 'Ремонт подвески'},
-					{id: 6, title: 'Автомойка'},
-					{id: 7, title: 'Ремонт электрооборудования'},
-					{id: 8, title: 'Агрегатный ремонт'},
-					{id: 9, title: 'Прочее'},
-				],
-				advantages: [
-					{id: 1, title: 'Первый ДЦ Hyundai в Самаре. Обслуживаем Hyundai с 1997 г.'},
-					{id: 2, title: 'Присутствуйте <br class="hidden sm:block">в ремзоне'},
-					{id: 3, title: 'Официальный <br class="hidden sm:block">сервис-лоукостер'},
-					{id: 4, title: '2 года <br class="hidden sm:block">гарантии'},
-					{id: 5, title: 'Внутренняя <br class="hidden sm:block">сертификация <br class="hidden sm:block">мастеров'},
-				],
-				faqs: [
-					{
-						id: 1, 
-						question: 'Как проехать? Время работы салона?', 
-						answer: 'Заезд на парковку под шлагбаум с улицы Уличная. <br>Адрес: Самара, Уличная, д. 1. <br><br>Режим работы: с 8:30 до 21:00 ежедневно, без выходных.',
-						open: true
-					},
-					{
-						id: 2, 
-						question: 'Могу ли я присутствовать в ремонтной зоне?', 
-						answer: 'Да. <br><br>Присутствие в ремонтной зоне на время проведения обслуживания допускается  при условии подписания акта техники безопасности и при наличии СИЗ (средств индивидуальной защиты).',
-						open: false
-					},
-					{
-						id: 3, 
-						question: 'Принимается ли оплата по карте?', 
-						answer: 'Да. <br><br>Возможен как наличный, так и безналичный расчет. <br>Комиссия за безналичный расчет НЕ взимается.',
-						open: false
-					},
+	</div>
+	<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A1fbae06183dfa655d42d653dc2acff6c6d272bbccef38d495d42d7afa2a5d512&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=false"></script>
+</section>
 
-					{
-						id: 4, 
-						question: 'Можно ли провести работы, используя свои запасные части?', 
-						answer: 'Да. <br><br>Проведение обслуживания с расходными материалами клиента возможно. <br>В этом случае гарантия предоставляется только на работы.',
-						open: false
-					},
+<footer class="py-10 bg-gray-800 text-white text-opacity-60">
+	<div class="container px-3 mx-auto text-base">
+		<a href="/" class="flex items-center flex-0">
+			<img src="img/hyundai-logo.svg" alt="ALT" class="w-[100px] md:w-[170px] hidden md:block mx-auto mb-10">
+			<img src="img/hyundai-logo-small.svg" alt="ALT" class="md:hidden mx-auto mb-10">
+		</a>
+		<p class="mb-4">Мы не разделяем автомобили на новые или старые, автомобили на заводской гарантии или после ее окончания. Для всех владельцев Hyundai и на автомобили Hyundai любого года выпуска мы готовы предоставить обслуживание любого типа, по одинаково низким ценам, но со всеми преимуществами Официального дилера.</p>
+		<p>Стоимость ТО, указанная на сайте, является ориентировочной. Не является офертой</p>
+		<hr class="my-8">
+		<div class="text-center text-sm">
+			<a href="#" class="underline transition hover:no-underline inline-block mb-3">Политика в области обработки персональных данных</a>
+			<p>Данный интернет-сайт носит информационный характер и не является публичной офертой, определяемой положениями Статьи 437 ГК РФ.</p>
+		</div>
+	</div>		
+</footer>
 
-					{
-						id: 5, 
-						question: 'На каком пробеге необходимо проводить ТО? Какой допускается перепробег при ТО?', 
-						answer: 'Заводом-изготовителем регламентирован&nbsp; срок прохождения ТО: <b>каждые 15 000 км</b> (<b>или 1 год эксплуатации</b>, смотря что наступит раньше). <br><br><b>Допустимый перепробег составляет 2 000 км</b>  (или 1 месяц эксплуатации).',
-						open: false
-					},
-				],
-				toggleItem: function (id, arr) {
-					let item = arr.find((item) => item.id === id);
-					item.open = !item.open;
-				}
-			}))
-		})
-	</script>
+<script>
+	document.addEventListener('alpine:init', () => {
+		Alpine.data('data', () => ({
+			cars: [
+			{id: 1, title: 'Solaris'},
+			{id: 2, title: 'i30'},
+			{id: 3, title: 'Elantra'},
+			{id: 4, title: 'Sonata'},
+			{id: 5, title: 'i40'},
+			{id: 6, title: 'Creta'},
+			{id: 7, title: 'ix35'},
+			{id: 8, title: 'Tucson'},
+			{id: 9, title: 'Santa Fe'},
+			{id: 10, title: 'H1'},
+			{id: 11, title: 'Polisade'},
+			],
+			presents: [
+			{icon: 'https://via.placeholder.com/150', title: 'Шиномонтаж', text: 'от 2000₽'},
+			{icon: 'https://via.placeholder.com/150', title: 'В подарок <br class="hidden sm:block"> при шиномонтаже', text: 'осмотр ходовой <br>системы'},
+			{icon: 'https://via.placeholder.com/150', title: 'В подарок', text: 'Мойка люкс <br>новым клиентам'},
+			{icon: 'https://via.placeholder.com/150', title: 'Бесплатно', text: 'Замена масла в ДВС'},
+			{icon: 'https://via.placeholder.com/150', title: 'А/М HYUNDAI <br>старше 3 лет', text: '-25% на услуги <br>-20% на запчасти'},
+			{icon: 'https://via.placeholder.com/150', title: 'Замена масла', text: 'АКПП от 8900₽ <br>МКПП от 2900₽'},
+			],
+			services: [
+			{id: 1, title: 'Шиномонтаж'},
+			{id: 2, title: 'Замена эксплуатационных жидкостей'},
+			{id: 3, title: 'Ремонт тормозной системы'},
+			{id: 4, title: 'Малярно-кузовные работы'},
+			{id: 5, title: 'Ремонт подвески'},
+			{id: 6, title: 'Автомойка'},
+			{id: 7, title: 'Ремонт электрооборудования'},
+			{id: 8, title: 'Агрегатный ремонт'},
+			{id: 9, title: 'Прочее'},
+			],
+			advantages: [
+			{id: 1, title: 'Первый ДЦ Hyundai в Самаре. Обслуживаем Hyundai с 1997 г.'},
+			{id: 2, title: 'Присутствуйте <br class="hidden sm:block">в ремзоне'},
+			{id: 3, title: 'Официальный <br class="hidden sm:block">сервис-лоукостер'},
+			{id: 4, title: '2 года <br class="hidden sm:block">гарантии'},
+			{id: 5, title: 'Внутренняя <br class="hidden sm:block">сертификация <br class="hidden sm:block">мастеров'},
+			],
+			faqs: [
+			{
+				id: 1, 
+				question: 'Как проехать? Время работы салона?', 
+				answer: 'Заезд на парковку под шлагбаум с улицы Уличная. <br>Адрес: Самара, Уличная, д. 1. <br><br>Режим работы: с 8:30 до 21:00 ежедневно, без выходных.',
+				open: true
+			},
+			{
+				id: 2, 
+				question: 'Могу ли я присутствовать в ремонтной зоне?', 
+				answer: 'Да. <br><br>Присутствие в ремонтной зоне на время проведения обслуживания допускается  при условии подписания акта техники безопасности и при наличии СИЗ (средств индивидуальной защиты).',
+				open: false
+			},
+			{
+				id: 3, 
+				question: 'Принимается ли оплата по карте?', 
+				answer: 'Да. <br><br>Возможен как наличный, так и безналичный расчет. <br>Комиссия за безналичный расчет НЕ взимается.',
+				open: false
+			},
 
+			{
+				id: 4, 
+				question: 'Можно ли провести работы, используя свои запасные части?', 
+				answer: 'Да. <br><br>Проведение обслуживания с расходными материалами клиента возможно. <br>В этом случае гарантия предоставляется только на работы.',
+				open: false
+			},
 
-	<script defer src="https://unpkg.com/alpinejs@3.4.2/dist/cdn.min.js"></script>
+			{
+				id: 5, 
+				question: 'На каком пробеге необходимо проводить ТО? Какой допускается перепробег при ТО?', 
+				answer: 'Заводом-изготовителем регламентирован&nbsp; срок прохождения ТО: <b>каждые 15 000 км</b> (<b>или 1 год эксплуатации</b>, смотря что наступит раньше). <br><br><b>Допустимый перепробег составляет 2 000 км</b>  (или 1 месяц эксплуатации).',
+				open: false
+			},
+			],
+			toggleItem: function (id, arr) {
+				let item = arr.find((item) => item.id === id);
+				item.open = !item.open;
+			}
+		}))
+	})
+</script>
+
+<script src="dist/js/scripts.js" defer></script>
 
 </body>
 </html>

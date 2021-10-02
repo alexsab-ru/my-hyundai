@@ -2,6 +2,6 @@
 *.php
 phpmailer
 sftp-config*.json
-/images/
+node_modules
 /.alexsab/
 service-hyundai-php.zip
