@@ -68,12 +68,40 @@
 		</div>			
 	</nav>
 	
-	<div class="banner h-[calc(100vh-109px)] min-h-[600px] bg-gray-300 relative">
-		<div class="banner-slider h-full w-full">
-			<img src="img/slider/1.jpg" alt="ALT" class="absolute h-full w-full object-cover object-right sm:object-center">
+	<div class="banner bg-gray-300 relative">
+		<div class="banner-slider">
+			<!-- Slider main container -->
+			<div class="swiper">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+					<div class="swiper-slide">
+						<a href="#">
+							<img src="img/slider/1.jpg" alt="ALT" class="w-full object-cover object-center">
+						</a>
+					</div>
+					<div class="swiper-slide">
+						<a href="#">
+							<img src="img/slider/1.jpg" alt="ALT" class="w-full object-cover object-center">
+						</a>
+					</div>
+					<div class="swiper-slide">
+						<a href="#">
+							<img src="img/slider/1.jpg" alt="ALT" class="w-full object-cover object-center">
+						</a>
+					</div>
+				</div>
+				<!-- If we need pagination -->
+				<div class="swiper-pagination"></div>
+				<!-- If we need navigation buttons -->
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+
+			</div>
 		</div>
-		<div class="banner-title absolute bottom-0 left-0 bg-blue-500 py-5 px-3 w-full text-center text-xl sm:text-3xl text-white uppercase z-20">Принимаем автомобили всех марок <br class="hidden sm:block">на любые виды ремонта и ТО</div>
+		<div class="banner-title bg-blue-500 py-5 px-3 w-full text-center text-xl sm:text-3xl text-white uppercase z-20">Принимаем автомобили всех марок <br class="hidden sm:block">на любые виды ремонта и ТО</div>
 	</div>
+
 
 	<section class="calculation pt-16" x-data="data">
 		<div class="container sm:px-3 mx-auto">
