@@ -16,7 +16,7 @@ import 'swiper/css/lazy';
 // configure Swiper to use modules
 Swiper.use([Navigation, Pagination, Scrollbar, Lazy]);
 
-const swiper = new Swiper('.banner-slider', {
+const banner = new Swiper('.banner-slider', {
   // Optional parameters
   // direction: 'vertical',
   loop: true,
@@ -30,5 +30,34 @@ const swiper = new Swiper('.banner-slider', {
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
+  },
+});
+
+const partners = new Swiper('.partners-slider', {
+  // slidesPerView: 2,
+  // spaceBetween: 10,
+  breakpoints: {
+    // when window width is >= 320px
+    320: {
+      slidesPerView: 3,
+      spaceBetween: 10
+    },
+    // when window width is >= 640px
+    586: {
+      slidesPerView: 4,
+      spaceBetween: 10
+    },
+    768: {
+      slidesPerView: 5,
+      spaceBetween: 10
+    },
+    1024: {
+      slidesPerView: 7,
+      spaceBetween: 10
+    },
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
   },
 });
