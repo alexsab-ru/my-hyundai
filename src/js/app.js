@@ -58,3 +58,6 @@ const partners = new Swiper('.partners-slider', {
 		clickable: true,
 	},
 });
+
+
+import './map';

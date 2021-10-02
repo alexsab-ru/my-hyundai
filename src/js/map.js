@@ -1,15 +1,17 @@
-$(function() {
+
+    let parent = document.querySelector('.map');
+    let id = document.querySelector('#map');
 
     let maps = [
             {
-                parent: '.dealer-map',
-                id: "map",
+                parent: parent,
+                id: id,
                 position: [53.275197,50.227754],
                 zoom: 17,
                 balloonContentHeader: '<img src="img/hyundai-logo.svg" alt="Хёндэ" style="width: 335px"><br>',
                 balloonContentBody: '<h6><b>Официальный сервисный центр "Hyundai"</b></h6> \
                                     <p>пн — вс: 8:00 — 20:00</p> \
-                                    <a href="tel:+78463210000" class="dealer-phone-map d-flex align-items-center"><img src="img/icons/phone_icon.png" alt="Phone Icon" class="me-2"> +7 (846) 321-00-00</a> \
+                                    <a href="tel:+78463210000" class="dealer-phone-map d-flex align-items-center"> +7 (846) 321-00-00</a> \
                                     <a href="https://yandex.ru/maps/51/samara/?from=api-maps&ll=50.227754%2C53.275435&mode=routes&origin=jsapi_2_1_78&rtext=~53.275197%2C50.227754&rtt=auto&ruri=~ymapsbm1%3A%2F%2Fgeo%3Fll%3D50.228%252C53.275%26spn%3D0.001%252C0.001%26text%3D%25D0%25A0%25D0%25BE%25D1%2581%25D1%2581%25D0%25B8%25D1%258F%252C%2520%25D0%25A1%25D0%25B0%25D0%25BC%25D0%25B0%25D1%2580%25D0%25B0%252C%2520%25D0%2594%25D0%25B5%25D0%25BC%25D0%25BE%25D0%25BA%25D1%2580%25D0%25B0%25D1%2582%25D0%25B8%25D1%2587%25D0%25B5%25D1%2581%25D0%25BA%25D0%25B0%25D1%258F%2520%25D1%2583%25D0%25BB%25D0%25B8%25D1%2586%25D0%25B0%252C%252055&z=17"  target="_blank" class="dealer-phone">📍 Как добраться</a><br>',
                 balloonContentFooter: '',
                 hintContent: 'Официальный сервисный центр Hyundai'
@@ -112,9 +114,10 @@ $(function() {
 
     // Основная функция, которая проверяет когда мы навели на блок с классом "ymap-container"
     function ymap(map) {
-        jQuery(map.parent).one("mouseenter", function() {
+        console.log(document.querySelector('.loader'))
+        map.parent.addEventListener("mouseover", function() {
             // Показываем индикатор загрузки до тех пор, пока карта не загрузится
-            jQuery(map.parent).children('.loader').addClass('is-active');
+            map.parent.querySelector('.loader').classList.add('is-active');
 
             if (!start_load_script) { // проверяем первый ли раз загружается Яндекс.Карта, если да, то загружаем
 
@@ -126,6 +129,7 @@ $(function() {
                     end_load_script = !end_load_script;
                     // Как только API Яндекс.Карт загрузились, сразу формируем карту и помещаем в блок с идентификатором "map-yandex"
                     ymaps.load(init, map);
+                    // map.parent.querySelector('.loader').classList.remove('is-active');
                 });
             } else {
                 var check_load = setInterval(function() {
@@ -133,6 +137,7 @@ $(function() {
                         clearInterval(check_load);
                         ymaps.load(init, map);
                     } 
+                    map.parent.querySelector('.loader').classList.remove('is-active');
                 }, 100);
             }
         });
@@ -142,4 +147,3 @@ $(function() {
     maps.forEach(function(map){
         ymap(map)
     });
-});
