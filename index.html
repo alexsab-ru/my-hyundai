@@ -33,7 +33,7 @@
 						<img src="img/hyundai-logo.svg" alt="ALT" class="w-[100px] md:w-[170px] hidden md:block">
 						<img src="img/hyundai-logo-small.svg" alt="ALT" class="md:hidden">
 						<div class="ml-3 space-y-0 leading-none">
-							<p class="uppercase font-medium">Самара-Авто</p>
+							<p class="uppercase font-medium">Автохолдинг</p>
 							<p class="text-[11px]">официальный дилер</p>
 						</div>
 					</a>
@@ -52,7 +52,13 @@
 
 					<a href="tel:+79991234567" class="text-gray-900 font-medium text-lg lg:text-2xl">+7(999) 123-45-67</a>
 
-					<button x-data @click="$store.modalShow.on = true; $store.modalShow.title = 'Заказать звонок 1'" class="btn-red">Заказать звонок</button>
+					<button 
+						x-data 
+						@click="$store.modalShow.on = true; $dispatch('set-title', 'Hello World2!')" 
+						class="btn-red"
+						>
+						Заказать звонок
+					</button>
 
 				</div>
 			</div>
@@ -184,7 +190,10 @@
 					<p class="text-[0.7rem] px-5 mb-8 text-gray-500">*Стоимость для новых клиентов указана для первого посещении сервис-центра Восток-Авто с учетом использования оригинальных запасных частей. Предложение не является офертой.</p>
 
 					<div class="text-center">
-						<button x-data @click="$store.modalShow.on = true; $store.modalShow.title = 'Записаться на ТО'"class="bg-red-600 text-md md:text-xl text-white py-3 px-10 rounded-full font-normal transition hover:bg-red-500 focus:bg-red-700">Записаться на ТО</button>
+						<button 
+							x-data 
+							@click="$store.modalShow.on = true; $dispatch('set-title', 'Записаться на ТО')" 
+							class="bg-red-600 text-md md:text-xl text-white py-3 px-10 rounded-full font-normal transition hover:bg-red-500 focus:bg-red-700">Записаться на ТО</button>
 					</div>
 				</div>
 				
@@ -200,7 +209,7 @@
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
 
 				<template x-for="present in presents">
-					<div x-data @click="$store.modalShow.on = true; $store.modalShow.title = 'Появились вопросы?'" class="border-4 border-blue-500 px-4 pt-6 pb-8 sm:px-5 sm:pt-8 sm:pb-12 cursor-pointer transition hover:bg-gray-100">
+					<div x-data @click="$store.modalShow.on = true; $dispatch('set-title', 'Появились вопросы?')" class="border-4 border-blue-500 px-4 pt-6 pb-8 sm:px-5 sm:pt-8 sm:pb-12 cursor-pointer transition hover:bg-gray-100">
 						<div class="flex items-center">
 							<img :src="present.icon" :alt="present.title" class="rounded-full relative z-10 border-4 border-blue-500 w-[100px] h-[100px] sm:w-[150px] sm:h-[150px]">
 							<div class="relative flex-grow">
@@ -347,12 +356,18 @@
 		<p class="text-gray-800 text-md sm:text-xl text-center font-medium mt-4 sm:mt-8">Свяжитесь с нами любым удобным для Вас способом.</p>
 
 		<div class="text-center my-8">
-			<button x-data @click="$store.modalShow.on = true; $store.modalShow.title = 'Заказать звонок 2'" class="btn-blue">Заказать звонок</button>			
+			<button 
+				x-data 
+				@click="$store.modalShow.on = true; $dispatch('set-title', 'Hello World!')" 
+				class="btn-blue"
+				>
+				Заказать звонок
+			</button>			
 		</div>
 
 
 		<div class="max-w-[530px] w-full mx-auto mb-8 text-center">
-			<h2 class="uppercase text-2xl mb-3 font-bold">Самара авто</h2>
+			<h2 class="uppercase text-2xl mb-3 font-bold">Hyundai Автохолдинг</h2>
 			<a href="tel:+79991234567" class="text-gray-700 font-medium mb-2 inline-block underline">+7(999) 123-45-67</a>
 			<p class="font-medium text-gray-700 mb-2">ул.Уличная, д.1</p>
 			<p class="font-medium text-gray-700 mb-2">c 8.30 до 21.00 <span class="text-xs">(ежедневно)</span></p>
@@ -383,15 +398,22 @@
 
 
 <!-- Modals -->
-<div x-data x-show="$store.modalShow.on" x-transition:enter="animation-fade" x-transition:leave="animation-fadeout" class="fixed left-0 top-0 h-full w-full z-20 bg-black bg-opacity-90">
+<div 
+	x-data="{ title: '' }" 
+	x-show="$store.modalShow.on" 
+	@set-title.window="title = $event.detail"
+	x-transition:enter="animation-fade" 
+	x-transition:leave="animation-fadeout" 
+	class="fixed left-0 top-0 h-full w-full z-20 bg-black bg-opacity-90"
+	>
 	<div @click.away="$store.modalShow.on = false" class="absolute w-full max-w-[500px]" style="left: 50%; top: 50%; transform: translate(-50%, -50%);">
 		<div class="relative bg-white" x-show="$store.modalShow.on" x-transition:enter="animation-top">
 			<span @click="$store.modalShow.on = false" class="absolute right-3 top-1 text-gray-700 text-3xl hover:text-gray-800 cursor-pointer">&times;</span>
-			<div class="pt-5 pb-2 text-center text-2xl" x-text="$store.modalShow.title"></div>
+			<div class="pt-5 pb-2 text-center text-2xl" x-text="title"></div>
 			<p class="text-center pb-5">Наши менеджеры с удовольствием свяжутся с Вами!</p>
 			<div class="px-8 pb-8">
 				<form>
-					<input type="text" name="name" class="w-full border border-gray-400 py-2 px-3 mb-3" placeholder="Ваше имя">
+					<input type="text" name="name" class="form-input w-full border border-gray-400 py-2 px-3 mb-3" placeholder="Ваше имя">
 					<input type="tel" name="phone" class="w-full border border-gray-400 py-2 px-3 mb-5" placeholder="Ваш номер телефона *" required>
 					<small class="block text-xs text-gray-500 mb-5">Нажимая на кнопку «Отправить», вы даете свое согласие на <a x-data @click="$store.modalShowPrivacy.on = true; return false;" href="#" class="block text-gray-600 underline transition hover:no-underline">обработку персональных данных</a></small>
 					<button type="submit" class="btn-red w-full">Отправить</button>

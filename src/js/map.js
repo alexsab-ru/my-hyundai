@@ -6,13 +6,13 @@ let maps = [
 {
 	parent: parent,
 	id: id,
-	position: [53.275197,50.227754],
+	position: [45.017397,38.937629],
 	zoom: 17,
 	balloonContentHeader: '<img src="img/hyundai-logo.svg" alt="Хёндэ" style="width: 250px"><br>',
-	balloonContentBody: '<h6><b>Самара Авто "Hyundai"</b></h6> \
+	balloonContentBody: '<h6><b>"Hyundai АВТОХОЛДИНГ"</b></h6> \
 	<p>пн — вс: 8:00 — 20:00</p> \
 	<a href="tel:+79991234567" class="dealer-phone-map d-flex align-items-center">+7 (999) 123-45-67</a> \
-	<a href="https://yandex.ru/maps/51/samara/?from=api-maps&ll=50.227754%2C53.275435&mode=routes&origin=jsapi_2_1_78&rtext=~53.275197%2C50.227754&rtt=auto&ruri=~ymapsbm1%3A%2F%2Fgeo%3Fll%3D50.228%252C53.275%26spn%3D0.001%252C0.001%26text%3D%25D0%25A0%25D0%25BE%25D1%2581%25D1%2581%25D0%25B8%25D1%258F%252C%2520%25D0%25A1%25D0%25B0%25D0%25BC%25D0%25B0%25D1%2580%25D0%25B0%252C%2520%25D0%2594%25D0%25B5%25D0%25BC%25D0%25BE%25D0%25BA%25D1%2580%25D0%25B0%25D1%2582%25D0%25B8%25D1%2587%25D0%25B5%25D1%2581%25D0%25BA%25D0%25B0%25D1%258F%2520%25D1%2583%25D0%25BB%25D0%25B8%25D1%2586%25D0%25B0%252C%252055&z=17"  target="_blank" class="dealer-phone">📍 Как добраться</a><br>',
+	<a href="https://yandex.ru/maps/?from=api-maps&ll=38.937629%2C45.017397&mode=routes&origin=jsapi_2_1_79&rtext=~45.017397%2C38.937629&rtt=auto&ruri=~&z=17"  target="_blank" class="dealer-phone">📍 Как добраться</a><br>',
 	balloonContentFooter: '',
 	hintContent: 'Официальный сервисный центр Hyundai'
 },
