@@ -59,7 +59,7 @@
 		</div>
 	</header>
 
-	<nav class="bg-gray-800 hidden md:block text-white text-opacity-90 sticky top-0 z-10 shadow-sm">
+	<nav class="bg-gray-800 hidden md:block text-white text-opacity-90 sticky top-0 z-20 shadow-sm">
 		<div class="container mx-auto">
 			<ul class="flex justify-between">
 				<li class="flex-grow"><a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition">О нас</a></li>
@@ -184,7 +184,7 @@
 					<p class="text-[0.7rem] px-5 mb-8 text-gray-500">*Стоимость для новых клиентов указана для первого посещении сервис-центра Восток-Авто с учетом использования оригинальных запасных частей. Предложение не является офертой.</p>
 
 					<div class="text-center">
-						<button class="bg-red-600 text-md md:text-xl text-white py-3 px-10 rounded-full font-normal transition hover:bg-red-500 focus:bg-red-700">Записаться на ТО</button>
+						<button x-data @click="$store.modalShow.on = true; $store.modalShow.title = 'Записаться на ТО'"class="bg-red-600 text-md md:text-xl text-white py-3 px-10 rounded-full font-normal transition hover:bg-red-500 focus:bg-red-700">Записаться на ТО</button>
 					</div>
 				</div>
 				
@@ -200,7 +200,7 @@
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
 
 				<template x-for="present in presents">
-					<div class="border-4 border-blue-500 px-4 pt-6 pb-8 sm:px-5 sm:pt-8 sm:pb-12 cursor-pointer transition hover:bg-gray-100" @click="alert('MODAL');">
+					<div x-data @click="$store.modalShow.on = true; $store.modalShow.title = 'Появились вопросы?'" class="border-4 border-blue-500 px-4 pt-6 pb-8 sm:px-5 sm:pt-8 sm:pb-12 cursor-pointer transition hover:bg-gray-100">
 						<div class="flex items-center">
 							<img :src="present.icon" :alt="present.title" class="rounded-full relative z-10 border-4 border-blue-500 w-[100px] h-[100px] sm:w-[150px] sm:h-[150px]">
 							<div class="relative flex-grow">
@@ -259,7 +259,7 @@
 
 					<div class="text-center w-1/2 sm:w-1/3 md:w-1/5 mb-5 px-3">
 						<img :src="`img/icons/advantages/${advantage.id}.svg`" :alt="advantage.title" class="mx-auto mb-3 w-20 lg:w-24">
-						<h3 class="text-xs sM: text-sm lg:text-lg text-white font-medium" x-html="advantage.title"></h3>
+						<h3 class="text-xs sm:text-sm lg:text-lg text-white font-medium" x-html="advantage.title"></h3>
 					</div>
 					
 				</template>
@@ -393,9 +393,30 @@
 				<form>
 					<input type="text" name="name" class="w-full border border-gray-400 py-2 px-3 mb-3" placeholder="Ваше имя">
 					<input type="tel" name="phone" class="w-full border border-gray-400 py-2 px-3 mb-5" placeholder="Ваш номер телефона *" required>
-					<small class="block text-xs text-gray-500 mb-5">Нажимая на кнопку «Отправить», вы даете свое согласие на <a href="#" class="block text-gray-600 underline transition hover:no-underline">обработку персональных данных</a></small>
+					<small class="block text-xs text-gray-500 mb-5">Нажимая на кнопку «Отправить», вы даете свое согласие на <a x-data @click="$store.modalShowPrivacy.on = true; return false;" href="#" class="block text-gray-600 underline transition hover:no-underline">обработку персональных данных</a></small>
 					<button type="submit" class="btn-red w-full">Отправить</button>
 				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div x-data x-show="$store.modalShowPrivacy.on" x-transition:enter="animation-fade" x-transition:leave="animation-fadeout" class="fixed left-0 top-0 h-full w-full z-50 bg-black bg-opacity-90">
+	<div @click.away="$store.modalShowPrivacy.on = false" class="absolute w-full max-w-[900px]" style="left: 50%; top: 5%; transform: translate(-50%, 0);">
+		<div class="relative bg-white overflow-auto h-screen pb-8" x-show="$store.modalShowPrivacy.on" x-transition:enter="animation-top">
+			<span @click="$store.modalShowPrivacy.on = false" class="absolute right-3 top-1 text-gray-700 text-3xl hover:text-gray-800 cursor-pointer">&times;</span>
+			<div class="py-5 px-8 text-3xl">Политика конфиденциальности</div>
+			<div class="px-8 pb-8">
+				<p>Далеко-далеко за словесными горами в стране гласных, и согласных живут рыбные тексты. Безопасную грамматики жаренные своих одна необходимыми деревни дал пунктуация строчка, всемогущая, выйти рукопись залетают lorem напоивший своего заглавных продолжил использовало?
+				Безорфографичный на берегу ее если жаренные продолжил, великий рукописи предупреждал заголовок дороге бросил рыбными большого за даль, ручеек инициал языком диких родного дорогу точках, страна курсивных большой до имени, семантика буквоград?
+				Ты курсивных заголовок переписали, назад, лучше, ведущими мир страну языкового предупреждал точках себя пор дорогу маленький это приставка имеет, жаренные языком залетают свое вдали даль знаках. Ему за свой повстречался.
+				Толку назад прямо знаках запятой, путь, решила послушавшись семь, скатился маленькая пор снова домах коварный, если коварных? Большой снова прямо на берегу, подзаголовок ему текстами свое великий грустный, силуэт над своих!
+				Рукопись по всей снова родного, послушавшись над все инициал вопроса жизни продолжил океана безопасную большой последний раз скатился она диких всеми, прямо переписывается гор бросил парадигматическая вопрос взобравшись вершину ему строчка.
+				Страну которой, букв, своего свое это курсивных, переписали алфавит большой безорфографичный всемогущая сбить жизни переписывается строчка путь, языком возвращайся приставка! Продолжил его ему залетают предупреждал рыбными меня снова составитель напоивший.
+				Переулка не дорогу жаренные города рукописи ему продолжил букв, решила вскоре подзаголовок скатился буквоград подпоясал диких, бросил реторический до за использовало своих свое рыбными, страна гор он. От всех, взобравшись залетают!
+				Но текст своих, по всей вскоре языкового напоивший? О сих, жаренные переписали рыбного буквенных ты повстречался реторический толку коварный домах ему, оксмокс? Выйти она путь заголовок ipsum переулка речью, на берегу, жаренные!
+				Свой родного свое меня там рот ведущими что толку, подпоясал обеспечивает правилами снова необходимыми текстами. Lorem рыбного семь, языком семантика, буквоград домах скатился она сих послушавшись мир коварный за. Живет?
+				Переписали что рот, напоивший всеми города букв единственное. Языкового рукописи семантика домах составитель это агентство безопасную букв океана использовало речью одна, его страну, даже маленькая ручеек, рыбного пунктуация скатился алфавит!</p>
 			</div>
 		</div>
 	</div>
@@ -486,7 +507,10 @@
 		Alpine.store('modalShow', {
             on: false,
             title: ''
-        })
+        });
+        Alpine.store('modalShowPrivacy', {
+            on: false
+        });
 	})
 </script>
 
