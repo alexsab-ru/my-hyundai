@@ -1,3 +1,6 @@
+import './map';
+import './objects';
+
 import Alpine from 'alpinejs';
 
 window.Alpine = Alpine;
@@ -58,6 +61,3 @@ const partners = new Swiper('.partners-slider', {
 		clickable: true,
 	},
 });
-
-
-import './map';
