@@ -261,10 +261,10 @@
 				</div>
 
 				<template x-for="elem in pricelist">
-					<div x-show="elem.id == selected" class="bg-gray-100 md:mb-3 p-4 transition">
-						<h3 x-text="services[elem.id - 1].title" class="text-2xl text-center mb-5"></h3>
+					<div x-show="elem.id == selected" class="bg-gray-100 md:mb-3 px-4 pt-4 pb-1 transition">
+						<h3 x-text="services[elem.id - 1].title" class="text-2xl font-medium text-center mb-5"></h3>
 						<template x-for="item in elem.items">
-							<div class="flex items-end justify-between text-lg mb-3 border-b border-dotted border-gray-400">
+							<div class="flex items-end justify-between text-lg mb-3 last:border-0 border-b border-dotted border-gray-400">
 								<div x-text="item.name" class="pr-3"></div>
 								<!-- <div class="border-b border-dotted border-gray-400 flex-grow mb-2"></div> -->
 								<div x-html="item.price + '<span> ₽</span>'" class="pl-3 flex-shrink-0 font-medium"></div>

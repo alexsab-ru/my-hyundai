@@ -36,9 +36,17 @@ document.addEventListener('alpine:init', () => {
 			{
 				id: 1,
 				items: [
-					{name: 'Name1', price: 300},
-					{name: 'Name2', price: 400},
-					{name: 'Name3', price: 500},
+					{name: 'R13', price: 2000},
+					{name: 'R14', price: 2000},
+					{name: 'R15', price: 2000},
+					{name: 'R16', price: 2300},
+					{name: 'R17', price: 2500},
+					{name: 'R18', price: 2900},
+					{name: 'R19', price: 3100},
+					{name: 'R20', price: 3600},
+					{name: 'Проверка и регулировка углов установки колес (одна ось)', price: 1800},
+					{name: 'Проверка и регулировка углов установки колес (две оси)', price: 2400},
+					{name: 'Сезонное хранение колес', price: 2500},
 				]
 			},
 			{
