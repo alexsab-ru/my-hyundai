@@ -1,5 +1,10 @@
 document.addEventListener('alpine:init', () => {
 	Alpine.data('data', () => ({
+		model: false,
+		engineVolume: false,
+		engineType: false,
+		filter: false,
+		total: false,
 		cars: [
 			{id: 1, title: 'Solaris'},
 			{id: 2, title: 'i30'},
@@ -158,7 +163,7 @@ document.addEventListener('alpine:init', () => {
 		toggleItem: function (id, arr) {
 			let item = arr.find((item) => item.id === id);
 			item.open = !item.open;
-		}
+		},
 	}));
 	Alpine.store('modalShow', {
 		on: false,

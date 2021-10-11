@@ -124,47 +124,72 @@
 			<p class="text-gray-800 text-md sm:text-xl text-center font-medium mt-4 sm:mt-8">Выберите модель для расчета ТО</p>
 
 
-			<div class="flex justify-center flex-wrap mt-8 sm:mt-10">
+			<div class="flex justify-center flex-wrap mt-8 sm:mt-10" x-data="{active: null}">
 
-				<template x-for="car in cars">
-					<a href="#params" class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group">
-						<img :src="`img/cars/${car.id}.png`" :alt="car.title" class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110">
-						<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500" x-text="car.title"></h3>
+				<template x-for="car in cars" :key="car.id">
+					<a 
+					href="#" 
+					class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group"
+					@click.prevent="window.scrollTo({
+						behavior: 'smooth',
+						top: document.getElementById('params').getBoundingClientRect().top + window.pageYOffset - 60
+					}); 
+					model = true; 
+					filter = false;
+					total = false;
+					engineType = false;
+					engineVolume = false;
+					active !== car.id ? active = car.id : ''"					
+					>
+						<img :src="`img/cars/${car.id}.png`" :alt="car.title" class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110" :class="{'!scale-110': active == car.id}">
+						<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500" :class="{'!bottom-1 !text-red-500': active == car.id}" x-text="car.title"></h3>
 					</a>
 				</template>
 
 			</div>
 
-			<div class="calculation-params max-w-[1400px] mx-auto bg-gray-100 rounded pt-5 pb-7" id="params">
+			<div class="calculation-params max-w-[1400px] mx-auto bg-gray-100 rounded pt-5 pb-5" id="params">
 
-				<div class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 px-5 mb-5">
-					<select class="w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg">
+				<div class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 px-5">
+					<select :disabled="!model" class="w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" @change="engineVolume = true">
 						<option selected disabled>Модель</option>
 						<option>Модель 1</option>
 						<option>Модель 2</option>
 					</select>
-					<select class="w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg">
+					<select :disabled="!engineVolume" class="w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" @change="engineType = true">
 						<option selected disabled>Объем двигателя</option>
 						<option>Модель 1</option>
 						<option>Модель 2</option>
 					</select>
-					<select disabled class="w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg">
+					<select :disabled="!engineType" class="w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" @change="filter = true">
 						<option selected disabled>Тип двигателя</option>
 						<option>Модель 1</option>
 						<option>Модель 2</option>
 					</select>
 				</div>
 
-				<div class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 px-5 mb-5 _hidden">
-					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5"><span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span></button>
-					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5"><span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span></button>
-					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5"><span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span></button>
-					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5"><span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span></button>
-					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5"><span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span></button>
-					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5"><span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span></button>
+				<div class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 px-5 mt-5" x-show="filter">
+					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5" @click="total = true;">
+						<span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span>
+					</button>
+					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5" @click="total = true;">
+						<span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span>
+					</button>
+					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5" @click="total = true;">
+						<span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span>
+					</button>
+					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5" @click="total = true;">
+						<span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span>
+					</button>
+					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5" @click="total = true;">
+						<span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span>
+					</button>
+					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5" @click="total = true;">
+						<span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span>
+					</button>
 				</div>
 
-				<ul class="px-5 pt-3 mb-5 space-y-5 _hidden">
+				<ul class="px-5 pt-3 mt-5 space-y-5" x-show="total">
 					<li class="flex justify-between leading-none">
 						<span>Стоимость работ</span>
 						<span class="flex-grow px-1 border-b"></span>
@@ -181,7 +206,7 @@
 					</li>
 				</ul>
 
-				<div class="_hidden">
+				<div x-show="total">
 					<div class="flex justify-between p-5 mb-2 bg-blue-500 text-white text-opacity-90 text-md sm:text-xl md:text-2xl font-medium">
 						<span>Общая стоимость для новых клиентов&nbsp;*</span>
 						<span class="font-bold pl-5">9&nbsp;000&nbsp;руб.</span>
