@@ -6,7 +6,15 @@ document.addEventListener('alpine:init', () => {
 		filter: false,
 		total: false,
 		cars: [
-			{id: 1, title: 'Solaris'},
+			{
+				id: 1, 
+				title: 'Solaris',
+				models: [
+					{name: 'Solaris 2020 -'}, 
+					// {name: 'Solaris 2017 - 2019'}, 
+					// {name: 'Solaris 2011 - 2016'},
+				],
+			},
 			{id: 2, title: 'i30'},
 			{id: 3, title: 'Elantra'},
 			{id: 4, title: 'Sonata'},
@@ -17,6 +25,14 @@ document.addEventListener('alpine:init', () => {
 			{id: 9, title: 'Santa Fe'},
 			{id: 10, title: 'H1'},
 			{id: 11, title: 'Polisade'},
+		],
+		buttons: [
+			{id: 1, text: '1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км'},
+			{id: 2, text: '2 года </span>или <br><span class="font-medium">30&nbsp;000&nbsp;км'},
+			{id: 3, text: '3 года </span>или <br><span class="font-medium">45&nbsp;000&nbsp;км'},
+			{id: 4, text: '4 года </span>или <br><span class="font-medium">60&nbsp;000&nbsp;км'},
+			{id: 5, text: '5 лет </span>или <br><span class="font-medium">75&nbsp;000&nbsp;км'},
+			{id: 6, text: '6 лет </span>или <br><span class="font-medium">90&nbsp;000&nbsp;км'},
 		],
 		presents: [
 			{icon: 'https://via.placeholder.com/150', title: 'Шиномонтаж', text: 'от 2000₽'},

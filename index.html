@@ -134,27 +134,44 @@
 						behavior: 'smooth',
 						top: document.getElementById('params').getBoundingClientRect().top + window.pageYOffset - 60
 					}); 
+					active !== car.id ? active = car.id : '';
 					model = true; 
 					filter = false;
 					total = false;
 					engineType = false;
 					engineVolume = false;
-					active !== car.id ? active = car.id : ''"					
-					>
-						<img :src="`img/cars/${car.id}.png`" :alt="car.title" class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110" :class="{'!scale-110': active == car.id}">
-						<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500" :class="{'!bottom-1 !text-red-500': active == car.id}" x-text="car.title"></h3>
+					document.getElementById('calc-form').reset();
+					$dispatch('set-id', active)
+					">
+						<img 
+						:src="`img/cars/${car.id}.png`" 
+						:alt="car.title" 
+						class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110" 
+						:class="{'!scale-110': active == car.id}">
+
+						<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500" 
+						:class="{'!bottom-1 !text-red-500': active == car.id}" 
+						x-text="car.title"></h3>
 					</a>
 				</template>
 
 			</div>
 
-			<div class="calculation-params max-w-[1400px] mx-auto bg-gray-100 rounded pt-5 pb-5" id="params">
+			<div class="calculation-params max-w-[1400px] mx-auto bg-gray-100 rounded pt-5 pb-5" id="params" 
+			x-data="{id: null}" 
+			@set-id.window="id = $event.detail"
+			>
 
-				<div class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 px-5">
+				<form class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 px-5" id="calc-form">
 					<select :disabled="!model" class="w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" @change="engineVolume = true">
 						<option selected disabled>Модель</option>
-						<option>Модель 1</option>
-						<option>Модель 2</option>
+
+						<template x-if="model">
+							<template x-for="(model, index) in cars[id-1].models" :key="index">
+								<option :value="index" x-text="model.name"></option>							
+							</template>
+						</template>
+							
 					</select>
 					<select :disabled="!engineVolume" class="w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" @change="engineType = true">
 						<option selected disabled>Объем двигателя</option>
@@ -166,61 +183,56 @@
 						<option>Модель 1</option>
 						<option>Модель 2</option>
 					</select>
+				</form>
+
+				<div class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 px-5 mt-5" x-show="filter" x-data="{btnActive: null}">
+					<template x-if="filter">
+						<template x-for="button in buttons">
+							<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5" 
+							@click="
+								total = true;
+								btnActive !== button.id ? btnActive = button.id : '';"
+								:class="{'!text-white !bg-red-700 !leading-5': btnActive == button.id}">
+								<span class="font-medium" x-html="button.text"></span>
+							</button>
+						</template>
+					</template>
 				</div>
 
-				<div class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 px-5 mt-5" x-show="filter">
-					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5" @click="total = true;">
-						<span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span>
-					</button>
-					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5" @click="total = true;">
-						<span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span>
-					</button>
-					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5" @click="total = true;">
-						<span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span>
-					</button>
-					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5" @click="total = true;">
-						<span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span>
-					</button>
-					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5" @click="total = true;">
-						<span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span>
-					</button>
-					<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5" @click="total = true;">
-						<span class="font-medium">1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км</span>
-					</button>
-				</div>
+				<template x-if="total">
+					<div>
+						<ul class="px-5 pt-3 mt-5 space-y-5">
+							<li class="flex justify-between leading-none">
+								<span>Стоимость работ</span>
+								<span class="flex-grow px-1 border-b"></span>
+								<span class="pl-5">6&nbsp;000&nbsp;руб.</span>
+							</li>
+							<li class="flex justify-between leading-none">
+								<span>Стоимость запчастей</span>
+								<span class="flex-grow px-1 border-b"></span>
+								<span>8&nbsp;000&nbsp;руб.</span>
+							</li>
+							<li class="flex justify-between text-lg md:text-xl font-medium pb-3 border-b-2">
+								<span>Общая стоимость</span>
+								<span class="font-bold pl-5">14&nbsp;000&nbsp;руб.</span>
+							</li>
+						</ul>
 
-				<ul class="px-5 pt-3 mt-5 space-y-5" x-show="total">
-					<li class="flex justify-between leading-none">
-						<span>Стоимость работ</span>
-						<span class="flex-grow px-1 border-b"></span>
-						<span class="pl-5">6&nbsp;000&nbsp;руб.</span>
-					</li>
-					<li class="flex justify-between leading-none">
-						<span>Стоимость запчастей</span>
-						<span class="flex-grow px-1 border-b"></span>
-						<span>8&nbsp;000&nbsp;руб.</span>
-					</li>
-					<li class="flex justify-between text-lg md:text-xl font-medium pb-3 border-b-2">
-						<span>Общая стоимость</span>
-						<span class="font-bold pl-5">14&nbsp;000&nbsp;руб.</span>
-					</li>
-				</ul>
+						<div class="flex justify-between p-5 mb-2 bg-blue-500 text-white text-opacity-90 text-md sm:text-xl md:text-2xl font-medium">
+							<span>Общая стоимость для новых клиентов&nbsp;*</span>
+							<span class="font-bold pl-5">9&nbsp;000&nbsp;руб.</span>
+						</div>
 
-				<div x-show="total">
-					<div class="flex justify-between p-5 mb-2 bg-blue-500 text-white text-opacity-90 text-md sm:text-xl md:text-2xl font-medium">
-						<span>Общая стоимость для новых клиентов&nbsp;*</span>
-						<span class="font-bold pl-5">9&nbsp;000&nbsp;руб.</span>
-					</div>
+						<p class="text-[0.7rem] px-5 mb-8 text-gray-500">*Стоимость для новых клиентов указана для первого посещении сервис-центра Восток-Авто с учетом использования оригинальных запасных частей. Предложение не является офертой.</p>
 
-					<p class="text-[0.7rem] px-5 mb-8 text-gray-500">*Стоимость для новых клиентов указана для первого посещении сервис-центра Восток-Авто с учетом использования оригинальных запасных частей. Предложение не является офертой.</p>
-
-					<div class="text-center">
-						<button 
+						<div class="text-center">
+							<button 
 							x-data 
 							@click="$store.modalShow.on = true; $dispatch('set-title', 'Записаться на ТО')" 
 							class="bg-red-600 text-md md:text-xl text-white py-3 px-10 rounded-full font-normal transition hover:bg-red-500 focus:bg-red-700">Записаться на ТО</button>
+						</div>
 					</div>
-				</div>
+				</template>
 				
 			</div>
 
