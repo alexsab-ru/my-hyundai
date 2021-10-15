@@ -5,27 +5,7 @@ document.addEventListener('alpine:init', () => {
 		engineType: false,
 		filter: false,
 		total: false,
-		cars: [
-			{
-				id: 1, 
-				title: 'Solaris',
-				models: [
-					{name: 'Solaris 2020 -'}, 
-					// {name: 'Solaris 2017 - 2019'}, 
-					// {name: 'Solaris 2011 - 2016'},
-				],
-			},
-			{id: 2, title: 'i30'},
-			{id: 3, title: 'Elantra'},
-			{id: 4, title: 'Sonata'},
-			{id: 5, title: 'i40'},
-			{id: 6, title: 'Creta'},
-			{id: 7, title: 'ix35'},
-			{id: 8, title: 'Tucson'},
-			{id: 9, title: 'Santa Fe'},
-			{id: 10, title: 'H1'},
-			{id: 11, title: 'Polisade'},
-		],
+		cars: csvParser('image.csv', true),
 		buttons: [
 			{id: 1, text: '1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км'},
 			{id: 2, text: '2 года </span>или <br><span class="font-medium">30&nbsp;000&nbsp;км'},
@@ -176,6 +156,19 @@ document.addEventListener('alpine:init', () => {
 				open: false
 			},
 		],
+		truncate: function(arr, index) {
+			let title = '';
+			let newArr = [];
+			arr.forEach(function(item, i){
+				if (item[index] != title && newArr.indexOf( item[index] ) == -1) {
+					title = item[index];
+					newArr.push({'id': i, 'title': title});
+				}
+				
+			})
+			console.log(newArr)
+			return newArr;
+		},
 		toggleItem: function (id, arr) {
 			let item = arr.find((item) => item.id === id);
 			item.open = !item.open;

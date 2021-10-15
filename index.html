@@ -124,9 +124,15 @@
 			<p class="text-gray-800 text-md sm:text-xl text-center font-medium mt-4 sm:mt-8">Выберите модель для расчета ТО</p>
 
 
+			<!-- <template x-for="(item, index) in truncate(cars, 0)" :key="index">
+				<div x-text="index+' - '+item"></div>
+				
+			</template> -->
+
+
 			<div class="flex justify-center flex-wrap mt-8 sm:mt-10" x-data="{active: null}">
 
-				<template x-for="car in cars" :key="car.id">
+				<template x-for="(car, index) in truncate(cars, 0)" :key="car.id">
 					<a 
 					href="#" 
 					class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group"
@@ -141,10 +147,10 @@
 					engineType = false;
 					engineVolume = false;
 					document.getElementById('calc-form').reset();
-					$dispatch('set-id', active)
+					$dispatch('set-title', car.title)
 					">
 						<img 
-						:src="`img/cars/${car.id}.png`" 
+						:src="`img/cars/${car.title.toLowerCase().replace(' ', '-')}.png` || 'img/hyundai-logo.svg'" 
 						:alt="car.title" 
 						class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110" 
 						:class="{'!scale-110': active == car.id}">
@@ -158,8 +164,8 @@
 			</div>
 
 			<div class="calculation-params max-w-[1400px] mx-auto bg-gray-100 rounded pt-5 pb-5" id="params" 
-			x-data="{id: null}" 
-			@set-id.window="id = $event.detail"
+			x-data="{title: ''}" 
+			@set-title.window="title = $event.detail"
 			>
 
 				<form class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 px-5" id="calc-form">
@@ -167,21 +173,33 @@
 						<option selected disabled>Модель</option>
 
 						<template x-if="model">
-							<template x-for="(model, index) in cars[id-1].models" :key="index">
-								<option :value="index" x-text="model.name"></option>							
+							<template x-for="(item, index) in cars" :key="index">
+								<template x-if="item[0] == title">
+									<option :value="index" x-text="title+' '+ item[1]"></option>						
+								</template>
 							</template>
 						</template>
 							
 					</select>
 					<select :disabled="!engineVolume" class="w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" @change="engineType = true">
 						<option selected disabled>Объем двигателя</option>
-						<option>Модель 1</option>
-						<option>Модель 2</option>
+						<template x-if="engineVolume">
+							<template x-for="(item, index) in cars" :key="index">
+								<template x-if="item[0] == title">
+									<option :value="index" x-text="item[2]"></option>						
+								</template>
+							</template>
+						</template>
 					</select>
 					<select :disabled="!engineType" class="w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" @change="filter = true">
 						<option selected disabled>Тип двигателя</option>
-						<option>Модель 1</option>
-						<option>Модель 2</option>
+						<template x-if="engineType">
+							<template x-for="(item, index) in cars" :key="index">
+								<template x-if="item[0] == title">
+									<option :value="index" x-text="item[3]"></option>						
+								</template>
+							</template>
+						</template>
 					</select>
 				</form>
 

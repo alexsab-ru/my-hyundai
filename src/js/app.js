@@ -1,5 +1,10 @@
+import './csvParser';
 import './map';
 import './objects';
+
+csvParser('image.csv', true)
+
+// console.log(csvParser('image.csv', true))
 
 import Alpine from 'alpinejs';
 
