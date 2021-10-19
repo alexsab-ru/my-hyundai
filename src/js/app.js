@@ -1,16 +1,12 @@
-import './csvParser';
+import './carsArr';
 import './map';
 import './objects';
-
-csvParser('image.csv', true)
-
-// console.log(csvParser('image.csv', true))
 
 import Alpine from 'alpinejs';
 
 window.Alpine = Alpine;
 
-Alpine.start();
+// Alpine.start();
 
 // core version + navigation, pagination modules:
 import Swiper, { Navigation, Pagination, Scrollbar, Lazy, Autoplay } from 'swiper';

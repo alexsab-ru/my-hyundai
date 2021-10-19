@@ -23,7 +23,7 @@
 
 </head>
 
-<body class="font-sans">
+<body class="font-sans" x-data="data">
 
 	<header class="bg-white">
 		<div class="border-b berder-gray-400 md:border-0 relative z-40">
@@ -114,7 +114,7 @@
 	</div>
 
 
-	<section class="calculation pt-16" x-data="data">
+	<section class="calculation pt-16" x-data="arrCars" x-init="$el.classList.remove('hidden')" class="hidden">
 		<div class="container sm:px-3 mx-auto">
 
 			<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3">
@@ -123,16 +123,9 @@
 			</h2>
 			<p class="text-gray-800 text-md sm:text-xl text-center font-medium mt-4 sm:mt-8">Выберите модель для расчета ТО</p>
 
-
-			<!-- <template x-for="(item, index) in truncate(cars, 0)" :key="index">
-				<div x-text="index+' - '+item"></div>
-				
-			</template> -->
-
-
 			<div class="flex justify-center flex-wrap mt-8 sm:mt-10" x-data="{active: null}">
 
-				<template x-for="(car, index) in truncate(cars, 0)" :key="car.id">
+				<template x-for="item in models" :key="item">
 					<a 
 					href="#" 
 					class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group"
@@ -140,117 +133,108 @@
 						behavior: 'smooth',
 						top: document.getElementById('params').getBoundingClientRect().top + window.pageYOffset - 60
 					}); 
-					active !== car.id ? active = car.id : '';
-					model = true; 
-					filter = false;
-					total = false;
-					engineType = false;
-					engineVolume = false;
-					document.getElementById('calc-form').reset();
-					$dispatch('set-title', car.title)
+					active !== item ? active = item : '';
+					btnActive: null;
+					total = null;
+					model = active;
 					">
 						<img 
-						:src="`img/cars/${car.title.toLowerCase().replace(' ', '-')}.png` || 'img/hyundai-logo.svg'" 
-						:alt="car.title" 
+						:src="`img/cars/${item.replace(' ', '-')}.png`" 
+						:alt="item" 
 						class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110" 
-						:class="{'!scale-110': active == car.id}">
+						:class="{'!scale-110': active == item}">
 
 						<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500" 
-						:class="{'!bottom-1 !text-red-500': active == car.id}" 
-						x-text="car.title"></h3>
+						:class="{'!bottom-1 !text-red-500': active == item}" 
+						x-text="item"></h3>
 					</a>
 				</template>
 
 			</div>
 
-			<div class="calculation-params max-w-[1400px] mx-auto bg-gray-100 rounded pt-5 pb-5" id="params" 
-			x-data="{title: ''}" 
-			@set-title.window="title = $event.detail"
-			>
-
+			<div class="calculation-params max-w-[1400px] mx-auto bg-gray-100 rounded pt-5 pb-5" id="params">
 				<form class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 px-5" id="calc-form">
-					<select :disabled="!model" class="w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" @change="engineVolume = true">
-						<option selected disabled>Модель</option>
-
+					<select :disabled="!model" class="year w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" 
+					@change="year=$event.target.value; total = null;">
+						<option selected disabled>Год производства</option>
 						<template x-if="model">
-							<template x-for="(item, index) in cars" :key="index">
-								<template x-if="item[0] == title">
-									<option :value="index" x-text="title+' '+ item[1]"></option>						
-								</template>
+							<template x-for="item in years" :key="item">
+								<option :value="item" x-text="item"></option>						
 							</template>
-						</template>
-							
+						</template>							
 					</select>
-					<select :disabled="!engineVolume" class="w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" @change="engineType = true">
-						<option selected disabled>Объем двигателя</option>
-						<template x-if="engineVolume">
-							<template x-for="(item, index) in cars" :key="index">
-								<template x-if="item[0] == title">
-									<option :value="index" x-text="item[2]"></option>						
-								</template>
-							</template>
-						</template>
+
+					<select :disabled="!year" class="volume w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg"
+					@change="volume=$event.target.value; total = null;"
+					>
+					<option selected disabled>Рабочий объем</option>
+					<template x-for="item in volumes" :key="item">
+						<option :value="item" x-text="item"></option>
+					</template>
 					</select>
-					<select :disabled="!engineType" class="w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" @change="filter = true">
-						<option selected disabled>Тип двигателя</option>
-						<template x-if="engineType">
-							<template x-for="(item, index) in cars" :key="index">
-								<template x-if="item[0] == title">
-									<option :value="index" x-text="item[3]"></option>						
-								</template>
-							</template>
-						</template>
+
+					<select :disabled="!volume" class="type w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" 
+					@change="type=$event.target.value; total = null;"
+					>
+					<option selected disabled>Тип двигателя</option>
+					<template x-for="item in types" :key="item">
+						<option :value="item" x-text="item"></option>
+					</template>
 					</select>
+
 				</form>
 
-				<div class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 px-5 mt-5" x-show="filter" x-data="{btnActive: null}">
-					<template x-if="filter">
+				<div class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 px-5 mt-5" x-show="type" x-data="{btnActive: null}">
+					<template x-if="type">
 						<template x-for="button in buttons">
 							<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5" 
 							@click="
-								total = true;
-								btnActive !== button.id ? btnActive = button.id : '';"
+								btnActive !== button.id ? btnActive = button.id : '';
+								total = btnActive;
+								console.log(prices);
+								"
 								:class="{'!text-white !bg-red-700 !leading-5': btnActive == button.id}">
 								<span class="font-medium" x-html="button.text"></span>
 							</button>
 						</template>
 					</template>
 				</div>
+ 
+				<div x-show="total != null">
+						
+					<ul class="px-5 pt-3 mt-5 space-y-5">
+						<li class="flex justify-between leading-none">
+							<span>Стоимость работ</span>
+							<span class="flex-grow px-1 border-b"></span>
+							<span class="pl-5" x-text="Math.round(parseFloat(prices[total])) + '&nbsp;руб.'"></span>
+						</li>
+						<li class="flex justify-between leading-none">
+							<span>Стоимость запчастей</span>
+							<span class="flex-grow px-1 border-b"></span>
+							<span x-text="Math.round(parseFloat(prices[total+6])) + '&nbsp;руб.'"></span>
+						</li>
+						<li class="flex justify-between text-lg md:text-xl font-medium pb-3 border-b-2">
+							<span>Общая стоимость</span>
+							<span class="font-bold pl-5" x-text="Math.round(parseFloat(prices[total]) + parseFloat(prices[total+6])) + '&nbsp;руб.'"></span>
+						</li>
+					</ul>
 
-				<template x-if="total">
-					<div>
-						<ul class="px-5 pt-3 mt-5 space-y-5">
-							<li class="flex justify-between leading-none">
-								<span>Стоимость работ</span>
-								<span class="flex-grow px-1 border-b"></span>
-								<span class="pl-5">6&nbsp;000&nbsp;руб.</span>
-							</li>
-							<li class="flex justify-between leading-none">
-								<span>Стоимость запчастей</span>
-								<span class="flex-grow px-1 border-b"></span>
-								<span>8&nbsp;000&nbsp;руб.</span>
-							</li>
-							<li class="flex justify-between text-lg md:text-xl font-medium pb-3 border-b-2">
-								<span>Общая стоимость</span>
-								<span class="font-bold pl-5">14&nbsp;000&nbsp;руб.</span>
-							</li>
-						</ul>
-
-						<div class="flex justify-between p-5 mb-2 bg-blue-500 text-white text-opacity-90 text-md sm:text-xl md:text-2xl font-medium">
-							<span>Общая стоимость для новых клиентов&nbsp;*</span>
-							<span class="font-bold pl-5">9&nbsp;000&nbsp;руб.</span>
-						</div>
-
-						<p class="text-[0.7rem] px-5 mb-8 text-gray-500">*Стоимость для новых клиентов указана для первого посещении сервис-центра Восток-Авто с учетом использования оригинальных запасных частей. Предложение не является офертой.</p>
-
-						<div class="text-center">
-							<button 
-							x-data 
-							@click="$store.modalShow.on = true; $dispatch('set-title', 'Записаться на ТО')" 
-							class="bg-red-600 text-md md:text-xl text-white py-3 px-10 rounded-full font-normal transition hover:bg-red-500 focus:bg-red-700">Записаться на ТО</button>
-						</div>
+					<div class="flex justify-between p-5 mb-2 bg-blue-500 text-white text-opacity-90 text-md sm:text-xl md:text-2xl font-medium">
+						<span>Общая стоимость для новых клиентов&nbsp;*</span>
+						<span class="font-bold pl-5">9&nbsp;000&nbsp;руб.</span>
 					</div>
-				</template>
+
+					<p class="text-[0.7rem] px-5 mb-8 text-gray-500">*Стоимость для новых клиентов указана для первого посещении сервис-центра Восток-Авто с учетом использования оригинальных запасных частей. Предложение не является офертой.</p>
+
+					<div class="text-center">
+						<button 
+						x-data 
+						@click="$store.modalShow.on = true; $dispatch('set-title', 'Записаться на ТО')" 
+						class="bg-red-600 text-md md:text-xl text-white py-3 px-10 rounded-full font-normal transition hover:bg-red-500 focus:bg-red-700">Записаться на ТО</button>
+					</div>
+
+				</div>
+				
 				
 			</div>
 

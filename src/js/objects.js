@@ -1,18 +1,14 @@
 document.addEventListener('alpine:init', () => {
 	Alpine.data('data', () => ({
-		model: false,
-		engineVolume: false,
-		engineType: false,
 		filter: false,
-		total: false,
-		cars: csvParser('image.csv', true),
+		total: null,
 		buttons: [
-			{id: 1, text: '1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км'},
-			{id: 2, text: '2 года </span>или <br><span class="font-medium">30&nbsp;000&nbsp;км'},
-			{id: 3, text: '3 года </span>или <br><span class="font-medium">45&nbsp;000&nbsp;км'},
-			{id: 4, text: '4 года </span>или <br><span class="font-medium">60&nbsp;000&nbsp;км'},
-			{id: 5, text: '5 лет </span>или <br><span class="font-medium">75&nbsp;000&nbsp;км'},
-			{id: 6, text: '6 лет </span>или <br><span class="font-medium">90&nbsp;000&nbsp;км'},
+			{id: 0, text: '1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км'},
+			{id: 1, text: '2 года </span>или <br><span class="font-medium">30&nbsp;000&nbsp;км'},
+			{id: 2, text: '3 года </span>или <br><span class="font-medium">45&nbsp;000&nbsp;км'},
+			{id: 3, text: '4 года </span>или <br><span class="font-medium">60&nbsp;000&nbsp;км'},
+			{id: 4, text: '5 лет </span>или <br><span class="font-medium">75&nbsp;000&nbsp;км'},
+			{id: 5, text: '6 лет </span>или <br><span class="font-medium">90&nbsp;000&nbsp;км'},
 		],
 		presents: [
 			{icon: 'https://via.placeholder.com/150', title: 'Шиномонтаж', text: 'от 2000₽'},
@@ -156,19 +152,6 @@ document.addEventListener('alpine:init', () => {
 				open: false
 			},
 		],
-		truncate: function(arr, index) {
-			let title = '';
-			let newArr = [];
-			arr.forEach(function(item, i){
-				if (item[index] != title && newArr.indexOf( item[index] ) == -1) {
-					title = item[index];
-					newArr.push({'id': i, 'title': title});
-				}
-				
-			})
-			console.log(newArr)
-			return newArr;
-		},
 		toggleItem: function (id, arr) {
 			let item = arr.find((item) => item.id === id);
 			item.open = !item.open;
