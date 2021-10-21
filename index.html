@@ -273,7 +273,7 @@
 						$store.modalShow.on = true; 
 						$dispatch('set-title', 'Появились вопросы?');
 						$dispatch('set-descr', 'Наши менеджеры с удовольствием свяжутся с Вами!');
-						$dispatch('set-subject', 'Акции. '+present.title.replace(/<\/?[^>]+(>|$)/g, ''));
+						$dispatch('set-subject', 'Акции. '+present.title.replace(/<\/?[^>]+(>|$)/g, '')+' '+present.text.replace(/<\/?[^>]+(>|$)/g, ''));
 						$dispatch('set-button', 'Отправить');
 						" 
 					class="present border-4 border-blue-500 px-4 pt-6 pb-8 sm:px-5 sm:pt-8 sm:pb-12 cursor-pointer transition hover:bg-gray-100">
