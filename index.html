@@ -75,19 +75,19 @@
 		<div class="container mx-auto">
 			<ul class="flex justify-between">
 				<li class="flex-grow">
-					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition">О нас</a>
+					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition" @click.prevent="scroll('advantages', 0);">О нас</a>
 				</li>
 				<li class="flex-grow">
-					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition">Акции</a>
+					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition" @click.prevent="scroll('presents', 0);">Акции</a>
 				</li>
 				<li class="flex-grow">
-					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition">Расчитать ТО</a>
+					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition" @click.prevent="scroll('calc', 0);">Расчитать ТО</a>
 				</li>
 				<li class="flex-grow">
-					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition">Услуги</a>
+					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition" @click.prevent="scroll('services', 0);">Услуги</a>
 				</li>
 				<li class="flex-grow">
-					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition">Контакты</a>
+					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition" @click.prevent="scroll('contacts', 0);">Контакты</a>
 				</li>
 			</ul>
 		</div>			
@@ -130,7 +130,7 @@
 	</div>
 
 
-	<section class="calculation pt-16" x-data="arrCars" x-init="$el.classList.remove('hidden')" class="hidden">
+	<section class="calculation pt-16 hidden" x-data="arrCars" x-init="$el.classList.remove('hidden')" id="calc">
 		<div class="container sm:px-3 mx-auto">
 
 			<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3">
@@ -263,7 +263,7 @@
 	</section>
 
 
-	<section class="pt-16 pb-9" x-data="data">
+	<section class="pt-16 pb-9" x-data="data" id="presents">
 		<div class="container px-3 mx-auto">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
 
@@ -291,7 +291,7 @@
 		</div>
 	</section>
 
-	<section class="services py-16" x-data="data">
+	<section class="services py-16" x-data="data" id="services">
 		<div class="container px-3 mx-auto">
 			<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3">
 				Услуги
@@ -373,7 +373,7 @@
 		</div>
 	</section>
 
-	<section class="advantages py-16 bg-blue-500" x-data="data">
+	<section class="advantages py-16 bg-blue-500" x-data="data" id="advantages">
 		<div class="container mx-auto px-3">
 			<div class="flex flex-wrap justify-center">
 
@@ -460,7 +460,7 @@
 	<img src="img/photo.jpg" alt="Hyundai" class="h-64 md:h-auto object-cover object-left">
 </section>
 
-<section class="contacts pt-16">
+<section class="contacts pt-16" id="contacts">
 	<div class="container px-3 mx-auto">
 		<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3 mb-8">
 			Наши контакты

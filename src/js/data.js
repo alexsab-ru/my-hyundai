@@ -152,10 +152,8 @@ document.addEventListener('alpine:init', () => {
 				open: false
 			},
 		],
-		scroll: function(selector){
+		scroll: function(selector, offset = 450){
 			const screenWidth = window.screen.width;
-			let offset = 450;
-			console.log(screenWidth)
 
 			if (screenWidth < 769)
 				offset = 60;
