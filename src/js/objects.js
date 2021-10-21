@@ -2,6 +2,7 @@ document.addEventListener('alpine:init', () => {
 	Alpine.data('data', () => ({
 		filter: false,
 		total: null,
+		btnActive: null,
 		buttons: [
 			{id: 0, text: '1 год </span>или <br><span class="font-medium">15&nbsp;000&nbsp;км'},
 			{id: 1, text: '2 года </span>или <br><span class="font-medium">30&nbsp;000&nbsp;км'},

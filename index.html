@@ -131,10 +131,10 @@
 					class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group"
 					@click.prevent="window.scrollTo({
 						behavior: 'smooth',
-						top: document.getElementById('params').getBoundingClientRect().top + window.pageYOffset - 60
+						top: document.getElementById('params').getBoundingClientRect().top + window.pageYOffset - 450
 					}); 
 					active !== item ? active = item : '';
-					btnActive: null;
+					btnActive = null;
 					total = null;
 					model = active;
 					">
@@ -152,20 +152,20 @@
 
 			</div>
 
-			<div class="calculation-params max-w-[1400px] mx-auto bg-gray-100 rounded pt-5 pb-5" id="params">
+			<div id="params"></div>
+			<div class="calculation-params max-w-[1400px] mx-auto bg-gray-100 rounded pt-5 pb-5" x-show="model">
 				<form class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 px-5" id="calc-form">
-					<select :disabled="!model" class="year w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" 
-					@change="year=$event.target.value; total = null;">
-						<option selected disabled>Год производства</option>
-						<template x-if="model">
-							<template x-for="item in years" :key="item">
-								<option :value="item" x-text="item"></option>						
-							</template>
-						</template>							
+
+					<select :disabled="!model" x-show="model" class="year w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" 
+					@change="year=$event.target.value; total = null; btnActive = null;">
+					<option selected disabled>Год производства</option>
+					<template x-for="item in years" :key="item">
+						<option :value="item" x-text="item"></option>						
+					</template>						
 					</select>
 
-					<select :disabled="!year" class="volume w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg"
-					@change="volume=$event.target.value; total = null;"
+					<select :disabled="!year" x-show="year" class="volume w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg"
+					@change="volume=$event.target.value; total = null; btnActive = null;"
 					>
 					<option selected disabled>Рабочий объем</option>
 					<template x-for="item in volumes" :key="item">
@@ -173,8 +173,8 @@
 					</template>
 					</select>
 
-					<select :disabled="!volume" class="type w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" 
-					@change="type=$event.target.value; total = null;"
+					<select :disabled="!volume" x-show="volume" class="type w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" 
+					@change="type=$event.target.value; total = null; btnActive = null;"
 					>
 					<option selected disabled>Тип двигателя</option>
 					<template x-for="item in types" :key="item">
@@ -184,19 +184,17 @@
 
 				</form>
 
-				<div class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 px-5 mt-5" x-show="type" x-data="{btnActive: null}">
-					<template x-if="type">
-						<template x-for="button in buttons">
-							<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5" 
-							@click="
-								btnActive !== button.id ? btnActive = button.id : '';
-								total = btnActive;
-								console.log(prices);
-								"
-								:class="{'!text-white !bg-red-700 !leading-5': btnActive == button.id}">
-								<span class="font-medium" x-html="button.text"></span>
-							</button>
-						</template>
+				<div class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 px-5 mt-5" x-show="type">
+					<template x-for="button in buttons" :key="button.id">
+						<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-red-600 hover:bg-gray-100 hover:text-gray-800 focus:text-white focus:bg-red-700 leading-5" 
+						@click="
+							btnActive !== button.id ? btnActive = button.id : '';
+							total = btnActive;
+							"
+							:class="{'!text-white !bg-red-700 !leading-5': btnActive == button.id}">
+							<span class="font-medium" x-html="button.text"></span>
+						</button>
+
 					</template>
 				</div>
  
@@ -221,7 +219,7 @@
 
 					<div class="flex justify-between p-5 mb-2 bg-blue-500 text-white text-opacity-90 text-md sm:text-xl md:text-2xl font-medium">
 						<span>Общая стоимость для новых клиентов&nbsp;*</span>
-						<span class="font-bold pl-5">9&nbsp;000&nbsp;руб.</span>
+						<span class="font-bold pl-5" x-text="Math.round(parseFloat(prices[total]) + parseFloat(prices[total+6])) - (Math.round((parseFloat(prices[total]) + parseFloat(prices[total+6])) * 30 / 100)) + '&nbsp;руб.'"></span>
 					</div>
 
 					<p class="text-[0.7rem] px-5 mb-8 text-gray-500">*Стоимость для новых клиентов указана для первого посещении сервис-центра Восток-Авто с учетом использования оригинальных запасных частей. Предложение не является офертой.</p>
