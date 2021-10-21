@@ -54,7 +54,13 @@
 
 					<button 
 						x-data 
-						@click="$store.modalShow.on = true; $dispatch('set-title', 'Заказать звонок')" 
+						@click="
+							$store.modalShow.on = true; 
+							$dispatch('set-title', 'Заказать звонок');
+							$dispatch('set-descr', 'Наши менеджеры с удовольствием свяжутся с Вами!');
+							$dispatch('set-subject', 'Заказать звонок. Шапка сайта');
+							$dispatch('set-button', 'Заказать звонок');
+							" 
 						class="btn-red"
 						>
 						Заказать звонок
@@ -68,11 +74,21 @@
 	<nav class="bg-gray-800 hidden md:block text-white text-opacity-90 sticky top-0 z-20 shadow-sm">
 		<div class="container mx-auto">
 			<ul class="flex justify-between">
-				<li class="flex-grow"><a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition">О нас</a></li>
-				<li class="flex-grow"><a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition">Акции</a></li>
-				<li class="flex-grow"><a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition">Расчитать ТО</a></li>
-				<li class="flex-grow"><a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition">Услуги</a></li>
-				<li class="flex-grow"><a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition">Контакты</a></li>
+				<li class="flex-grow">
+					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition">О нас</a>
+				</li>
+				<li class="flex-grow">
+					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition">Акции</a>
+				</li>
+				<li class="flex-grow">
+					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition">Расчитать ТО</a>
+				</li>
+				<li class="flex-grow">
+					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition">Услуги</a>
+				</li>
+				<li class="flex-grow">
+					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition">Контакты</a>
+				</li>
 			</ul>
 		</div>			
 	</nav>
@@ -227,7 +243,13 @@
 					<div class="text-center">
 						<button 
 						x-data 
-						@click="$store.modalShow.on = true; $dispatch('set-title', 'Записаться на ТО')" 
+						@click="
+							$store.modalShow.on = true; 
+							$dispatch('set-title', 'Записаться на ТО');
+							$dispatch('set-descr', 'Наши менеджеры запишут Вас на удобное время.');
+							$dispatch('set-subject', 'Запись на ТО. '+ model+' '+year+', '+volume+', '+type+', '+buttons[total].text.replace(/<\/?[^>]+(>|$)/g, ''));
+							$dispatch('set-button', 'Записаться');
+							" 
 						class="bg-red-600 text-md md:text-xl text-white py-3 px-10 rounded-full font-normal transition hover:bg-red-500 focus:bg-red-700">Записаться на ТО</button>
 					</div>
 
@@ -246,7 +268,15 @@
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
 
 				<template x-for="present in presents">
-					<div x-data @click="$store.modalShow.on = true; $dispatch('set-title', 'Появились вопросы?')" class="border-4 border-blue-500 px-4 pt-6 pb-8 sm:px-5 sm:pt-8 sm:pb-12 cursor-pointer transition hover:bg-gray-100">
+					<div x-data
+					@click="
+						$store.modalShow.on = true; 
+						$dispatch('set-title', 'Появились вопросы?');
+						$dispatch('set-descr', 'Наши менеджеры с удовольствием свяжутся с Вами!');
+						$dispatch('set-subject', 'Акции. '+present.title.replace(/<\/?[^>]+(>|$)/g, ''));
+						$dispatch('set-button', 'Отправить');
+						" 
+					class="present border-4 border-blue-500 px-4 pt-6 pb-8 sm:px-5 sm:pt-8 sm:pb-12 cursor-pointer transition hover:bg-gray-100">
 						<div class="flex items-center">
 							<img :src="present.icon" :alt="present.title" class="rounded-full relative z-10 border-4 border-blue-500 w-[100px] h-[100px] sm:w-[150px] sm:h-[150px]">
 							<div class="relative flex-grow">
@@ -321,7 +351,13 @@
 							<div class="text-center py-5">
 								<button 
 								x-data 
-								@click="$store.modalShow.on = true; $dispatch('set-title', 'Желаете записаться?')" 
+								@click="
+								$store.modalShow.on = true; 
+								$dispatch('set-title', 'Желаете записаться?');
+								$dispatch('set-descr', 'Наши менеджеры запишут Вас на удобное время.');
+								$dispatch('set-subject', 'Услуги. '+services[elem.id - 1].title);
+								$dispatch('set-button', 'Записаться');
+								" 
 								class="btn-red"
 								>
 								Записаться на сервис
@@ -435,7 +471,13 @@
 		<div class="text-center my-8">
 			<button 
 				x-data 
-				@click="$store.modalShow.on = true; $dispatch('set-title', 'Заказать звонок')" 
+				@click="
+					$store.modalShow.on = true; 
+					$dispatch('set-title', 'Заказать звонок');
+					$dispatch('set-descr', 'Наши менеджеры с удовольствием свяжутся с Вами!');
+					$dispatch('set-subject', 'Заказать звонок. Секция Контакты');
+					$dispatch('set-button', 'Заказать звонок');
+					" 
 				class="btn-blue"
 				>
 				Заказать звонок
@@ -476,25 +518,29 @@
 
 <!-- Modals -->
 <div 
-	x-data="{ title: '' }" 
+	x-data="{ title: '', descr: '', subject: '', button: '' }" 
 	x-show="$store.modalShow.on" 
 	@set-title.window="title = $event.detail"
+	@set-descr.window="descr = $event.detail"
+	@set-subject.window="subject = $event.detail"
+	@set-button.window="button = $event.detail"
 	x-transition:enter="animation-fade" 
 	x-transition:leave="animation-fadeout" 
-	class="fixed left-0 top-0 h-full w-full z-20 bg-black bg-opacity-90"
+	class="fixed left-0 top-0 h-full w-full z-20 bg-black bg-opacity-90 z-50"
 	style="display: none;"
 	>
 	<div @click.away="$store.modalShow.on = false" class="absolute w-full max-w-[500px]" style="left: 50%; top: 50%; transform: translate(-50%, -50%);">
 		<div class="relative bg-white" x-show="$store.modalShow.on" x-transition:enter="animation-top">
 			<span @click="$store.modalShow.on = false" class="absolute right-3 top-1 text-gray-700 text-3xl hover:text-gray-800 cursor-pointer">&times;</span>
 			<div class="pt-5 pb-2 text-center text-2xl" x-text="title"></div>
-			<p class="text-center pb-5">Наши менеджеры с удовольствием свяжутся с Вами!</p>
+			<p class="text-center pb-5" x-text="descr"></p>
 			<div class="px-8 pb-8">
 				<form>
+					<input type="hidden" name="subject" :value="subject">
 					<input type="text" name="name" class="form-input w-full border border-gray-400 py-2 px-3 mb-3" placeholder="Ваше имя">
 					<input type="tel" name="phone" class="w-full border border-gray-400 py-2 px-3 mb-5" placeholder="Ваш номер телефона *" required>
 					<small class="block text-xs text-gray-500 mb-5">Нажимая на кнопку «Отправить», вы даете свое согласие на <a x-data @click="$store.modalShowPrivacy.on = true" href="javascript:void(0)" class="block text-gray-600 underline transition hover:no-underline">обработку персональных данных</a></small>
-					<button type="submit" class="btn-red w-full">Отправить</button>
+					<button type="submit" class="btn-red w-full" x-text="button"></button>
 				</form>
 			</div>
 		</div>
