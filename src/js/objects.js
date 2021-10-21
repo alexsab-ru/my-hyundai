@@ -153,6 +153,19 @@ document.addEventListener('alpine:init', () => {
 				open: false
 			},
 		],
+		scroll: function(selector){
+			const screenWidth = window.screen.width;
+			let offset = 450;
+			console.log(screenWidth)
+
+			if (screenWidth < 800)
+				offset = 60;
+
+			window.scrollTo({
+				behavior: 'smooth',
+				top: document.getElementById(selector).getBoundingClientRect().top + window.pageYOffset - offset
+			});
+		},
 		toggleItem: function (id, arr) {
 			let item = arr.find((item) => item.id === id);
 			item.open = !item.open;
