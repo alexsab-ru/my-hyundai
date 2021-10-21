@@ -1,6 +1,5 @@
 document.addEventListener('alpine:init', () => {
 	Alpine.data('data', () => ({
-		filter: false,
 		total: null,
 		btnActive: null,
 		buttons: [
@@ -158,7 +157,7 @@ document.addEventListener('alpine:init', () => {
 			let offset = 450;
 			console.log(screenWidth)
 
-			if (screenWidth < 800)
+			if (screenWidth < 769)
 				offset = 60;
 
 			window.scrollTo({

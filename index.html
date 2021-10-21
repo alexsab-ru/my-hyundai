@@ -274,8 +274,13 @@
 					<template  x-for="service in services">
 
 						<div 
-						class="flex items-center justify-between bg-gray-100 cursor-pointer transition hover:bg-gray-200 mb-3" 
-						@click="selected !== service.id ? selected = service.id : ''"
+						class="flex items-center justify-between bg-gray-100 cursor-pointer transition hover:bg-gray-200 mb-3 last:mb-0" 
+						@click="
+						selected !== service.id ? selected = service.id : '';
+						if(window.screen.width < 769){
+						scroll('services');							
+						}
+						"
 						:class="{'!bg-gray-300' : selected == service.id}"
 						>
 							<div class="flex items-center">	
@@ -293,22 +298,39 @@
 					
 				</div>
 
-				<div x-show="selected == null" class="bg-gray-100 flex items-center justify-center md:mb-3 p-4 transition">
-					<h3 class="text-sm sm:text-lg">Выберите интересующую Вас услугу</h3>
-				</div>
 
-				<template x-for="elem in pricelist">
-					<div x-show="elem.id == selected" class="bg-gray-100 md:mb-3 px-4 pt-4 pb-1 transition">
-						<h3 x-text="services[elem.id - 1].title" class="text-2xl font-medium text-center mb-5"></h3>
-						<template x-for="item in elem.items">
-							<div class="flex items-end justify-between text-lg mb-3 last:border-0 border-b border-dotted border-gray-400">
-								<div x-text="item.name" class="pr-3"></div>
-								<!-- <div class="border-b border-dotted border-gray-400 flex-grow mb-2"></div> -->
-								<div x-html="item.price + '<span> ₽</span>'" class="pl-3 flex-shrink-0 font-medium"></div>
-							</div>							
-						</template>						
+				<div class="pb-0">
+					<div id="services"></div>
+					<div x-show="selected == null" class="bg-gray-100 flex items-center justify-center md:mb-3 p-4 transition h-full">
+						<h3 class="text-sm sm:text-lg">Выберите интересующую Вас услугу</h3>
 					</div>
-				</template>
+
+					<template x-for="elem in pricelist">
+						<div x-show="elem.id == selected" class="bg-gray-100 md:mb-3 px-4 pt-4 transition h-full">
+							<h3 x-text="services[elem.id - 1].title" class="text-2xl font-medium text-center mb-5"></h3>
+							<div>
+								<template x-for="item in elem.items">
+									<div class="flex items-end justify-between text-lg mb-3 last:border-0 border-b border-dotted border-gray-400">
+										<div x-text="item.name" class="pr-3"></div>
+										<div x-html="item.price + '<span> ₽</span>'" class="pl-3 flex-shrink-0 font-medium"></div>
+									</div>							
+								</template>
+							</div>
+							
+
+							<div class="text-center py-5">
+								<button 
+								x-data 
+								@click="$store.modalShow.on = true; $dispatch('set-title', 'Желаете записаться?')" 
+								class="btn-red"
+								>
+								Записаться на сервис
+								</button>
+							</div>
+
+						</div>
+					</template>
+				</div>				
 
 			</div>
 
