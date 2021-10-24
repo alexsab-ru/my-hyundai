@@ -1,3 +1,4 @@
+import './cookie';
 import './sliders';
 import './map';
 import './carsArr';

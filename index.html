@@ -515,6 +515,14 @@
 	</div>		
 </footer>
 
+<div class="hidden cookie_notice fixed bottom-0 left-0 right-0 p-5 bg-gray-100 z-[9999] text-center text-xs sm:text-sm text-gray-500">
+	Этот сайт использует файлы cookies и сервисы сбора технических данных посетителей (данные об IP-адресе, местоположении и др.) для обеспечения работоспособности и улучшения качества обслуживания. Продолжая использовать наш сайт, вы автоматически соглашаетесь с использованием данных технологий.
+	<div class="flex justify-center items-center mt-4">
+		<a class="mr-5" href="#" x-data @click.prevent="$store.modalShowPrivacy.on = true">Подробнее</a>
+		<a class="btn-blue !text-xs !py-2 !px-5" id="cookie_close" href="#close">Согласен</a>
+	</div>
+</div>
+
 
 <!-- Modals -->
 <div 
@@ -548,7 +556,7 @@
 </div>
 
 
-<div x-data x-show="$store.modalShowPrivacy.on" x-transition:enter="animation-fade" x-transition:leave="animation-fadeout" class="fixed left-0 top-0 h-full w-full z-50 bg-black bg-opacity-90" style="display: none;">
+<div x-data x-show="$store.modalShowPrivacy.on" x-transition:enter="animation-fade" x-transition:leave="animation-fadeout" class="fixed left-0 top-0 h-full w-full z-[10000] bg-black bg-opacity-90" style="display: none;">
 	<noindex>
 		<div @click.away="$store.modalShowPrivacy.on = false" class="absolute w-full max-w-[900px]" style="left: 50%; top: 5%; transform: translate(-50%, 0);">
 			<div class="relative bg-white overflow-auto h-screen pb-8" x-show="$store.modalShowPrivacy.on" x-transition:enter="animation-top">
