@@ -291,7 +291,7 @@
 		</div>
 	</section>
 
-	<section class="services py-16" x-data="data" id="services">
+	<section class="services py-16" x-data="data">
 		<div class="container px-3 mx-auto">
 			<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3">
 				Услуги
@@ -299,7 +299,7 @@
 			</h2>
 
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-x-5 mt-8" x-data="{selected: null}">
-				<div>
+				<div class="mb-5 md:mb-0">
 
 					<template  x-for="service in services">
 
@@ -308,7 +308,7 @@
 						@click="
 						selected !== service.id ? selected = service.id : '';
 						if(window.screen.width < 769){
-						scroll('services');							
+						scroll('services', 0);							
 						}
 						"
 						:class="{'!bg-gray-300' : selected == service.id}"

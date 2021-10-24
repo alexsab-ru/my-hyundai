@@ -156,7 +156,7 @@ document.addEventListener('alpine:init', () => {
 			const screenWidth = window.screen.width;
 
 			if (screenWidth < 769)
-				offset = 60;
+				// offset = 60;
 
 			window.scrollTo({
 				behavior: 'smooth',
