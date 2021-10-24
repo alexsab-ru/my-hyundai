@@ -153,12 +153,12 @@
 					model = active;
 					">
 						<img 
-						:src="`img/cars/${item.toLowerCase().replace(' ', '-')}.png`" 
+						:src="`img/cars/${item.toLowerCase().split(' ').join('-')}.png`" 
 						:alt="item" 
 						class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110" 
 						:class="{'!scale-110': active == item}">
 
-						<h3 class="text-xl sm:text-2xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500" 
+						<h3 class="text-xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-red-500" 
 						:class="{'!bottom-1 !text-red-500': active == item}" 
 						x-text="item"></h3>
 					</a>
