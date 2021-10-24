@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
 	mode: 'jit',
@@ -9,7 +10,7 @@ module.exports = {
 
 	theme: { 
 		screens: {
-			'sm': '586px',
+			'sm': '640px',
 			// => @media (min-width: 640px) { ... }
 
 			'md': '768px',
@@ -23,6 +24,22 @@ module.exports = {
 
 			'2xl': '1536px',
 			// => @media (min-width: 1536px) { ... }
+		},
+		colors: {
+			activeRed: '#E63312',
+			mainBlue: '#002C5F',
+			btnHover: '#103A71',
+			sand: '#E4DCD3',
+			secondBlue: '#00AAD2',
+			transparent: 'transparent',
+			current: 'currentColor',
+			blue: colors.blue,
+			black: colors.black,
+			white: colors.white,
+			gray: colors.trueGray,
+			indigo: colors.indigo,
+			red: colors.rose,
+			yellow: colors.amber,
 		},
 		extend: {
 			fontFamily: {

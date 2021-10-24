@@ -52,7 +52,7 @@ const partners = new Swiper('.partners-slider', {
 	},
 	on: {
 		init: function(){
-			console.log('swiper initialized');
+			// console.log('swiper initialized');
 			document.querySelector('.clients').classList.remove('hidden')
 		}
 	}

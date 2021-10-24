@@ -112,7 +112,7 @@ document.addEventListener('alpine:init', () => {
 			}
 		],
 		advantages: [
-			{id: 1, title: 'Первый ДЦ Hyundai в Самаре. Обслуживаем Hyundai с 1997 г.'},
+			{id: 1, title: 'Первый ДЦ Hyundai в Краснодаре. Обслуживаем Hyundai с 1997 г.'},
 			{id: 2, title: 'Присутствуйте <br class="hidden sm:block">в ремзоне'},
 			{id: 3, title: 'Официальный <br class="hidden sm:block">сервис-лоукостер'},
 			{id: 4, title: '2 года <br class="hidden sm:block">гарантии'},
@@ -156,7 +156,7 @@ document.addEventListener('alpine:init', () => {
 			const screenWidth = window.screen.width;
 
 			if (screenWidth < 769)
-				// offset = 60;
+				offset = 60;
 
 			window.scrollTo({
 				behavior: 'smooth',
