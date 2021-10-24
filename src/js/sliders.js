@@ -50,4 +50,10 @@ const partners = new Swiper('.partners-slider', {
 		el: '.swiper-pagination',
 		clickable: true,
 	},
+	on: {
+		init: function(){
+			console.log('swiper initialized');
+			document.querySelector('.clients').classList.remove('hidden')
+		}
+	}
 });
