@@ -2,7 +2,7 @@ import Papa from 'papaparse';
 
 let carsarr;
 
-const response = fetch('dist/data.csv')
+const response = fetch('/data.csv')
 	.then(response => response.text())
 	.then(v => Papa.parse(v))
 	.catch(err => console.log(err))
