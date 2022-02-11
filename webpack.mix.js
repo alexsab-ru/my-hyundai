@@ -37,7 +37,7 @@ mix
 	.js('src/js/app.js', 'js/scripts.js')
 	.sass('src/sass/main.sass', 'css/styles.css')
 	.tailwind()
-	.setPublicPath('dist/');
+	// .setPublicPath('dist/');
 	// .serve('php -S 127.0.0.1:8080 -t ./', {
 	// 	verbose: true,
 	// 	watch: true,
@@ -54,7 +54,7 @@ if (mix.inProduction()) {
 		server: {
 			baseDir: "./",
 		},
-		files: ['index.html', 'dist/css/styles.css', 'dist/js/scripts.js'],
+		files: ['index.html', 'css/styles.css', 'js/scripts.js'],
 		notify: false
 	});
 }
