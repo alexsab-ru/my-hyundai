@@ -50,7 +50,7 @@ const partners = new Swiper('.partners-slider', {
 	on: {
 		init: function(){
 			// console.log('swiper initialized');
-			document.querySelector('.clients').classList.remove('hidden')
+			document.querySelector('.reviews').classList.remove('hidden')
 		}
 	}
 });
