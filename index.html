@@ -385,7 +385,7 @@
 				<a 
 					x-data
 					href="#" 
-					class="w-1/3 px-5 mb-10 text-white text-center inline-block relative transition-all duration-300 hover:text-activeRed group"
+					class="w-1/2 lg:w-1/3 px-2 sm:px-5 mb-10 text-white text-center inline-block relative transition-all duration-300 hover:text-activeRed group"
 					@click.prevent="
 					$store.modalShow.on = true; 
 					$dispatch('set-title', 'Желаете записаться?');
@@ -403,7 +403,7 @@
 					</span>
 					<h3 
 						x-text="s.title"
-						class="text-xl" 
+						class="text-xs sm:text-xl" 
 					></h3>
 				</a>
 			</template>
