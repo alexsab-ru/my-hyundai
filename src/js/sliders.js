@@ -3,7 +3,6 @@ import Swiper, { Navigation, Pagination, Lazy, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 import 'swiper/css/lazy';
 
 // configure Swiper to use modules

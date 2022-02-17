@@ -263,7 +263,7 @@
 	</section>
 
 
-	<section class="pt-16 pb-9" x-data="data" id="presents">
+	<section class="py-16" x-data="data" id="presents">
 		<div class="container px-3 mx-auto">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
 
@@ -291,7 +291,7 @@
 		</div>
 	</section>
 
-	<section class="services py-16" x-data="data">
+	<!-- <section class="services py-16" x-data="data">
 		<div class="container px-3 mx-auto">
 			<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3">
 				Услуги
@@ -371,23 +371,45 @@
 			</div>
 
 		</div>
-	</section>
+	</section> -->
 
-	<section class="advantages py-16 bg-mainBlue" x-data="data" id="advantages">
-		<div class="container mx-auto px-3">
-			<div class="flex flex-wrap justify-center">
+	<section class="services pt-16 pb-8 bg-mainBlue relative" id="services" x-data="data">
+		<div class="container px-3 mx-auto">
+			<h2 class="text-white text-2xl sm:text-4xl text-center font-bold relative pb-3">
+				Услуги
+				<span class="absolute left-[50%] bottom-0 w-24 h-0.5 bg-white transform translate-x-[-50%]"></span>
+			</h2>
 
-				<template x-for="advantage in advantages">
-
-					<div class="text-center w-1/2 sm:w-1/3 md:w-1/5 mb-5 px-3">
-						<img :src="`img/icons/advantages/${advantage.id}.svg`" :alt="advantage.title" class="mx-auto mb-3 w-20 lg:w-24">
-						<h3 class="text-xs sm:text-sm lg:text-lg text-white font-medium" x-html="advantage.title"></h3>
-					</div>
-					
-				</template>
-
+			<div class="flex flex-wrap justify-center mt-16">
+			<template x-for="s in services">
+				<a 
+					x-data
+					href="#" 
+					class="w-1/3 px-5 mb-10 text-white text-center inline-block relative transition-all duration-300 hover:text-activeRed group"
+					@click.prevent="
+					$store.modalShow.on = true; 
+					$dispatch('set-title', 'Желаете записаться?');
+					$dispatch('set-descr', 'Наши менеджеры запишут Вас на удобное время.');
+					$dispatch('set-subject', 'Услуги. '+s.title);
+					$dispatch('set-button', 'Записаться');
+					"
+				>
+					<span class="rounded-full inline-block w-20 h-20 flex items-center justify-center mb-3 mx-auto border border-white transition-all duration-300 group-hover:border-activeRed group-hover:bg-activeRed">
+						<img 
+							:src="`img/icons/services/${s.id}.png`" 
+							:alt="s.title" 
+							class="w-auto h-10"
+						>
+					</span>
+					<h3 
+						x-text="s.title"
+						class="text-xl" 
+					></h3>
+				</a>
+			</template>
 			</div>
-		</div>	
+
+		</div>
 	</section>
 
 	<section class="faq py-16" x-data="data">
@@ -408,223 +430,240 @@
 					alt="Down"
 					class="transition" 
 					:style="faq.open ? 'transform: rotate(180deg)' : ''">
+					</div>
+					<div class="mt-3 text-xs md:text-base" x-show="faq.open" x-transition.opacity.duration.200ms x-html="faq.answer"></div>
 				</div>
-				<div class="mt-3 text-xs md:text-base" x-show="faq.open" x-transition.opacity.duration.200ms x-html="faq.answer"></div>
+			</template>
+
+		</div>
+	</section>
+
+	<section class="advantages py-16 bg-mainBlue" x-data="data" id="advantages">
+		<div class="container mx-auto px-3">
+			<div class="flex flex-wrap justify-center">
+
+				<template x-for="advantage in advantages">
+
+					<div class="text-center w-1/2 sm:w-1/3 md:w-1/5 mb-5 px-3">
+						<img :src="`img/icons/advantages/${advantage.id}.svg`" :alt="advantage.title" class="mx-auto mb-3 w-20 lg:w-24">
+						<h3 class="text-xs sm:text-sm lg:text-lg text-white font-medium" x-html="advantage.title"></h3>
+					</div>
+					
+				</template>
+
 			</div>
-		</template>
+		</div>	
+	</section>
 
-	</div>
-</section>
+	<section class="reviews bg-gray-50 py-16 hidden">
+		<div class="container px-3 mx-auto">
+			<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3 mb-8">
+				Отзывы наших клиентов
+				<span class="absolute left-[50%] bottom-0 w-24 h-0.5 bg-blue-500 transform translate-x-[-50%]"></span>
+			</h2>
 
-<section class="reviews bg-gray-50 py-16 hidden">
-	<div class="container px-3 mx-auto">
-		<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3 mb-8">
-			Отзывы наших клиентов
-			<span class="absolute left-[50%] bottom-0 w-24 h-0.5 bg-blue-500 transform translate-x-[-50%]"></span>
-		</h2>
+			<div class="partners-slider swiper !pb-14">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+					<div class="swiper-slide">
+						<div class="reviews__item">
+							<div class="reviews__item--text px-5 py-8 bg-white shadow-lg rounded-lg">
+								<blockquote class="max-h-[230px] overflow-y-auto">
+									<p>Добрый день. 20 марта приобрёл в автосалоне Альфа автомобиль, HYUNDAI CRETA, 1.6 4WD на автомате. Хотелось бы отметить профессионализм менеджера по продажам Анны Устьянцевой. Максимальная нацеленность на покупателя!</p>
+								</blockquote>
+							</div>
+							<div class="reviews__item--bottom flex items-center mt-5">
+								<img src="img/icons/message.svg" class="w-12 h-auto mr-5" />
+								<div class="reviews__item-autor">
+									<h4>Александр Куканов</h4>
+									<small>23.03.2021</small>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="reviews__item">
+							<div class="reviews__item--text px-5 py-8 bg-white shadow-lg rounded-lg">
+								<blockquote class="max-h-[230px] overflow-y-auto">
+									<p>Приобретали в марте 2021 года автомобиль в данном автосалоне, менеджер по продажам Анна великолепно провела сделку. Были с маленьким ребёнком (4 года) окружили заботой, все спорные моменты решили быстро, сделка прошла за половину дня, получили ответы на все интересующие нас вопросы, остались довольны посещением салона, обслуживанием и покупкой!</p> 
+									<p>Расширить пул банков-партнёров</p>
+								</blockquote>
+							</div>
+							<div class="reviews__item--bottom flex items-center mt-5">
+								<img src="img/icons/message.svg" class="w-12 h-auto mr-5" />
+								<div class="reviews__item-autor">
+									<h4>Александр Куканов</h4>
+									<small>23.03.2021</small>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="reviews__item">
+							<div class="reviews__item--text px-5 py-8 bg-white shadow-lg rounded-lg">
+								<blockquote class="max-h-[230px] overflow-y-auto">
+									<p>В начале марта решив приобрести новый автомобиль позвонила в «Автоцентр АЛЬФА» где меня соединили с менеджером Максимом Горячевым.На все свои вопросы я получила чёткие ответы и разъяснения. В день покупки автомобиля нас уже ждали в автосалоне, машина была готова.Оформление документов заняло не много времени, что меня порадовало. Максим вежливый,знающий свое дело менеджер,за что ему большое спасибо!!</p>
+								</blockquote>
+							</div>
+							<div class="reviews__item--bottom flex items-center mt-5">
+								<img src="img/icons/message.svg" class="w-12 h-auto mr-5" />
+								<div class="reviews__item-autor">
+									<h4>Александр Куканов</h4>
+									<small>23.03.2021</small>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="reviews__item">
+							<div class="reviews__item--text px-5 py-8 bg-white shadow-lg rounded-lg">
+								<blockquote class="max-h-[230px] overflow-y-auto">
+									<p>В начале марта приобретали в этом дилерском центре автомобиль Крета. Отличная работа всех сотрудников автосалона. Муж утром позвонил уточнить какие автомобили есть в наличии, менеджер быстро по телефону подобрала нужную комплектацию, четко объяснила как можно сэкономить, несмотря на то, что для этого нужно было оформить кредит. Мы приехали через пару часов и приступили к оформлению. Каждый сотрудник центра был внимателен, вежлив и приветлив. Ребята даже задержались на работе, чтобы выдать нам машину одним днём и не заставлять кататься из другого конца города))) Выражаем огромную благодарность за такой подход к работе всем сотрудникам салона, а особенно менеджерам Якушкиной Екатерине и Ишмедову Сердару.</p>
+									<p>Высоких вам продаж!!!</p>
+								</blockquote>
+							</div>
+							<div class="reviews__item--bottom flex items-center mt-5">
+								<img src="img/icons/message.svg" class="w-12 h-auto mr-5" />
+								<div class="reviews__item-autor">
+									<h4>Александр Куканов</h4>
+									<small>23.03.2021</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-pagination"></div>
 
-		<div class="partners-slider swiper !pb-14">
-			<!-- Additional required wrapper -->
-			<div class="swiper-wrapper">
-				<!-- Slides -->
-				<div class="swiper-slide">
-					<div class="reviews__item">
-						<div class="reviews__item--text px-5 py-8 bg-white shadow-lg rounded-lg">
-							<blockquote class="max-h-[230px] overflow-y-auto">
-								<p>Добрый день. 20 марта приобрёл в автосалоне Альфа автомобиль, HYUNDAI CRETA, 1.6 4WD на автомате. Хотелось бы отметить профессионализм менеджера по продажам Анны Устьянцевой. Максимальная нацеленность на покупателя!</p>
-							</blockquote>
-						</div>
-						<div class="reviews__item--bottom flex items-center mt-5">
-							<img src="img/icons/message.svg" class="w-12 h-auto mr-5" />
-							<div class="reviews__item-autor">
-								<h4>Александр Куканов</h4>
-								<small>23.03.2021</small>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="reviews__item">
-						<div class="reviews__item--text px-5 py-8 bg-white shadow-lg rounded-lg">
-							<blockquote class="max-h-[230px] overflow-y-auto">
-								<p>Приобретали в марте 2021 года автомобиль в данном автосалоне, менеджер по продажам Анна великолепно провела сделку. Были с маленьким ребёнком (4 года) окружили заботой, все спорные моменты решили быстро, сделка прошла за половину дня, получили ответы на все интересующие нас вопросы, остались довольны посещением салона, обслуживанием и покупкой!</p> 
-								<p>Расширить пул банков-партнёров</p>
-							</blockquote>
-						</div>
-						<div class="reviews__item--bottom flex items-center mt-5">
-							<img src="img/icons/message.svg" class="w-12 h-auto mr-5" />
-							<div class="reviews__item-autor">
-								<h4>Александр Куканов</h4>
-								<small>23.03.2021</small>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="reviews__item">
-						<div class="reviews__item--text px-5 py-8 bg-white shadow-lg rounded-lg">
-							<blockquote class="max-h-[230px] overflow-y-auto">
-								<p>В начале марта решив приобрести новый автомобиль позвонила в «Автоцентр АЛЬФА» где меня соединили с менеджером Максимом Горячевым.На все свои вопросы я получила чёткие ответы и разъяснения. В день покупки автомобиля нас уже ждали в автосалоне, машина была готова.Оформление документов заняло не много времени, что меня порадовало. Максим вежливый,знающий свое дело менеджер,за что ему большое спасибо!!</p>
-							</blockquote>
-						</div>
-						<div class="reviews__item--bottom flex items-center mt-5">
-							<img src="img/icons/message.svg" class="w-12 h-auto mr-5" />
-							<div class="reviews__item-autor">
-								<h4>Александр Куканов</h4>
-								<small>23.03.2021</small>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="reviews__item">
-						<div class="reviews__item--text px-5 py-8 bg-white shadow-lg rounded-lg">
-							<blockquote class="max-h-[230px] overflow-y-auto">
-								<p>В начале марта приобретали в этом дилерском центре автомобиль Крета. Отличная работа всех сотрудников автосалона. Муж утром позвонил уточнить какие автомобили есть в наличии, менеджер быстро по телефону подобрала нужную комплектацию, четко объяснила как можно сэкономить, несмотря на то, что для этого нужно было оформить кредит. Мы приехали через пару часов и приступили к оформлению. Каждый сотрудник центра был внимателен, вежлив и приветлив. Ребята даже задержались на работе, чтобы выдать нам машину одним днём и не заставлять кататься из другого конца города))) Выражаем огромную благодарность за такой подход к работе всем сотрудникам салона, а особенно менеджерам Якушкиной Екатерине и Ишмедову Сердару.</p>
-								<p>Высоких вам продаж!!!</p>
-							</blockquote>
-						</div>
-						<div class="reviews__item--bottom flex items-center mt-5">
-							<img src="img/icons/message.svg" class="w-12 h-auto mr-5" />
-							<div class="reviews__item-autor">
-								<h4>Александр Куканов</h4>
-								<small>23.03.2021</small>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
-			<div class="swiper-pagination"></div>
 
 		</div>
+	</section>
 
-	</div>
-</section>
+	<section>
+		<img src="img/photo-2.jpg" alt="Hyundai" class="h-[auto] w-full xl:w-[75%] mx-auto object-cover object-left">
+	</section>
 
-<section>
-	<img src="img/photo-2.jpg" alt="Hyundai" class="h-[auto] w-full xl:w-[75%] mx-auto object-cover object-left">
-</section>
+	<section class="contacts pt-16" id="contacts">
+		<div class="container px-3 mx-auto">
+			<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3 mb-8">
+				Наши контакты
+				<span class="absolute left-[50%] bottom-0 w-24 h-0.5 bg-blue-500 transform translate-x-[-50%]"></span>
+			</h2>
+			<p class="text-gray-800 text-md sm:text-xl text-center font-medium mt-4 sm:mt-8">Свяжитесь с нами любым удобным для Вас способом.</p>
 
-<section class="contacts pt-16" id="contacts">
-	<div class="container px-3 mx-auto">
-		<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3 mb-8">
-			Наши контакты
-			<span class="absolute left-[50%] bottom-0 w-24 h-0.5 bg-blue-500 transform translate-x-[-50%]"></span>
-		</h2>
-		<p class="text-gray-800 text-md sm:text-xl text-center font-medium mt-4 sm:mt-8">Свяжитесь с нами любым удобным для Вас способом.</p>
-
-		<div class="text-center my-8">
-			<button 
-				x-data 
-				@click="
-					$store.modalShow.on = true; 
-					$dispatch('set-title', 'Заказать звонок');
-					$dispatch('set-descr', 'Наши менеджеры с удовольствием свяжутся с Вами!');
-					$dispatch('set-subject', 'Заказать звонок. Секция Контакты');
-					$dispatch('set-button', 'Заказать звонок');
-					" 
-				class="btn-blue"
-				>
-				Заказать звонок
-			</button>			
-		</div>
-
-
-		<div class="max-w-[530px] w-full mx-auto mb-8 text-center">
-			<h2 class="uppercase text-2xl mb-3 font-bold">Hyundai Автохолдинг</h2>
-			<a href="tel:+78612974444" class="text-gray-700 font-medium mb-2 inline-block underline">+7 (861) 297-44-44</a>
-			<p class="font-medium text-gray-700 mb-2">г. Краснодар, Тургеневское шоссе, 20Д</p>
-			<p class="font-medium text-gray-700 mb-2">c 8.30 до 21.00 <span class="text-xs">(ежедневно)</span></p>
-		</div>
-
-	</div>
-	<div class="map bg-gray-100 bg-cover bg-center bg-no-repeat w-full h-[350px] overflow-hidden cursor-pointer relative z-10" style="background-image: url(img/map.jpg);">
-		<div id="map" class="relative z-20 w-full h-full"></div>
-		<div class="loader loader-default"></div>
-	</div>
-</section>
-
-<footer class="py-10 bg-mainBlue text-white text-opacity-70">
-	<div class="container px-3 mx-auto text-base">
-		<a href="/" class="flex items-center flex-0">
-			<img src="img/hyundai-logo.svg" alt="ALT" class="filter brightness-0 invert w-[100px] md:w-[170px] hidden md:block mx-auto mb-10">
-			<img src="img/hyundai-logo-small.svg" alt="ALT" class="filter brightness-0 invert md:hidden mx-auto mb-10">
-		</a>
-		<p class="mb-4">Мы не разделяем автомобили на новые или старые, автомобили на заводской гарантии или после ее окончания. Для всех владельцев Hyundai и на автомобили Hyundai любого года выпуска мы готовы предоставить обслуживание любого типа, по одинаково низким ценам, но со всеми преимуществами Официального дилера.</p>
-		<p>Стоимость ТО, указанная на сайте, является ориентировочной. Не является офертой</p>
-		<hr class="my-8">
-		<div class="text-center text-sm">
-			<a x-data @click="$store.modalShowPrivacy.on = true" href="javascript:void(0)" class="underline transition hover:no-underline inline-block mb-3">Политика в области обработки персональных данных</a>
-			<p>Данный интернет-сайт носит информационный характер и не является публичной офертой, определяемой положениями Статьи 437 ГК РФ.</p>
-		</div>
-	</div>		
-</footer>
-
-<div class="hidden cookie_notice fixed bottom-0 left-0 right-0 p-5 bg-gray-100 z-[9999] text-center text-xs sm:text-sm text-gray-500">
-	Этот сайт использует файлы cookies и сервисы сбора технических данных посетителей (данные об IP-адресе, местоположении и др.) для обеспечения работоспособности и улучшения качества обслуживания. Продолжая использовать наш сайт, вы автоматически соглашаетесь с использованием данных технологий.
-	<div class="flex justify-center items-center mt-4">
-		<a class="mr-5" href="#" x-data @click.prevent="$store.modalShowPrivacy.on = true">Подробнее</a>
-		<a class="btn-blue !text-xs !py-2 !px-5" id="cookie_close" href="#close">Согласен</a>
-	</div>
-</div>
-
-
-<!-- Modals -->
-<div 
-	x-data="{ title: '', descr: '', subject: '', button: '' }" 
-	x-show="$store.modalShow.on" 
-	@set-title.window="title = $event.detail"
-	@set-descr.window="descr = $event.detail"
-	@set-subject.window="subject = $event.detail"
-	@set-button.window="button = $event.detail"
-	x-transition:enter="animation-fade" 
-	x-transition:leave="animation-fadeout" 
-	class="fixed left-0 top-0 h-full w-full z-20 bg-black bg-opacity-90 z-50"
-	style="display: none;"
-	>
-	<div @click.away="$store.modalShow.on = false" class="absolute w-full max-w-[500px]" style="left: 50%; top: 50%; transform: translate(-50%, -50%);">
-		<div class="relative bg-white" x-show="$store.modalShow.on" x-transition:enter="animation-top">
-			<span @click="$store.modalShow.on = false" class="absolute right-3 top-1 text-gray-700 text-3xl hover:text-gray-800 cursor-pointer">&times;</span>
-			<div class="pt-5 pb-2 text-center text-2xl" x-text="title"></div>
-			<p class="text-center pb-5" x-text="descr"></p>
-			<div class="px-8 pb-8">
-				<form>
-					<input type="hidden" name="subject" :value="subject">
-					<input type="text" name="name" class="form-input w-full border border-gray-400 py-2 px-3 mb-3" placeholder="Ваше имя">
-					<input type="tel" name="phone" class="w-full border border-gray-400 py-2 px-3 mb-5" placeholder="Ваш номер телефона *" required>
-					<small class="block text-xs text-gray-500 mb-5">Нажимая на кнопку «Отправить», вы даете свое согласие на <a x-data @click="$store.modalShowPrivacy.on = true" href="javascript:void(0)" class="block text-gray-600 underline transition hover:no-underline">обработку персональных данных</a></small>
-					<button type="submit" class="btn-red w-full" x-text="button"></button>
-				</form>
+			<div class="text-center my-8">
+				<button 
+					x-data 
+					@click="
+						$store.modalShow.on = true; 
+						$dispatch('set-title', 'Заказать звонок');
+						$dispatch('set-descr', 'Наши менеджеры с удовольствием свяжутся с Вами!');
+						$dispatch('set-subject', 'Заказать звонок. Секция Контакты');
+						$dispatch('set-button', 'Заказать звонок');
+						" 
+					class="btn-blue"
+					>
+					Заказать звонок
+				</button>			
 			</div>
+
+
+			<div class="max-w-[530px] w-full mx-auto mb-8 text-center">
+				<h2 class="uppercase text-2xl mb-3 font-bold">Hyundai Автохолдинг</h2>
+				<a href="tel:+78612974444" class="text-gray-700 font-medium mb-2 inline-block underline">+7 (861) 297-44-44</a>
+				<p class="font-medium text-gray-700 mb-2">г. Краснодар, Тургеневское шоссе, 20Д</p>
+				<p class="font-medium text-gray-700 mb-2">c 8.30 до 21.00 <span class="text-xs">(ежедневно)</span></p>
+			</div>
+
+		</div>
+		<div class="map bg-gray-100 bg-cover bg-center bg-no-repeat w-full h-[350px] overflow-hidden cursor-pointer relative z-10" style="background-image: url(img/map.jpg);">
+			<div id="map" class="relative z-20 w-full h-full"></div>
+			<div class="loader loader-default"></div>
+		</div>
+	</section>
+
+	<footer class="py-10 bg-mainBlue text-white text-opacity-70">
+		<div class="container px-3 mx-auto text-base">
+			<a href="/" class="flex items-center flex-0">
+				<img src="img/hyundai-logo.svg" alt="ALT" class="filter brightness-0 invert w-[100px] md:w-[170px] hidden md:block mx-auto mb-10">
+				<img src="img/hyundai-logo-small.svg" alt="ALT" class="filter brightness-0 invert md:hidden mx-auto mb-10">
+			</a>
+			<p class="mb-4">Мы не разделяем автомобили на новые или старые, автомобили на заводской гарантии или после ее окончания. Для всех владельцев Hyundai и на автомобили Hyundai любого года выпуска мы готовы предоставить обслуживание любого типа, по одинаково низким ценам, но со всеми преимуществами Официального дилера.</p>
+			<p>Стоимость ТО, указанная на сайте, является ориентировочной. Не является офертой</p>
+			<hr class="my-8">
+			<div class="text-center text-sm">
+				<a x-data @click="$store.modalShowPrivacy.on = true" href="javascript:void(0)" class="underline transition hover:no-underline inline-block mb-3">Политика в области обработки персональных данных</a>
+				<p>Данный интернет-сайт носит информационный характер и не является публичной офертой, определяемой положениями Статьи 437 ГК РФ.</p>
+			</div>
+		</div>		
+	</footer>
+
+	<div class="hidden cookie_notice fixed bottom-0 left-0 right-0 p-5 bg-gray-100 z-[9999] text-center text-xs sm:text-sm text-gray-500">
+		Этот сайт использует файлы cookies и сервисы сбора технических данных посетителей (данные об IP-адресе, местоположении и др.) для обеспечения работоспособности и улучшения качества обслуживания. Продолжая использовать наш сайт, вы автоматически соглашаетесь с использованием данных технологий.
+		<div class="flex justify-center items-center mt-4">
+			<a class="mr-5" href="#" x-data @click.prevent="$store.modalShowPrivacy.on = true">Подробнее</a>
+			<a class="btn-blue !text-xs !py-2 !px-5" id="cookie_close" href="#close">Согласен</a>
 		</div>
 	</div>
-</div>
 
 
-<div x-data x-show="$store.modalShowPrivacy.on" x-transition:enter="animation-fade" x-transition:leave="animation-fadeout" class="fixed left-0 top-0 h-full w-full z-[10000] bg-black bg-opacity-90" style="display: none;">
-	<noindex>
-		<div @click.away="$store.modalShowPrivacy.on = false" class="absolute w-full max-w-[900px]" style="left: 50%; top: 5%; transform: translate(-50%, 0);">
-			<div class="relative bg-white overflow-auto h-screen pb-8" x-show="$store.modalShowPrivacy.on" x-transition:enter="animation-top">
-				<span @click="$store.modalShowPrivacy.on = false" class="absolute right-3 top-1 text-gray-700 text-3xl hover:text-gray-800 cursor-pointer">&times;</span>
-				<div class="py-5 px-8 text-xl sm:text-3xl">Политика конфиденциальности</div>
+	<!-- Modals -->
+	<div 
+		x-data="{ title: '', descr: '', subject: '', button: '' }" 
+		x-show="$store.modalShow.on" 
+		@set-title.window="title = $event.detail"
+		@set-descr.window="descr = $event.detail"
+		@set-subject.window="subject = $event.detail"
+		@set-button.window="button = $event.detail"
+		x-transition:enter="animation-fade" 
+		x-transition:leave="animation-fadeout" 
+		class="fixed left-0 top-0 h-full w-full z-20 bg-black bg-opacity-90 z-50"
+		style="display: none;"
+		>
+		<div @click.away="$store.modalShow.on = false" class="absolute w-full max-w-[500px]" style="left: 50%; top: 50%; transform: translate(-50%, -50%);">
+			<div class="relative bg-white" x-show="$store.modalShow.on" x-transition:enter="animation-top">
+				<span @click="$store.modalShow.on = false" class="absolute right-3 top-1 text-gray-700 text-3xl hover:text-gray-800 cursor-pointer">&times;</span>
+				<div class="pt-5 pb-2 text-center text-2xl" x-text="title"></div>
+				<p class="text-center pb-5" x-text="descr"></p>
 				<div class="px-8 pb-8">
-					<p>Далеко-далеко за словесными горами в стране гласных, и согласных живут рыбные тексты. Безопасную грамматики жаренные своих одна необходимыми деревни дал пунктуация строчка, всемогущая, выйти рукопись залетают lorem напоивший своего заглавных продолжил использовало?
-						Безорфографичный на берегу ее если жаренные продолжил, великий рукописи предупреждал заголовок дороге бросил рыбными большого за даль, ручеек инициал языком диких родного дорогу точках, страна курсивных большой до имени, семантика буквоград?
-						Ты курсивных заголовок переписали, назад, лучше, ведущими мир страну языкового предупреждал точках себя пор дорогу маленький это приставка имеет, жаренные языком залетают свое вдали даль знаках. Ему за свой повстречался.
-						Толку назад прямо знаках запятой, путь, решила послушавшись семь, скатился маленькая пор снова домах коварный, если коварных? Большой снова прямо на берегу, подзаголовок ему текстами свое великий грустный, силуэт над своих!
-						Рукопись по всей снова родного, послушавшись над все инициал вопроса жизни продолжил океана безопасную большой последний раз скатился она диких всеми, прямо переписывается гор бросил парадигматическая вопрос взобравшись вершину ему строчка.
-						Страну которой, букв, своего свое это курсивных, переписали алфавит большой безорфографичный всемогущая сбить жизни переписывается строчка путь, языком возвращайся приставка! Продолжил его ему залетают предупреждал рыбными меня снова составитель напоивший.
-						Переулка не дорогу жаренные города рукописи ему продолжил букв, решила вскоре подзаголовок скатился буквоград подпоясал диких, бросил реторический до за использовало своих свое рыбными, страна гор он. От всех, взобравшись залетают!
-						Но текст своих, по всей вскоре языкового напоивший? О сих, жаренные переписали рыбного буквенных ты повстречался реторический толку коварный домах ему, оксмокс? Выйти она путь заголовок ipsum переулка речью, на берегу, жаренные!
-						Свой родного свое меня там рот ведущими что толку, подпоясал обеспечивает правилами снова необходимыми текстами. Lorem рыбного семь, языком семантика, буквоград домах скатился она сих послушавшись мир коварный за. Живет?
-					Переписали что рот, напоивший всеми города букв единственное. Языкового рукописи семантика домах составитель это агентство безопасную букв океана использовало речью одна, его страну, даже маленькая ручеек, рыбного пунктуация скатился алфавит!</p>
+					<form>
+						<input type="hidden" name="subject" :value="subject">
+						<input type="text" name="name" class="form-input w-full border border-gray-400 py-2 px-3 mb-3" placeholder="Ваше имя">
+						<input type="tel" name="phone" class="w-full border border-gray-400 py-2 px-3 mb-5" placeholder="Ваш номер телефона *" required>
+						<small class="block text-xs text-gray-500 mb-5">Нажимая на кнопку «Отправить», вы даете свое согласие на <a x-data @click="$store.modalShowPrivacy.on = true" href="javascript:void(0)" class="block text-gray-600 underline transition hover:no-underline">обработку персональных данных</a></small>
+						<button type="submit" class="btn-red w-full" x-text="button"></button>
+					</form>
 				</div>
 			</div>
 		</div>
-	</noindex>
-	
-</div>
-<!-- Modals End -->
+	</div>
+
+
+	<div x-data x-show="$store.modalShowPrivacy.on" x-transition:enter="animation-fade" x-transition:leave="animation-fadeout" class="fixed left-0 top-0 h-full w-full z-[10000] bg-black bg-opacity-90" style="display: none;">
+		<noindex>
+			<div @click.away="$store.modalShowPrivacy.on = false" class="absolute w-full max-w-[900px]" style="left: 50%; top: 5%; transform: translate(-50%, 0);">
+				<div class="relative bg-white overflow-auto h-screen pb-8" x-show="$store.modalShowPrivacy.on" x-transition:enter="animation-top">
+					<span @click="$store.modalShowPrivacy.on = false" class="absolute right-3 top-1 text-gray-700 text-3xl hover:text-gray-800 cursor-pointer">&times;</span>
+					<div class="py-5 px-8 text-xl sm:text-3xl">Политика конфиденциальности</div>
+					<div class="px-8 pb-8">
+						<p>Далеко-далеко за словесными горами в стране гласных, и согласных живут рыбные тексты. Безопасную грамматики жаренные своих одна необходимыми деревни дал пунктуация строчка, всемогущая, выйти рукопись залетают lorem напоивший своего заглавных продолжил использовало?
+							Безорфографичный на берегу ее если жаренные продолжил, великий рукописи предупреждал заголовок дороге бросил рыбными большого за даль, ручеек инициал языком диких родного дорогу точках, страна курсивных большой до имени, семантика буквоград?
+							Ты курсивных заголовок переписали, назад, лучше, ведущими мир страну языкового предупреждал точках себя пор дорогу маленький это приставка имеет, жаренные языком залетают свое вдали даль знаках. Ему за свой повстречался.
+							Толку назад прямо знаках запятой, путь, решила послушавшись семь, скатился маленькая пор снова домах коварный, если коварных? Большой снова прямо на берегу, подзаголовок ему текстами свое великий грустный, силуэт над своих!
+							Рукопись по всей снова родного, послушавшись над все инициал вопроса жизни продолжил океана безопасную большой последний раз скатился она диких всеми, прямо переписывается гор бросил парадигматическая вопрос взобравшись вершину ему строчка.
+							Страну которой, букв, своего свое это курсивных, переписали алфавит большой безорфографичный всемогущая сбить жизни переписывается строчка путь, языком возвращайся приставка! Продолжил его ему залетают предупреждал рыбными меня снова составитель напоивший.
+							Переулка не дорогу жаренные города рукописи ему продолжил букв, решила вскоре подзаголовок скатился буквоград подпоясал диких, бросил реторический до за использовало своих свое рыбными, страна гор он. От всех, взобравшись залетают!
+							Но текст своих, по всей вскоре языкового напоивший? О сих, жаренные переписали рыбного буквенных ты повстречался реторический толку коварный домах ему, оксмокс? Выйти она путь заголовок ipsum переулка речью, на берегу, жаренные!
+							Свой родного свое меня там рот ведущими что толку, подпоясал обеспечивает правилами снова необходимыми текстами. Lorem рыбного семь, языком семантика, буквоград домах скатился она сих послушавшись мир коварный за. Живет?
+						Переписали что рот, напоивший всеми города букв единственное. Языкового рукописи семантика домах составитель это агентство безопасную букв океана использовало речью одна, его страну, даже маленькая ручеек, рыбного пунктуация скатился алфавит!</p>
+					</div>
+				</div>
+			</div>
+		</noindex>
+		
+	</div>
+	<!-- Modals End -->
 
 <script src="dist/js/scripts.js" defer></script>
 
