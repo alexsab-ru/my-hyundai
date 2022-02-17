@@ -42,7 +42,7 @@ const partners = new Swiper('.partners-slider', {
 			spaceBetween: 10
 		},
 		1024: {
-			slidesPerView: 7,
+			slidesPerView: 3,
 			spaceBetween: 10
 		},
 	},
