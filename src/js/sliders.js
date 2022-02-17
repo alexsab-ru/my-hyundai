@@ -28,22 +28,19 @@ navigation: {
 });
 
 const partners = new Swiper('.partners-slider', {
+	loop: true,
 	breakpoints: {
 		320: {
-			slidesPerView: 3,
-			spaceBetween: 10
-		},
-		586: {
-			slidesPerView: 4,
-			spaceBetween: 10
+			slidesPerView: 1,
+			spaceBetween: 30
 		},
 		768: {
-			slidesPerView: 5,
-			spaceBetween: 10
+			slidesPerView: 2,
+			spaceBetween: 30
 		},
 		1024: {
 			slidesPerView: 3,
-			spaceBetween: 10
+			spaceBetween: 30
 		},
 	},
 	pagination: {
