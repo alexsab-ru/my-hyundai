@@ -174,8 +174,8 @@ document.addEventListener('alpine:init', () => {
 			});
 		},
 		toggleItem: function (id, arr) {
-			let item = arr.find((item) => item.id === id);
-			item.open = !item.open;
+			let item = arr.find((item) => item[0] === id);
+			item[3] = ( item[3] === 'FALSE' ) ? true : !item[3];
 		},
 	}));
 
