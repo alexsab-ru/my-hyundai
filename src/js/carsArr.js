@@ -2,7 +2,16 @@ import Papa from 'papaparse';
 
 let carsarr;
 
-const response = fetch('/data.csv')
+
+let if_path = setInterval(()=>{
+
+console.log("window.path",window.path);
+
+if(window.path != undefined) {
+
+clearInterval(if_path);
+
+const response = fetch('/inc/'+window.path+'/data/data.csv')
 	.then(response => response.text())
 	.then(v => Papa.parse(v))
 	.catch(err => console.log(err))
@@ -13,6 +22,10 @@ response.then(v => {
 	Alpine.start();
 	// console.log(carsarr)
 });
+
+}
+
+}, 200);
 
 document.addEventListener('alpine:init', (data) => {
 

@@ -78,7 +78,7 @@
 					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition" @click.prevent="scroll('advantages', 0);">О нас</a>
 				</li>
 				<li class="flex-grow">
-					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition" @click.prevent="scroll('presents', 0);">Акции</a>
+					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition" @click.prevent="scroll('specials', 0);">Акции</a>
 				</li>
 				<li class="flex-grow">
 					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition" @click.prevent="scroll('calc', 0);">Расчитать ТО</a>
@@ -263,11 +263,11 @@
 	</section>
 
 
-	<section class="py-16" x-data="data" id="presents">
+	<section class="py-16" x-data="data" id="specials">
 		<div class="container px-3 mx-auto">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
 
-				<template x-for="present in presents">
+				<template x-for="present in specials">
 					<div x-data
 					@click="
 						$store.modalShow.on = true;

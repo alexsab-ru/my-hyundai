@@ -10,7 +10,9 @@ document.addEventListener('alpine:init', () => {
 			{id: 4, text: '5 лет </span>или <br><span class="font-medium">75&nbsp;000&nbsp;км'},
 			{id: 5, text: '6 лет </span>или <br><span class="font-medium">90&nbsp;000&nbsp;км'},
 		],
-		presents: [
+
+
+		specials: [
 			{icon: 'https://via.placeholder.com/150', title: 'Шиномонтаж', text: 'от 2000₽'},
 			{icon: 'https://via.placeholder.com/150', title: 'В подарок <br class="hidden sm:block"> при шиномонтаже', text: 'осмотр ходовой <br>системы'},
 			{icon: 'https://via.placeholder.com/150', title: 'В подарок', text: 'Мойка люкс <br>новым клиентам'},
@@ -18,6 +20,8 @@ document.addEventListener('alpine:init', () => {
 			{icon: 'https://via.placeholder.com/150', title: 'А/М HYUNDAI <br>старше 3 лет', text: '-25% на услуги <br>-20% на запчасти'},
 			{icon: 'https://via.placeholder.com/150', title: 'Замена масла', text: 'АКПП от 8900₽ <br>МКПП от 2900₽'},
 		],
+
+
 		services: [
 			{id: 1, title: 'Шиномонтаж'},
 			{id: 2, title: 'Замена эксплуатационных жидкостей'},
@@ -111,6 +115,8 @@ document.addEventListener('alpine:init', () => {
 				]
 			}
 		],
+
+
 		advantages: [
 			{id: 1, title: 'Первый ДЦ Hyundai в Краснодаре. Обслуживаем Hyundai с 1997 г.'},
 			{id: 2, title: 'Присутствуйте <br class="hidden sm:block">в ремзоне'},
@@ -118,6 +124,8 @@ document.addEventListener('alpine:init', () => {
 			{id: 4, title: '2 года <br class="hidden sm:block">гарантии'},
 			{id: 5, title: 'Внутренняя <br class="hidden sm:block">сертификация <br class="hidden sm:block">мастеров'},
 		],
+
+
 		faqs: [
 			{
 				id: 1,
@@ -152,6 +160,8 @@ document.addEventListener('alpine:init', () => {
 				open: false
 			},
 		],
+
+
 		scroll: function(selector, offset = 450){
 			const screenWidth = window.screen.width;
 
@@ -168,10 +178,12 @@ document.addEventListener('alpine:init', () => {
 			item.open = !item.open;
 		},
 	}));
+
 	Alpine.store('modalShow', {
 		on: false,
 		title: ''
 	});
+
 	Alpine.store('modalShowPrivacy', {
 		on: false
 	});

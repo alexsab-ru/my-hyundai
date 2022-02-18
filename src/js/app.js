@@ -1,3 +1,4 @@
+import './path';
 import './cookie';
 import './sliders';
 import './map';
