@@ -56,7 +56,7 @@ function init() {
 	});
 }
 
-// Функция для определения полной загрузки карты (на самом деле проверяется загрузка тайлов) 
+// Функция для определения полной загрузки карты (на самом деле проверяется загрузка тайлов)
 function waitForTilesLoad(layer) {
 	return new ymaps.vow.Promise(function(resolve, reject) {
 		var tc = getTileContainer(layer),

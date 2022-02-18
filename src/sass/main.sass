@@ -9,7 +9,7 @@
 	@apply bg-mainBlue uppercase text-sm md:text-[1rem] text-white py-3 px-12 rounded font-normal duration-200 hover:bg-btnHover focus:bg-mainBlue
 
 
-.loader 
+.loader
 	position: absolute
 	z-index: 9
 	top: -100%
@@ -23,12 +23,12 @@
 	opacity: 0
 	background-color: rgba(0, 0, 0, .55)
 	&:after,
-	&:before 
+	&:before
 		box-sizing: border-box
-	&.is-active 
+	&.is-active
 		top: 0
 		opacity: 1
-	&-default:after 
+	&-default:after
 		position: absolute
 		top: calc(50% - 24px)
 		left: calc(50% - 24px)
@@ -41,16 +41,16 @@
 		border-left-color: transparent
 		border-radius: 50%
 
-@keyframes rotation 
-	from 
+@keyframes rotation
+	from
 		transform: rotate(0)
-	to 
+	to
 		transform: rotate(359deg)
 
-@keyframes blink 
-	from 
-		opacity: .5		
-	to 
+@keyframes blink
+	from
+		opacity: .5
+	to
 		opacity: 1
 
 // REVIEWS BLOCK

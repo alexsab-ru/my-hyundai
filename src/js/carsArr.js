@@ -17,7 +17,7 @@ response.then(v => {
 document.addEventListener('alpine:init', (data) => {
 
 Alpine.data('arrCars', () => ({
-	
+
 	fill() {
 		document.querySelector('.model').selectedIndex = 1;
 		this.model = 'Solaris';

@@ -47,7 +47,7 @@ document.addEventListener('alpine:init', () => {
 				]
 			},
 			{
-				id: 2, 
+				id: 2,
 				items: [
 					{name: 'Промывка масляной системы БЕНЗИНОВОГО двигателя (промывка Liqui Moli)', price: 900},
 					{name: 'Name22', price: 400},
@@ -55,7 +55,7 @@ document.addEventListener('alpine:init', () => {
 				]
 			},
 			{
-				id: 3, 
+				id: 3,
 				items: [
 					{name: 'Name12', price: 300},
 					{name: 'Name22', price: 400},
@@ -63,7 +63,7 @@ document.addEventListener('alpine:init', () => {
 				]
 			},
 			{
-				id: 4, 
+				id: 4,
 				items: [
 					{name: 'Name12', price: 300},
 					{name: 'Name22', price: 400},
@@ -71,7 +71,7 @@ document.addEventListener('alpine:init', () => {
 				]
 			},
 			{
-				id: 5, 
+				id: 5,
 				items: [
 					{name: 'Name12', price: 300},
 					{name: 'Name22', price: 400},
@@ -79,7 +79,7 @@ document.addEventListener('alpine:init', () => {
 				]
 			},
 			{
-				id: 6, 
+				id: 6,
 				items: [
 					{name: 'Name12', price: 300},
 					{name: 'Name22', price: 400},
@@ -87,7 +87,7 @@ document.addEventListener('alpine:init', () => {
 				]
 			},
 			{
-				id: 7, 
+				id: 7,
 				items: [
 					{name: 'Name12', price: 300},
 					{name: 'Name22', price: 400},
@@ -95,7 +95,7 @@ document.addEventListener('alpine:init', () => {
 				]
 			},
 			{
-				id: 8, 
+				id: 8,
 				items: [
 					{name: 'Name12', price: 300},
 					{name: 'Name22', price: 400},
@@ -103,7 +103,7 @@ document.addEventListener('alpine:init', () => {
 				]
 			},
 			{
-				id: 9, 
+				id: 9,
 				items: [
 					{name: 'Name12', price: 300},
 					{name: 'Name22', price: 400},
@@ -120,34 +120,34 @@ document.addEventListener('alpine:init', () => {
 		],
 		faqs: [
 			{
-				id: 1, 
-				question: 'Как проехать? Время работы салона?', 
+				id: 1,
+				question: 'Как проехать? Время работы салона?',
 				answer: 'Заезд на парковку под шлагбаум с улицы Уличная. <br>Адрес: Самара, Уличная, д. 1. <br><br>Режим работы: с 8:30 до 21:00 ежедневно, без выходных.',
 				open: true
 			},
 			{
-				id: 2, 
-				question: 'Могу ли я присутствовать в ремонтной зоне?', 
+				id: 2,
+				question: 'Могу ли я присутствовать в ремонтной зоне?',
 				answer: 'Да. <br><br>Присутствие в ремонтной зоне на время проведения обслуживания допускается  при условии подписания акта техники безопасности и при наличии СИЗ (средств индивидуальной защиты).',
 				open: false
 			},
 			{
-				id: 3, 
-				question: 'Принимается ли оплата по карте?', 
+				id: 3,
+				question: 'Принимается ли оплата по карте?',
 				answer: 'Да. <br><br>Возможен как наличный, так и безналичный расчет. <br>Комиссия за безналичный расчет НЕ взимается.',
 				open: false
 			},
 
 			{
-				id: 4, 
-				question: 'Можно ли провести работы, используя свои запасные части?', 
+				id: 4,
+				question: 'Можно ли провести работы, используя свои запасные части?',
 				answer: 'Да. <br><br>Проведение обслуживания с расходными материалами клиента возможно. <br>В этом случае гарантия предоставляется только на работы.',
 				open: false
 			},
 
 			{
-				id: 5, 
-				question: 'На каком пробеге необходимо проводить ТО? Какой допускается перепробег при ТО?', 
+				id: 5,
+				question: 'На каком пробеге необходимо проводить ТО? Какой допускается перепробег при ТО?',
 				answer: 'Заводом-изготовителем регламентирован&nbsp; срок прохождения ТО: <b>каждые 15 000 км</b> (<b>или 1 год эксплуатации</b>, смотря что наступит раньше). <br><br><b>Допустимый перепробег составляет 2 000 км</b>  (или 1 месяц эксплуатации).',
 				open: false
 			},

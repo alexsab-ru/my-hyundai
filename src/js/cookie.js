@@ -5,18 +5,18 @@
     return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 let cookiecook = getCookie("cookiecook"),
-    cookiewin = document.querySelector('.cookie_notice');    
+    cookiewin = document.querySelector('.cookie_notice');
 
 if (cookiecook != "no") {
 
-    cookiewin.style.display="block"; 
-    
+    cookiewin.style.display="block";
+
     document.getElementById("cookie_close").addEventListener("click", function(e){
         e.preventDefault();
-        cookiewin.style.display="none";    
+        cookiewin.style.display="none";
 
         let date = new Date;
-        date.setDate(date.getDate() + 1);    
-        document.cookie = "cookiecook=no; path=/; expires=" + date.toUTCString();               
+        date.setDate(date.getDate() + 1);
+        document.cookie = "cookiecook=no; path=/; expires=" + date.toUTCString();
     });
 }
