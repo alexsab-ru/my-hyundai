@@ -3,7 +3,6 @@ import Swiper, { Navigation, Pagination, Lazy, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 import 'swiper/css/lazy';
 
 // configure Swiper to use modules
@@ -28,22 +27,19 @@ navigation: {
 });
 
 const partners = new Swiper('.partners-slider', {
+	loop: true,
 	breakpoints: {
 		320: {
-			slidesPerView: 3,
-			spaceBetween: 10
-		},
-		586: {
-			slidesPerView: 4,
-			spaceBetween: 10
+			slidesPerView: 1,
+			spaceBetween: 30
 		},
 		768: {
-			slidesPerView: 5,
-			spaceBetween: 10
+			slidesPerView: 2,
+			spaceBetween: 30
 		},
 		1024: {
-			slidesPerView: 7,
-			spaceBetween: 10
+			slidesPerView: 3,
+			spaceBetween: 30
 		},
 	},
 	pagination: {
@@ -53,7 +49,7 @@ const partners = new Swiper('.partners-slider', {
 	on: {
 		init: function(){
 			// console.log('swiper initialized');
-			document.querySelector('.clients').classList.remove('hidden')
+			document.querySelector('.reviews').classList.remove('hidden')
 		}
 	}
 });
