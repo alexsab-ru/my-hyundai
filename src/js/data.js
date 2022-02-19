@@ -4,16 +4,22 @@ import Papa from 'papaparse';
 let list = [],
 	results = [],
 	urls = ['calc.csv', 'faq.csv', 'feedback.csv', 'specials.csv'],
+	folder = '/inc/'+window.path+'/data/',
 	calcArr = [],
 	faqsArr = [],
 	feedbacksArr = [],
 	specialsArr = [];
 
+if(location.hostname == 'newstreetpunk.github.io' || location.hostname == 'alexsab.github.io') {
+	folder = "";
+	urls = ['data.csv'];
+}
+
 // Loop through all URLs
 urls.forEach(function(url, i) {
 	list.push(
 		// For each URL, fetch it with the fetch API, store the returned promise in list
-		fetch('/inc/'+window.path+'/data/' + url)
+		fetch(folder + url)
 		// Additionally, when the request is finished, store the result in results
 		.then(response => {
 			results[i] = response.text().then( v => Papa.parse(v) ).catch( err => console.log(err) );
@@ -30,6 +36,7 @@ Promise
 			file.then(v => {
 				switch(urls[i]) {
 					case 'calc.csv':
+					case 'data.csv':
 						v.data.splice(0,2);
 						calcArr = v.data;
 						break;
