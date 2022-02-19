@@ -11,7 +11,7 @@
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
 	<!-- Custom Browsers Color Start -->
 	<meta name="theme-color" content="#002c5f">
 	<!-- Custom Browsers Color End -->
@@ -19,7 +19,7 @@
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	<!-- Style -->
-	<link rel="stylesheet" href="dist/css/styles.css">
+	<link rel="stylesheet" href="css/styles.css">
 
 </head>
 
@@ -38,7 +38,7 @@
 						</div>
 					</a>
 
-					<div class="hidden xl:flex space-x-8"> 
+					<div class="hidden xl:flex space-x-8">
 						<div class="space-y-0 leading-none text-center">
 							<p class="font-medium">c 8.30 до 21.00</p>
 							<p class="text-[11px]">ежедневно</p>
@@ -52,15 +52,15 @@
 
 					<a href="tel:+78612974444" class="text-gray-900 font-medium text-lg lg:text-2xl">+7 (861) 297-44-44</a>
 
-					<button 
-						x-data 
+					<button
+						x-data
 						@click="
-							$store.modalShow.on = true; 
+							$store.modalShow.on = true;
 							$dispatch('set-title', 'Заказать звонок');
 							$dispatch('set-descr', 'Наши менеджеры с удовольствием свяжутся с Вами!');
 							$dispatch('set-subject', 'Заказать звонок. Шапка сайта');
 							$dispatch('set-button', 'Заказать звонок');
-							" 
+							"
 						class="btn-red"
 						>
 						Заказать звонок
@@ -78,7 +78,7 @@
 					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition" @click.prevent="scroll('advantages', 0);">О нас</a>
 				</li>
 				<li class="flex-grow">
-					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition" @click.prevent="scroll('presents', 0);">Акции</a>
+					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition" @click.prevent="scroll('specials', 0);">Акции</a>
 				</li>
 				<li class="flex-grow">
 					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition" @click.prevent="scroll('calc', 0);">Расчитать ТО</a>
@@ -90,9 +90,9 @@
 					<a href="#" class="block text-center py-3 font-medium hover:bg-gray-700 transition" @click.prevent="scroll('contacts', 0);">Контакты</a>
 				</li>
 			</ul>
-		</div>			
+		</div>
 	</nav>
-	
+
 	<div class="banner bg-gray-100">
 		<div class="banner-slider swiper h-full">
 			<!-- Additional required wrapper -->
@@ -101,22 +101,22 @@
 				<a href="#" class="swiper-slide h-full">
 						<img
 						data-src="img/slider/1.jpg"
-						class="w-full object-cover object-center swiper-lazy hidden sm:block" 
+						class="w-full object-cover object-center swiper-lazy hidden sm:block"
 						/>
 						<img
 						data-src="img/slider/1-mob.jpg"
-						class="w-full object-cover object-center swiper-lazy sm:hidden" 
+						class="w-full object-cover object-center swiper-lazy sm:hidden"
 						/>
 						<div class="swiper-lazy-preloader"></div>
 				</a>
 				<a href="#" class="swiper-slide h-full">
 						<img
 						data-src="img/slider/2.jpg"
-						class="w-full object-cover object-center swiper-lazy hidden sm:block" 
+						class="w-full object-cover object-center swiper-lazy hidden sm:block"
 						/>
 						<img
 						data-src="img/slider/2-mob.jpg"
-						class="w-full object-cover object-center swiper-lazy sm:hidden" 
+						class="w-full object-cover object-center swiper-lazy sm:hidden"
 						/>
 						<div class="swiper-lazy-preloader"></div>
 				</a>
@@ -130,7 +130,7 @@
 	</div>
 
 
-	<section class="calculation pt-16 hidden" x-data="arrCars" x-init="$el.classList.remove('hidden')" id="calc">
+	<section class="calculation pt-16 hidden" x-data="calcData" x-init="$el.classList.remove('hidden')" id="calc">
 		<div class="container sm:px-3 mx-auto">
 
 			<h2 class="text-gray-900 text-2xl sm:text-4xl text-center font-bold relative pb-3">
@@ -142,24 +142,24 @@
 			<div class="flex justify-center flex-wrap mt-8 sm:mt-10" x-data="{active: null}">
 
 				<template x-for="item in models" :key="item">
-					<a 
-					href="#" 
+					<a
+					href="#"
 					class="flex-grow w-28 sm:w-32 h-22 mx-5 xl:mx-6 2xl:mx-12 mb-6 xl:mb-8 relative group"
 					@click.prevent="
-					scroll('params'); 
+					scroll('params');
 					active !== item ? active = item : '';
 					btnActive = null;
 					total = null;
 					model = active;
 					">
-						<img 
-						:src="`img/cars/${item.toLowerCase().split(' ').join('-')}.png`" 
-						:alt="item" 
-						class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110" 
+						<img
+						:src="`img/cars/${item.toLowerCase().split(' ').join('-')}.png`"
+						:alt="item"
+						class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110"
 						:class="{'!scale-110': active == item}">
 
-						<h3 class="text-base sm:text-xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-activeRed" 
-						:class="{'!bottom-1 !text-activeRed': active == item}" 
+						<h3 class="text-base sm:text-xl text-center absolute w-full bottom-0 transition-all duration-500 ease-in-out group-hover:bottom-1 group-hover:text-activeRed"
+						:class="{'!bottom-1 !text-activeRed': active == item}"
 						x-text="item"></h3>
 					</a>
 				</template>
@@ -170,12 +170,12 @@
 			<div class="calculation-params max-w-[1400px] mx-auto bg-gray-100 rounded pt-5 pb-5" x-show="model">
 				<form class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 px-5" id="calc-form">
 
-					<select :disabled="!model" x-show="model" class="year w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" 
+					<select :disabled="!model" x-show="model" class="year w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg"
 					@change="year=$event.target.value; total = null; btnActive = null;">
 					<option selected disabled>Год производства</option>
 					<template x-for="item in years" :key="item">
-						<option :value="item" x-text="model +' '+ item"></option>						
-					</template>						
+						<option :value="item" x-text="model +' '+ item"></option>
+					</template>
 					</select>
 
 					<select :disabled="!year" x-show="year" class="volume w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg"
@@ -187,7 +187,7 @@
 					</template>
 					</select>
 
-					<select :disabled="!volume" x-show="volume" class="type w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg" 
+					<select :disabled="!volume" x-show="volume" class="type w-full sm:w-auto flex-grow px-2 py-3 border border-gray-300 text-sm md:text-lg"
 					@change="type=$event.target.value; total = null; btnActive = null;"
 					>
 					<option selected disabled>Тип двигателя</option>
@@ -200,7 +200,7 @@
 
 				<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5 px-5 mt-5" x-show="type">
 					<template x-for="button in buttons" :key="button.id">
-						<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-activeRed hover:bg-sand hover:text-gray-800 focus:text-white leading-5" 
+						<button  type="button" class="bg-white border border-gray-300 py-2 px-5 rounded font-normal transition duration-300 focus:bg-activeRed hover:bg-sand hover:text-gray-800 focus:text-white leading-5"
 						@click="
 							btnActive !== button.id ? btnActive = button.id : '';
 							total = btnActive;
@@ -212,10 +212,10 @@
 
 					</template>
 				</div>
- 				
+
  				<div id="total"></div>
 				<div x-show="total != null">
-						
+
 					<ul class="px-5 pt-3 mt-5 space-y-5">
 						<li class="flex justify-between leading-none">
 							<span>Стоимость работ</span>
@@ -241,48 +241,48 @@
 					<p class="text-[0.7rem] px-5 mb-8 text-gray-500">*Стоимость для новых клиентов указана для первого посещении сервис-центра Восток-Авто с учетом использования оригинальных запасных частей. Предложение не является офертой.</p>
 
 					<div class="text-center">
-						<button 
-						x-data 
+						<button
+						x-data
 						@click="
-							$store.modalShow.on = true; 
+							$store.modalShow.on = true;
 							$dispatch('set-title', 'Записаться на ТО');
 							$dispatch('set-descr', 'Наши менеджеры запишут Вас на удобное время.');
 							$dispatch('set-subject', 'Запись на ТО. '+ model+' '+year+', '+volume+', '+type+', '+buttons[total].text.replace(/<\/?[^>]+(>|$)/g, ''));
 							$dispatch('set-button', 'Записаться');
-							" 
+							"
 						class="btn-red text-md md:text-xl py-3 !px-10 !rounded-full font-normal transition ">Записаться на ТО</button>
 					</div>
 
 				</div>
-				
-				
+
+
 			</div>
 
 		</div>
-		
+
 	</section>
 
 
-	<section class="py-16" x-data="data" id="presents">
+	<section class="py-16" x-data="data" id="specials">
 		<div class="container px-3 mx-auto">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
 
-				<template x-for="present in presents">
+				<template x-for="present in specials">
 					<div x-data
 					@click="
-						$store.modalShow.on = true; 
+						$store.modalShow.on = true;
 						$dispatch('set-title', 'Появились вопросы?');
 						$dispatch('set-descr', 'Наши менеджеры с удовольствием свяжутся с Вами!');
 						$dispatch('set-subject', 'Акции. '+present.title.replace(/<\/?[^>]+(>|$)/g, '')+' '+present.text.replace(/<\/?[^>]+(>|$)/g, ''));
 						$dispatch('set-button', 'Отправить');
-						" 
+						"
 					class="present border-4 border-mainBlue px-4 pt-6 pb-8 sm:px-5 sm:pt-8 sm:pb-12 cursor-pointer transition hover:bg-gray-100">
 						<div class="flex items-center">
 							<img :src="present.icon" :alt="present.title" class="rounded-full relative z-10 border-4 border-mainBlue w-[100px] h-[100px] sm:w-[150px] sm:h-[150px]">
 							<div class="relative flex-grow">
 								<h2 class="bg-mainBlue text-white px-8 sm:px-6 -ml-6 sm:-ml-3 text-sm sm:text-lg xl:text-3xl font-bold uppercase flex items-center h-[60px] sm:h-[80px] leading-1" x-html="present.title"></h2>
 								<h3 class="absolute top-full pl-2 sm:pl-3 text-sm sm:text-lg xl:text-2xl font-medium text-gray-600 mt-1 leading-[1]" x-html="present.text"></h3>
-							</div>						
+							</div>
 						</div>
 					</div>
 				</template>
@@ -303,17 +303,17 @@
 
 					<template  x-for="service in services">
 
-						<div 
-						class="flex items-center justify-between bg-gray-100 cursor-pointer transition hover:bg-gray-200 mb-3 last:mb-0" 
+						<div
+						class="flex items-center justify-between bg-gray-100 cursor-pointer transition hover:bg-gray-200 mb-3 last:mb-0"
 						@click="
 						selected !== service.id ? selected = service.id : '';
 						if(window.screen.width < 769){
-						scroll('services', 0);							
+						scroll('services', 0);
 						}
 						"
 						:class="{'!bg-gray-300' : selected == service.id}"
 						>
-							<div class="flex items-center">	
+							<div class="flex items-center">
 								<div class="flex-shrink-0 bg-mainBlue w-12 h-12 p-1 mr-3">
 									<img :src="`img/icons/services/${service.id}.png`" :alt="service.title" class="w-full h-auto">
 								</div>
@@ -325,7 +325,7 @@
 						</div>
 
 					</template>
-					
+
 				</div>
 
 
@@ -343,21 +343,21 @@
 									<div class="flex items-end justify-between sm:text-lg mb-3 last:border-0 border-b border-dotted border-gray-400">
 										<div x-text="item.name" class="pr-3"></div>
 										<div x-html="item.price + '<span> ₽</span>'" class="pl-3 flex-shrink-0 font-medium"></div>
-									</div>							
+									</div>
 								</template>
 							</div>
-							
+
 
 							<div class="text-center py-5">
-								<button 
-								x-data 
+								<button
+								x-data
 								@click="
-								$store.modalShow.on = true; 
+								$store.modalShow.on = true;
 								$dispatch('set-title', 'Желаете записаться?');
 								$dispatch('set-descr', 'Наши менеджеры запишут Вас на удобное время.');
 								$dispatch('set-subject', 'Услуги. '+services[elem.id - 1].title);
 								$dispatch('set-button', 'Записаться');
-								" 
+								"
 								class="btn-red"
 								>
 								Записаться на сервис
@@ -366,7 +366,7 @@
 
 						</div>
 					</template>
-				</div>				
+				</div>
 
 			</div>
 
@@ -382,12 +382,12 @@
 
 			<div class="flex flex-wrap justify-center mt-16">
 			<template x-for="s in services">
-				<a 
+				<a
 					x-data
-					href="#" 
+					href="#"
 					class="w-1/2 lg:w-1/3 px-2 sm:px-5 mb-10 text-white text-center inline-block relative transition-all duration-300 hover:text-activeRed group"
 					@click.prevent="
-					$store.modalShow.on = true; 
+					$store.modalShow.on = true;
 					$dispatch('set-title', 'Желаете записаться?');
 					$dispatch('set-descr', 'Наши менеджеры запишут Вас на удобное время.');
 					$dispatch('set-subject', 'Услуги. '+s.title);
@@ -395,15 +395,15 @@
 					"
 				>
 					<span class="rounded-full inline-block w-20 h-20 flex items-center justify-center mb-3 mx-auto border border-white transition-all duration-300 group-hover:border-activeRed group-hover:bg-activeRed">
-						<img 
-							:src="`img/icons/services/${s.id}.png`" 
-							:alt="s.title" 
+						<img
+							:src="`img/icons/services/${s.id}.png`"
+							:alt="s.title"
 							class="w-auto h-10"
 						>
 					</span>
-					<h3 
+					<h3
 						x-text="s.title"
-						class="text-xs sm:text-xl" 
+						class="text-xs sm:text-xl"
 					></h3>
 				</a>
 			</template>
@@ -426,9 +426,9 @@
 
 					<div class="font-medium text-sm md:text-lg" x-text="faq.question"></div>
 
-					<img src="img/icons/down.png" 
+					<img src="img/icons/down.png"
 					alt="Down"
-					class="transition" 
+					class="transition"
 					:style="faq.open ? 'transform: rotate(180deg)' : ''">
 					</div>
 					<div class="mt-3 text-xs md:text-base" x-show="faq.open" x-transition.opacity.duration.200ms x-html="faq.answer"></div>
@@ -448,11 +448,11 @@
 						<img :src="`img/icons/advantages/${advantage.id}.svg`" :alt="advantage.title" class="mx-auto mb-3 w-20 lg:w-24">
 						<h3 class="text-xs sm:text-sm lg:text-lg text-white font-medium" x-html="advantage.title"></h3>
 					</div>
-					
+
 				</template>
 
 			</div>
-		</div>	
+		</div>
 	</section>
 
 	<section class="reviews bg-gray-50 py-16 hidden">
@@ -486,7 +486,7 @@
 						<div class="reviews__item">
 							<div class="reviews__item--text px-5 py-8 bg-white shadow-lg rounded-lg">
 								<blockquote class="max-h-[230px] overflow-y-auto">
-									<p>Приобретали в марте 2021 года автомобиль в данном автосалоне, менеджер по продажам Анна великолепно провела сделку. Были с маленьким ребёнком (4 года) окружили заботой, все спорные моменты решили быстро, сделка прошла за половину дня, получили ответы на все интересующие нас вопросы, остались довольны посещением салона, обслуживанием и покупкой!</p> 
+									<p>Приобретали в марте 2021 года автомобиль в данном автосалоне, менеджер по продажам Анна великолепно провела сделку. Были с маленьким ребёнком (4 года) окружили заботой, все спорные моменты решили быстро, сделка прошла за половину дня, получили ответы на все интересующие нас вопросы, остались довольны посещением салона, обслуживанием и покупкой!</p>
 									<p>Расширить пул банков-партнёров</p>
 								</blockquote>
 							</div>
@@ -541,7 +541,7 @@
 	</section>
 
 	<section>
-		<img src="img/photo-2.jpg" alt="Hyundai" class="h-[auto] w-full xl:w-[75%] mx-auto object-cover object-left">
+		<img src="img/photo.jpg" alt="Hyundai" class="h-[auto] w-full xl:w-[75%] mx-auto object-cover object-left">
 	</section>
 
 	<section class="contacts pt-16" id="contacts">
@@ -553,19 +553,19 @@
 			<p class="text-gray-800 text-md sm:text-xl text-center font-medium mt-4 sm:mt-8">Свяжитесь с нами любым удобным для Вас способом.</p>
 
 			<div class="text-center my-8">
-				<button 
-					x-data 
+				<button
+					x-data
 					@click="
-						$store.modalShow.on = true; 
+						$store.modalShow.on = true;
 						$dispatch('set-title', 'Заказать звонок');
 						$dispatch('set-descr', 'Наши менеджеры с удовольствием свяжутся с Вами!');
 						$dispatch('set-subject', 'Заказать звонок. Секция Контакты');
 						$dispatch('set-button', 'Заказать звонок');
-						" 
+						"
 					class="btn-blue"
 					>
 					Заказать звонок
-				</button>			
+				</button>
 			</div>
 
 
@@ -596,7 +596,7 @@
 				<a x-data @click="$store.modalShowPrivacy.on = true" href="javascript:void(0)" class="underline transition hover:no-underline inline-block mb-3">Политика в области обработки персональных данных</a>
 				<p>Данный интернет-сайт носит информационный характер и не является публичной офертой, определяемой положениями Статьи 437 ГК РФ.</p>
 			</div>
-		</div>		
+		</div>
 	</footer>
 
 	<div class="hidden cookie_notice fixed bottom-0 left-0 right-0 p-5 bg-gray-100 z-[9999] text-center text-xs sm:text-sm text-gray-500">
@@ -609,15 +609,15 @@
 
 
 	<!-- Modals -->
-	<div 
-		x-data="{ title: '', descr: '', subject: '', button: '' }" 
-		x-show="$store.modalShow.on" 
+	<div
+		x-data="{ title: '', descr: '', subject: '', button: '' }"
+		x-show="$store.modalShow.on"
 		@set-title.window="title = $event.detail"
 		@set-descr.window="descr = $event.detail"
 		@set-subject.window="subject = $event.detail"
 		@set-button.window="button = $event.detail"
-		x-transition:enter="animation-fade" 
-		x-transition:leave="animation-fadeout" 
+		x-transition:enter="animation-fade"
+		x-transition:leave="animation-fadeout"
 		class="fixed left-0 top-0 h-full w-full z-20 bg-black bg-opacity-90 z-50"
 		style="display: none;"
 		>
@@ -661,11 +661,11 @@
 				</div>
 			</div>
 		</noindex>
-		
+
 	</div>
 	<!-- Modals End -->
 
-<script src="dist/js/scripts.js" defer></script>
+<script src="js/scripts.js" defer></script>
 
 </body>
 </html>

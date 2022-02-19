@@ -125,7 +125,7 @@ $("form").submit(function() { //Change
 			return false;
 		}
 
-		if(res.error) 
+		if(res.error)
 			$('.error-message').html(res.error);
 		else
 			$('.error-message').html("");
@@ -146,7 +146,7 @@ $("form").submit(function() { //Change
 			}
 			btnSubmit.removeAttr("disabled");
 		}, 100);
-		
+
 		dropzone.removeAllFiles(true);
 
 	}).fail(function( jqXHR, textStatus ) {
