@@ -358,17 +358,17 @@ document.addEventListener('alpine:init', (data) => {
 		open: function($dispatch, title, descr, subject, button) {
 			// https://support.calltouch.ru/hc/ru/articles/360017483240-Открытие-формы-виджета
 			// window.ct('modules', 'widgets', 'openExternal', 'promotion', (result)=>{console.log(result)});
-			console.log(Calltouch != undefined);
-			if(Calltouch != undefined) {
+			if(typeof Calltouch != 'undefined') {
 				Calltouch.Callback.onClickCallButton();
-				setTimeout(()=>{
+				var setTexts = setInterval(()=>{
 					var iframe = document.querySelector('#CalltouchWidgetFrame').contentWindow.document;
 					if(iframe.querySelectorAll('[class^="styles__TextDiv"]').length > 0) {
+						clearInterval(setTexts);
 						iframe.querySelectorAll('[class^="styles__TextDiv"]')[0].innerHTML = title;
 						iframe.querySelectorAll('[class^="styles__TextDiv"]')[1].innerHTML = descr;
 						iframe.querySelectorAll('[class^="styles__SvgContainer"]+span')[0].innerHTML = button;
 					}
-				},200);
+				},100);
 			} else {
 				this.on = true;
 				$dispatch('set-title', title);
