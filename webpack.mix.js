@@ -2,35 +2,6 @@ let mix = require('laravel-mix');
 
 require('laravel-mix-serve');
 
-// const ImageminPlugin = require('imagemin-webpack-plugin').default;
-// const CopyPlugin = require('copy-webpack-plugin');
-// const imageminMozjpeg = require('imagemin-mozjpeg');
-
-// mix.webpackConfig({
-//     plugins: [
-// 	    new CopyPlugin({
-// 	    	patterns: [
-// 		    	{ from: "src/img", to: "img/" },
-// 	    	],
-// 	    	options: {
-// 	    		concurrency: 100,
-// 	    	},
-// 	    }),
-//         new ImageminPlugin({
-//             test: /\.(jpg|jpeg|png|gif|svg)$/i,
-//             optipng: {
-//             	optimizationLevel: 9
-//             },
-//             plugins: [
-//                 imageminMozjpeg({
-//                     quality: 70,
-// 			        progressive: true
-//                 })
-//             ]
-//         })
-//     ]
-// });
-
 require('mix-tailwindcss');
 
 mix
