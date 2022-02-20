@@ -3,16 +3,16 @@ import Papa from 'papaparse';
 
 let list = [],
 	results = [],
-	urls = ['calc.csv', 'faq.csv', 'feedback.csv', 'specials.csv'],
+	urls = ['calc.csv', 'faq.csv', 'feedback.csv', 'specials.csv', 'services.csv'],
 	folder = '/inc/'+window.path+'/data/',
 	calcArr = [],
 	faqsArr = [],
 	feedbacksArr = [],
+	servicesArr = [],
 	specialsArr = [];
 
-if(location.hostname == 'newstreetpunk.github.io' || location.hostname == 'alexsab.github.io') {
-	folder = "";
-	urls = ['data.csv'];
+if(location.hostname == 'newstreetpunk.github.io' || location.hostname == 'alexsab.github.io' || location.pathname == '/index.html') {
+	folder = "/data/";
 }
 
 // Loop through all URLs
@@ -52,10 +52,14 @@ Promise
 						v.data.splice(0,1);
 						specialsArr = v.data;
 						break;
+					case 'services.csv':
+						v.data.splice(0,1);
+						servicesArr = v.data;
+						break;
 					default:
 						break;
 				}
-				// console.log("v.data", v.data);
+				// console.log(urls[i], v.data);
 			})
 		} );
 	})
@@ -79,6 +83,10 @@ document.addEventListener('alpine:init', (data) => {
 	Alpine.data('feedbackData', () => ({
 		feedbacks: feedbacksArr,
 		swiper: null,
+	}));
+
+	Alpine.data('servicesData', () => ({
+		services: servicesArr,
 	}));
 
 	Alpine.data('calcData', () => ({
