@@ -15,15 +15,17 @@ const banner = new Swiper('.banner-slider', {
 		disableOnInteraction: false,
 		pauseOnMouseEnter: true,
 	},
- lazy: true,
- pagination: {
-	el: '.swiper-pagination',
-	clickable: true,
-},
-navigation: {
-	nextEl: '.swiper-button-next',
-	prevEl: '.swiper-button-prev',
-},
+	autoHeight: true,
+	preloadImages: false,
+	lazy: true,
+	pagination: {
+		el: '.swiper-pagination',
+		clickable: true,
+	},
+	navigation: {
+		nextEl: '.swiper-button-next',
+		prevEl: '.swiper-button-prev',
+	},
 });
 
 const partners = new Swiper('.partners-slider', {
