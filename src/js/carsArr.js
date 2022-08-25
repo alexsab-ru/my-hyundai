@@ -2,16 +2,16 @@ import Papa from 'papaparse';
 
 let carsarr;
 
-const response = fetch('dist/data.csv')
+const response = fetch('dist/data-25082022.csv')
 	.then(response => response.text())
 	.then(v => Papa.parse(v))
 	.catch(err => console.log(err))
 
 response.then(v => {
 	v.data.splice(0,2);
-	carsarr = v.data;
+	carsarr = v.data.filter(c => c[5] === 'Автохолдинг');
 	Alpine.start();
-	// console.log(carsarr)
+	//console.log(carsarr)
 });
 
 document.addEventListener('alpine:init', (data) => {
