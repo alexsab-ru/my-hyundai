@@ -15,9 +15,11 @@ const banner = new Swiper('.banner-slider', {
 		disableOnInteraction: false,
 		pauseOnMouseEnter: true,
 	},
-	autoHeight: true,
+	autoHeight: false,
 	preloadImages: false,
-	lazy: true,
+	lazy: {
+		loadPrevNext: true,
+	},
 	pagination: {
 		el: '.swiper-pagination',
 		clickable: true,
