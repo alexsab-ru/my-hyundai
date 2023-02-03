@@ -8,7 +8,7 @@ mix
 	.js('src/js/app.js', 'js/scripts.js')
 	.sass('src/sass/main.sass', 'css/styles.css')
 	.tailwind()
-	// .setPublicPath('dist/');
+	.setPublicPath('/')
 	.serve('php -S 127.0.0.1:8080 -t ./', {
 		verbose: true,
 		watch: true,

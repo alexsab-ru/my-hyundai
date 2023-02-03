@@ -211,15 +211,15 @@ document.addEventListener('alpine:init', (data) => {
 
 
 		services: [
-			{id: 1, title: 'Шиномонтаж'},
-			{id: 2, title: 'Замена эксплуатационных жидкостей'},
-			{id: 3, title: 'Ремонт тормозной системы'},
-			{id: 4, title: 'Малярно-кузовные работы'},
-			{id: 5, title: 'Ремонт подвески'},
-			{id: 6, title: 'Автомойка'},
-			{id: 7, title: 'Ремонт электрооборудования'},
-			{id: 8, title: 'Агрегатный ремонт'},
-			{id: 9, title: 'Прочее'},
+			{id: 1, title: 'Шиномонтаж', img: '/img/icons/services/tire-service.png'},
+			{id: 2, title: 'Замена эксплуатационных жидкостей', img: '/img/icons/services/oil.png'},
+			{id: 3, title: 'Ремонт тормозной системы', img: '/img/icons/services/brake.png'},
+			{id: 4, title: 'Малярно-кузовные работы', img: '/img/icons/services/bodywork.png'},
+			{id: 5, title: 'Ремонт подвески', img: '/img/icons/services/running-gear.png'},
+			{id: 6, title: 'Автомойка', img: '/img/icons/services/car-wash.png'},
+			{id: 7, title: 'Ремонт электрооборудования', img: '/img/icons/services/battery.png'},
+			{id: 8, title: 'Агрегатный ремонт', img: '/img/icons/services/agregat.png'},
+			{id: 9, title: 'Прочее', img: '/img/icons/services/check-engine.png'},
 		],
 		pricelist: [
 			{
