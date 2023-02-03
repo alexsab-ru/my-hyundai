@@ -12,7 +12,7 @@ let list = [],
 	specialsArr = [];
 
 if(location.hostname == 'newstreetpunk.github.io' || location.hostname == 'alexsab.github.io' || location.pathname == '/index.html') {
-	folder = "/data/";
+	folder = "data/";
 }
 
 // Loop through all URLs
