@@ -6,7 +6,8 @@ require('mix-tailwindcss');
 
 mix
 	.js('src/js/app.js', 'js/scripts.js')
-	.sass('src/sass/main.sass', 'css/styles.css')
+	.sass('src/sass/hyundai.sass', 'css/hyundai.css')
+	.sass('src/sass/renault.sass', 'css/renault.css')
 	.tailwind()
 	.setPublicPath('/')
 	.serve('php -S 127.0.0.1:8080 -t ./', {
@@ -21,9 +22,8 @@ if (mix.inProduction()) {
 	mix.sourceMaps().webpackConfig({ devtool: 'inline-source-map' });
 	mix.browserSync({
 		proxy: '127.0.0.1:8080',
-		files: ['**.html', '**.php', 'css/styles.css', 'js/scripts.js'],
+		files: ['**.html', '**.php', 'css/*.css', 'js/scripts.js'],
 		// server: { baseDir: "./", },
-		// files: ['index.html', 'css/styles.css', 'js/scripts.js'],
 		notify: false
 	});
 }
