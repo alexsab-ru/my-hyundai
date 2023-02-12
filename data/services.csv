@@ -1,16 +1,16 @@
 id,Название,Иконка,Показывать
-1,Диагностика автомобиля,/img/icons/services/diagnostic.png,TRUE
-2,Диагностика и ремонт двигателя,/img/icons/services/check-engine.png,TRUE
-3,Диагностика и ремонт ходовой и рулевого управления,/img/icons/services/running-gear.png,TRUE
-4,Диагностика и ремонт тормозной системы,/img/icons/services/brake.png,TRUE
-5,Развал-схождение,/img/icons/services/shod-razval.png,TRUE
-6,Диагностика и ремонт трансмиссии,/img/icons/services/kp.png,TRUE
-7,Диагностика и ремонт электрики,/img/icons/services/battery.png,TRUE
-8,Обслуживание систем кондиционера и отопления,/img/icons/services/conditioner.png,TRUE
-9,Замена технических жидкостей и фильтров,/img/icons/services/oil.png,TRUE
-10,Шиномонтаж,/img/icons/services/tire-service.png,TRUE
-11,Установка дополнительного оборудования,/img/icons/services/dop-equipment.png,TRUE
-12,Дополнительный сервис,/img/icons/services/dop-service.png,TRUE
-13,Малярно-кузовные работы,/img/icons/services/bodywork.png,TRUE
-14,Автомойка,/img/icons/services/car-wash.png,TRUE
-15,Агрегатный ремонт,/img/icons/services/agregat.png,TRUE
+1,Диагностика автомобиля,/img/hyundai/icons/services/diagnostic.png,TRUE
+2,Диагностика и ремонт двигателя,/img/hyundai/icons/services/check-engine.png,TRUE
+3,Диагностика и ремонт ходовой и рулевого управления,/img/hyundai/icons/services/running-gear.png,TRUE
+4,Диагностика и ремонт тормозной системы,/img/hyundai/icons/services/brake.png,TRUE
+5,Развал-схождение,/img/hyundai/icons/services/shod-razval.png,TRUE
+6,Диагностика и ремонт трансмиссии,/img/hyundai/icons/services/kp.png,TRUE
+7,Диагностика и ремонт электрики,/img/hyundai/icons/services/battery.png,TRUE
+8,Обслуживание систем кондиционера и отопления,/img/hyundai/icons/services/conditioner.png,TRUE
+9,Замена технических жидкостей и фильтров,/img/hyundai/icons/services/oil.png,TRUE
+10,Шиномонтаж,/img/hyundai/icons/services/tire-service.png,TRUE
+11,Установка дополнительного оборудования,/img/hyundai/icons/services/dop-equipment.png,TRUE
+12,Дополнительный сервис,/img/hyundai/icons/services/dop-service.png,TRUE
+13,Малярно-кузовные работы,/img/hyundai/icons/services/bodywork.png,TRUE
+14,Автомойка,/img/hyundai/icons/services/car-wash.png,TRUE
+15,Агрегатный ремонт,/img/hyundai/icons/services/agregat.png,TRUE

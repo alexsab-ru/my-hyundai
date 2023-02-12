@@ -174,7 +174,7 @@
 					model = active;
 					">
 						<img
-						:src="`img/cars/${item.toLowerCase().split(' ').join('-')}.png`"
+						:src="`img/hyundai/cars/${item.toLowerCase().split(' ').join('-')}.png`"
 						:alt="item"
 						class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110"
 						:class="{'!scale-110': active == item}">
@@ -491,7 +491,7 @@
 				<template x-for="advantage in advantages">
 
 					<div class="text-center w-1/2 sm:w-1/3 md:w-1/5 mb-5 px-3">
-						<img :src="`img/icons/advantages/${advantage.id}.svg`" :alt="advantage.title" class="mx-auto mb-3 w-20 lg:w-24">
+						<img :src="`img/hyundai/icons/advantages/${advantage.id}.svg`" :alt="advantage.title" class="mx-auto mb-3 w-20 lg:w-24">
 						<h3 class="text-xs sm:text-sm lg:text-lg text-white font-medium" x-html="advantage.title"></h3>
 					</div>
 
@@ -623,7 +623,7 @@
 			</div>
 
 		</div>
-		<div class="map bg-gray-100 bg-cover bg-center bg-no-repeat w-full h-[350px] overflow-hidden cursor-pointer relative z-10" style="background-image: url(img/map.jpg);">
+		<div class="map bg-gray-100 bg-cover bg-center bg-no-repeat w-full h-[350px] overflow-hidden cursor-pointer relative z-10" style="background-image: url(img/hyundai/map.jpg);">
 			<div id="map" class="relative z-20 w-full h-full"></div>
 			<div class="loader loader-default"></div>
 		</div>
