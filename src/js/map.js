@@ -8,7 +8,7 @@ let maps = [
 	id: id,
 	position: [45.017397,38.937629],
 	zoom: 17,
-	balloonContentHeader: '<img src="img/hyundai-logo.svg" alt="Хёндэ" style="width: 220px"><br>',
+	balloonContentHeader: '<img src="img/hyundai/hyundai-logo.svg" alt="Хёндэ" style="width: 220px"><br>',
 	balloonContentBody: '<h6><b>"Hyundai АВТОХОЛДИНГ"</b></h6> \
 	<p>пн — вс: 8:00 — 20:00</p> \
 	<a href="tel:+78612974444" class="dealer-phone-map d-flex align-items-center">+7 (861) 297-44-44</a><br> \
