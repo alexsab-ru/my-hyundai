@@ -5,37 +5,20 @@ module.exports = {
 	content: ['index.html', './inc/**/*.php'],
 
 	theme: { 
-		screens: {
-			'sm': '640px',
-			// => @media (min-width: 640px) { ... }
-
-			'md': '768px',
-			// => @media (min-width: 768px) { ... }
-
-			'lg': '1024px',
-			// => @media (min-width: 1024px) { ... }
-
-			'xl': '1200px',
-			// => @media (min-width: 1280px) { ... }
-
-			'2xl': '1536px',
-			// => @media (min-width: 1536px) { ... }
-		},
 		colors: {
-			activeRed: '#E63312',
-			mainBlue: '#002C5F',
-			btnHover: '#103A71',
-			sand: '#E4DCD3',
-			secondBlue: '#00AAD2',
+			blue: '#0C90D9',
+			yellow: '#EFDF00',
 			transparent: 'transparent',
 			current: 'currentColor',
-			blue: colors.blue,
 			black: colors.black,
 			white: colors.white,
-			gray: colors.neutral,
-			indigo: colors.indigo,
-			red: colors.rose,
-			yellow: colors.amber,
+			gray: {
+				100: '#F2F2F2',
+				300: '#D9D9D6',
+				500: '#8C8C8B',
+				700: '#656666',
+				900: '#3E3F40'
+			}
 		},
 		extend: {
 			fontFamily: {

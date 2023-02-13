@@ -1,12 +1,5 @@
 import Swiper, { Navigation, Pagination, Autoplay } from 'swiper';
-// import Swiper and modules styles
-import 'swiper/css';
-// import 'swiper/css/autoplay';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-// import 'swiper/css/lazy';
 
-// configure Swiper to use modules
 Swiper.use([Navigation, Pagination, Autoplay]);
 
 const banner = new Swiper('.banner-slider', {
