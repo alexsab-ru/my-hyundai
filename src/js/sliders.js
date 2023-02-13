@@ -1,12 +1,13 @@
-import Swiper, { Navigation, Pagination, Lazy, Autoplay } from 'swiper';
+import Swiper, { Navigation, Pagination, Autoplay } from 'swiper';
 // import Swiper and modules styles
 import 'swiper/css';
+// import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/lazy';
+// import 'swiper/css/lazy';
 
 // configure Swiper to use modules
-Swiper.use([Navigation, Pagination, Lazy, Autoplay]);
+Swiper.use([Navigation, Pagination, Autoplay]);
 
 const banner = new Swiper('.banner-slider', {
 	loop: true,
@@ -16,10 +17,7 @@ const banner = new Swiper('.banner-slider', {
 		pauseOnMouseEnter: true,
 	},
 	autoHeight: false,
-	preloadImages: false,
-	lazy: {
-		loadPrevNext: true,
-	},
+	lazy: true,
 	pagination: {
 		el: '.swiper-pagination',
 		clickable: true,

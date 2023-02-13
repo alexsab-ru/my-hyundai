@@ -2,11 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-	mode: 'jit',
-
-	purge: ['index.html', './inc/**/*.php'],
-
-	darkMode: false, // or 'media' or 'class'
+	content: ['index.html', './inc/**/*.php'],
 
 	theme: { 
 		screens: {
@@ -36,14 +32,14 @@ module.exports = {
 			blue: colors.blue,
 			black: colors.black,
 			white: colors.white,
-			gray: colors.trueGray,
+			gray: colors.neutral,
 			indigo: colors.indigo,
 			red: colors.rose,
 			yellow: colors.amber,
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Hyundai', ...defaultTheme.fontFamily.sans],
+				sans: ['NouvelR', ...defaultTheme.fontFamily.sans],
 			},
 		},
 	},

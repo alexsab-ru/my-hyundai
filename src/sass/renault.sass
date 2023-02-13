@@ -1,1 +1,15 @@
-@import "main"
+@import "_mixins/font-face"
+
++font-face("NouvelR", "../fonts/renault/NouvelR-Light", 300)
++font-face("NouvelR", "../fonts/renault/NouvelR-Regular", 400)
++font-face("NouvelR", "../fonts/renault/NouvelR-Semibold", 600)
++font-face("NouvelR", "../fonts/renault/NouvelR-Bold", 700)
+
+@config "../../tailwind.renault.config.js"
+@import "common"
+
+.btn-red
+	@apply bg-activeRed uppercase text-sm md:text-[1rem] text-white py-3 px-5 rounded font-normal duration-200 hover:bg-opacity-90 focus:bg-opacity-100
+
+.btn-blue
+	@apply bg-mainBlue uppercase text-sm md:text-[1rem] text-white py-3 px-12 rounded font-normal duration-200 hover:bg-btnHover focus:bg-mainBlue
