@@ -14,31 +14,31 @@
     [
         "1",
         "Баннер 2",
-        "/img/hyundai/slider/service-1920x800.png",
-        "/img/hyundai/slider/service-640x800.png"
+        "img/hyundai/slider/service-1920x800.png",
+        "img/hyundai/slider/service-640x800.png"
     ],
     [
         "2",
         "Баннер 3",
-        "/img/hyundai/slider/oil-service-1920x800.png",
-        "/img/hyundai/slider/oil-service-640x800.png"
+        "img/hyundai/slider/oil-service-1920x800.png",
+        "img/hyundai/slider/oil-service-640x800.png"
     ],
     [
         "3",
         "Баннер 4",
-        "/img/hyundai/slider/oil-akpp-1920x800.png",
-        "/img/hyundai/slider/oil-akpp-640x800.png"
+        "img/hyundai/slider/oil-akpp-1920x800.png",
+        "img/hyundai/slider/oil-akpp-640x800.png"
     ],
     [
         "4",
         "Баннер 5",
-        "/img/hyundai/slider/profilaktika-4x4-1920x800.png",
-        "/img/hyundai/slider/profilaktika-4x4-640x800.png"
+        "img/hyundai/slider/profilaktika-4x4-1920x800.png",
+        "img/hyundai/slider/profilaktika-4x4-640x800.png"
     ],
     [
         "5",
         "Баннер 6",
-        "/img/hyundai/slider/support-4x4-1920x800.png",
-        "/img/hyundai/slider/support-4x4-640x800.png"
+        "img/hyundai/slider/support-4x4-1920x800.png",
+        "img/hyundai/slider/support-4x4-640x800.png"
     ]
 ]
