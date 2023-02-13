@@ -12,7 +12,7 @@ let list = [],
 	specialsArr = [];
 
 if(location.hostname == 'newstreetpunk.github.io' || location.hostname == 'alexsab.github.io' || location.pathname == '/index.html') {
-	folder = "/data/";
+	folder = "data/";
 }
 
 // Loop through all URLs
@@ -211,15 +211,15 @@ document.addEventListener('alpine:init', (data) => {
 
 
 		services: [
-			{id: 1, title: 'Шиномонтаж', img: '/img/icons/services/tire-service.png'},
-			{id: 2, title: 'Замена эксплуатационных жидкостей', img: '/img/icons/services/oil.png'},
-			{id: 3, title: 'Ремонт тормозной системы', img: '/img/icons/services/brake.png'},
-			{id: 4, title: 'Малярно-кузовные работы', img: '/img/icons/services/bodywork.png'},
-			{id: 5, title: 'Ремонт подвески', img: '/img/icons/services/running-gear.png'},
-			{id: 6, title: 'Автомойка', img: '/img/icons/services/car-wash.png'},
-			{id: 7, title: 'Ремонт электрооборудования', img: '/img/icons/services/battery.png'},
-			{id: 8, title: 'Агрегатный ремонт', img: '/img/icons/services/agregat.png'},
-			{id: 9, title: 'Прочее', img: '/img/icons/services/check-engine.png'},
+			{id: 1, title: 'Шиномонтаж', img: 'img/hyundai/icons/services/tire-service.png'},
+			{id: 2, title: 'Замена эксплуатационных жидкостей', img: 'img/hyundai/icons/services/oil.png'},
+			{id: 3, title: 'Ремонт тормозной системы', img: 'img/hyundai/icons/services/brake.png'},
+			{id: 4, title: 'Малярно-кузовные работы', img: 'img/hyundai/icons/services/bodywork.png'},
+			{id: 5, title: 'Ремонт подвески', img: 'img/hyundai/icons/services/running-gear.png'},
+			{id: 6, title: 'Автомойка', img: 'img/hyundai/icons/services/car-wash.png'},
+			{id: 7, title: 'Ремонт электрооборудования', img: 'img/hyundai/icons/services/battery.png'},
+			{id: 8, title: 'Агрегатный ремонт', img: 'img/hyundai/icons/services/agregat.png'},
+			{id: 9, title: 'Прочее', img: 'img/hyundai/icons/services/check-engine.png'},
 		],
 		pricelist: [
 			{

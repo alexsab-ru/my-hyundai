@@ -17,9 +17,9 @@
 	<!-- Custom Browsers Color End -->
 
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="img/hyundai/favicon.ico" type="image/x-icon">
 	<!-- Style -->
-	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/hyundai.css">
 
 </head>
 
@@ -30,8 +30,8 @@
 			<div class="container mx-auto px-3">
 				<div class="flex flex-row flex-wrap items-center justify-center sm:justify-between py-4 space-x-5 md:space-y-0 space-y-2">
 					<a href="/" class="flex items-center flex-0">
-						<img src="img/hyundai-logo.svg" alt="ALT" class="w-[100px] md:w-[170px] hidden md:block">
-						<img src="img/hyundai-logo-small.svg" alt="ALT" class="md:hidden">
+						<img src="img/hyundai/hyundai-logo.svg" alt="ALT" class="w-[100px] md:w-[170px] hidden md:block">
+						<img src="img/hyundai/hyundai-logo-small.svg" alt="ALT" class="md:hidden">
 						<div class="ml-3 space-y-0 leading-none">
 							<p class="uppercase font-medium">Автохолдинг</p>
 							<p class="text-[11px]">официальный дилер</p>
@@ -114,22 +114,22 @@
 				<!-- Slides -->
 				<a href="#" class="swiper-slide !h-full">
 						<img
-						data-src="img/slider/service-1920x800.png"
+						data-src="img/hyundai/slider/service-1920x800.png"
 						class="w-full object-cover object-center swiper-lazy hidden sm:block"
 						/>
 						<img
-						data-src="img/slider/service-640x800.png"
+						data-src="img/hyundai/slider/service-640x800.png"
 						class="w-full object-cover object-center swiper-lazy sm:hidden"
 						/>
 						<div class="swiper-lazy-preloader"></div>
 				</a>
 				<a href="#" class="swiper-slide !h-full">
 						<img
-						data-src="img/slider/oil-akpp-1920x800.png"
+						data-src="img/hyundai/slider/oil-akpp-1920x800.png"
 						class="w-full object-cover object-center swiper-lazy hidden sm:block"
 						/>
 						<img
-						data-src="img/slider/oil-akpp-640x800.png"
+						data-src="img/hyundai/slider/oil-akpp-640x800.png"
 						class="w-full object-cover object-center swiper-lazy sm:hidden"
 						/>
 						<div class="swiper-lazy-preloader"></div>
@@ -174,7 +174,7 @@
 					model = active;
 					">
 						<img
-						:src="`img/cars/${item.toLowerCase().split(' ').join('-')}.png`"
+						:src="`img/hyundai/cars/${item.toLowerCase().split(' ').join('-')}.png`"
 						:alt="item"
 						class="mx-auto transition-all duration-500 ease-in-out group-hover:scale-110"
 						:class="{'!scale-110': active == item}">
@@ -353,7 +353,7 @@
 								<h3 class="text-sm lg:text-lg lg:text-xl" x-text="service.title"></h3>
 							</div>
 							<div class="flex-shrink-0 w-12 h-12 flex items-center justify-center">
-								<img src="img/icons/triangel.png" alt="ALT">
+								<img src="img/hyundai/icons/triangel.png" alt="ALT">
 							</div>
 						</div>
 
@@ -472,7 +472,7 @@
 
 					<div class="font-medium text-sm md:text-lg" x-text="faq.question"></div>
 
-					<img src="img/icons/down.png"
+					<img src="img/hyundai/icons/down.png"
 					alt="Down"
 					class="transition"
 					:style="faq.open ? 'transform: rotate(180deg)' : ''">
@@ -491,7 +491,7 @@
 				<template x-for="advantage in advantages">
 
 					<div class="text-center w-1/2 sm:w-1/3 md:w-1/5 mb-5 px-3">
-						<img :src="`img/icons/advantages/${advantage.id}.svg`" :alt="advantage.title" class="mx-auto mb-3 w-20 lg:w-24">
+						<img :src="`img/hyundai/icons/advantages/${advantage.id}.svg`" :alt="advantage.title" class="mx-auto mb-3 w-20 lg:w-24">
 						<h3 class="text-xs sm:text-sm lg:text-lg text-white font-medium" x-html="advantage.title"></h3>
 					</div>
 
@@ -520,7 +520,7 @@
 								</blockquote>
 							</div>
 							<div class="reviews__item--bottom flex items-center mt-5">
-								<img src="img/icons/message.svg" class="w-12 h-auto mr-5" />
+								<img src="img/hyundai/icons/message.svg" class="w-12 h-auto mr-5" />
 								<div class="reviews__item-autor">
 									<h4>Александр Куканов</h4>
 									<small>23.03.2021</small>
@@ -537,7 +537,7 @@
 								</blockquote>
 							</div>
 							<div class="reviews__item--bottom flex items-center mt-5">
-								<img src="img/icons/message.svg" class="w-12 h-auto mr-5" />
+								<img src="img/hyundai/icons/message.svg" class="w-12 h-auto mr-5" />
 								<div class="reviews__item-autor">
 									<h4>Александр Куканов</h4>
 									<small>23.03.2021</small>
@@ -553,7 +553,7 @@
 								</blockquote>
 							</div>
 							<div class="reviews__item--bottom flex items-center mt-5">
-								<img src="img/icons/message.svg" class="w-12 h-auto mr-5" />
+								<img src="img/hyundai/icons/message.svg" class="w-12 h-auto mr-5" />
 								<div class="reviews__item-autor">
 									<h4>Александр Куканов</h4>
 									<small>23.03.2021</small>
@@ -570,7 +570,7 @@
 								</blockquote>
 							</div>
 							<div class="reviews__item--bottom flex items-center mt-5">
-								<img src="img/icons/message.svg" class="w-12 h-auto mr-5" />
+								<img src="img/hyundai/icons/message.svg" class="w-12 h-auto mr-5" />
 								<div class="reviews__item-autor">
 									<h4>Александр Куканов</h4>
 									<small>23.03.2021</small>
@@ -587,7 +587,7 @@
 	</section>
 
 	<section>
-		<img src="img/photo.jpg" alt="Hyundai" class="h-[auto] w-full xl:w-[75%] mx-auto object-cover object-left">
+		<img src="img/hyundai/photo.jpg" alt="Hyundai" class="h-[auto] w-full xl:w-[75%] mx-auto object-cover object-left">
 	</section>
 
 	<section class="contacts pt-16" id="contacts">
@@ -623,7 +623,7 @@
 			</div>
 
 		</div>
-		<div class="map bg-gray-100 bg-cover bg-center bg-no-repeat w-full h-[350px] overflow-hidden cursor-pointer relative z-10" style="background-image: url(img/map.jpg);">
+		<div class="map bg-gray-100 bg-cover bg-center bg-no-repeat w-full h-[350px] overflow-hidden cursor-pointer relative z-10" style="background-image: url(img/hyundai/map.jpg);">
 			<div id="map" class="relative z-20 w-full h-full"></div>
 			<div class="loader loader-default"></div>
 		</div>
@@ -632,8 +632,8 @@
 	<footer class="py-10 bg-mainBlue text-white text-opacity-70">
 		<div class="container px-3 mx-auto text-base">
 			<a href="/" class="flex items-center flex-0">
-				<img src="img/hyundai-logo.svg" alt="ALT" class="filter brightness-0 invert w-[100px] md:w-[170px] hidden md:block mx-auto mb-10">
-				<img src="img/hyundai-logo-small.svg" alt="ALT" class="filter brightness-0 invert md:hidden mx-auto mb-10">
+				<img src="img/hyundai/hyundai-logo.svg" alt="ALT" class="filter brightness-0 invert w-[100px] md:w-[170px] hidden md:block mx-auto mb-10">
+				<img src="img/hyundai/hyundai-logo-small.svg" alt="ALT" class="filter brightness-0 invert md:hidden mx-auto mb-10">
 			</a>
 			<p class="mb-4">Мы не разделяем автомобили на новые или старые, автомобили на заводской гарантии или после ее окончания. Для всех владельцев Hyundai и на автомобили Hyundai любого года выпуска мы готовы предоставить обслуживание любого типа, по одинаково низким ценам, но со всеми преимуществами Официального дилера.</p>
 			<p>Стоимость ТО, указанная на сайте, является ориентировочной. Не является офертой</p>
