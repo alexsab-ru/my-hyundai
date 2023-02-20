@@ -1,8 +1,8 @@
-var $$$ = function (name) { return document.querySelector(name) },
-$$ = function (name) { return document.querySelectorAll(name) };
-
 function maskphone(e) {
-	var num = this.value.replace('+7', '').replace(/\D/g, '').split(/(?=.)/), i = num.length;
+
+	var num = this.value.replace(/^(\+7|8)/g, '').replace(/\D/g, '').split(/(?=.)/),
+		i = num.length;
+
 	if (0 <= i) num.unshift('+7');
 	if (1 <= i) num.splice(1, 0, ' ');
 	if (4 <= i) num.splice(5, 0, ' ');
@@ -10,158 +10,93 @@ function maskphone(e) {
 	if (9 <= i) num.splice(12, 0, '-');
 	if (11 <= i) num.splice(15, num.length - 15);
 	this.value = num.join('');
+
+	this.onblur = function(){
+		if(num.length != 15 || [... new Set(num)].length == 1) {
+			this.parentElement.classList.add('has-error');
+			this.parentElement.dataset.content = 'Некорректный номер телефона';
+			return;
+		}
+	}
+	this.parentElement.classList.remove('has-error');
 };
 
-$$("input[name=phone]").forEach(function (element) {
+document.querySelectorAll("input[name=phone]").forEach(function (element) {
 	element.addEventListener('focus', maskphone);
 	element.addEventListener('input', maskphone);
 });
 
-let dropzoneError = $('.error-message');
-let dropzoneSuccess = $('.success-message');
+const titleModal = document.querySelector('#response_modal h3');
+const textModal = document.querySelector('#response_modal .content p');
+const successArr = ['Спасибо!', 'Ваша заявка успешно отправлена!'];
+const errorArr = ["Ошибка", "Перезагрузите страницу и попробуйте снова"];
 
-let uploadFields = document.querySelectorAll('#file-upload');
-
-uploadFields.forEach(function(elem){
-	dropzone = new Dropzone(elem, {
-		url: 'upload.php',
-		addRemoveLinks: true,
-		parallelUploads: 1,
-		acceptedFiles: '.jpg,.jpeg,.png',
-		maxFiles: 10,
-		maxFilesize: 10,
-		dictDefaultMessage: '<div class="dz-message needsclick">Вы можете приложить фотографии, не более 10</div>',
-		dictFallbackMessage: "Ваш браузер не поддерживает загрузку перетаскиванием",
-		dictFallbackText: "Пожалуйста, используйте резервную форму ниже, чтобы загрузить свои файлы, как в старые добрые времена)",
-		dictFileTooBig: "Слишком большой файл ({{filesize}}Мб). Максимальный размер: {{maxFilesize}}Мб.",
-		dictInvalidFileType: "Вы не можете загрузить файлы этого типа.",
-		dictResponseError: "Сервер вернул ответ {{statusCode}}.",
-		dictCancelUpload: "Отменить загрузку",
-		dictUploadCanceled: "Загрузка завершена.",
-		dictCancelUploadConfirmation: "Вы уверены, что хотите отменить?",
-		dictRemoveFile: "Удалить файл",
-		dictRemoveFileConfirmation: "Хотите удалить файл?",
-		dictMaxFilesExceeded: 'Привышен лимит изображений',
-		dictFileSizeUnits: {
-			tb: "Тб",
-			gb: "Гб",
-			mb: "Мб",
-			kb: "Кб",
-			b: "байт"
-		},
-		init: function(){
-			$(this.element).html(this.options.dictDefaultMessage);
-		},
-		thumbnail: function(file, dataUrl) {
-			if (file.previewElement) {
-				file.previewElement.classList.remove("dz-file-preview");
-				let images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
-				for (let i = 0; i < images.length; i++) {
-					let thumbnailElement = images[i];
-					thumbnailElement.alt = file.name;
-					thumbnailElement.src = dataUrl;
-					url = dataUrl;
-				}
-				setTimeout(function() { file.previewElement.classList.add("dz-image-preview"); }, 1);
-			}
-		},
-		success: function(file, response){
-			let res = JSON.parse(response);
-			if (res.answer == 'error') {
-				dropzoneSuccess.hide();
-				dropzoneError.text(res.error);
-				dropzoneError.show();
-				dropzone.removeFile(file);
-			}else{
-				dropzoneError.hide();
-				dropzoneSuccess.text(res.answer);
-				dropzoneSuccess.show();
-				this.defaultOptions.success(file);
-			}
-			console.log(res);
-		}
-	});
-});
-
-$('input').not('input[name=agree]').on('change', function(){
-	$(this).next().text('').hide();
-})
-
-$('input[name=agree]').on('change', function(){
-	$(this).closest('div').next().text('').hide();
-})
-
-function checkingRequiredFields(form, errors) {
-	let valid = true;
-	for (key in errors) {
-		let field = form.find('.error-mes#'+key);
-		field.text(errors[key]).show();
-		valid = false;
-	}
-	return valid;
+function getCookie(name) {
+	var matches = document.cookie.match(new RegExp(
+	"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+	))
+	return matches ? decodeURIComponent(matches[1]) : undefined
 }
 
-//E-mail Ajax Send
-$("form").submit(function() { //Change
-	let th = $(this);
-	let btnSubmit = th.find('.btn');
-	let url = window.location.href;
-	let replUrl = url.replace('?', '&');
-	btnSubmit.attr("disabled", true);
+document.querySelectorAll("form").forEach(function(form) {
+	var btn = form.querySelector('button');
 
-	dropzoneError.hide();
-	dropzoneSuccess.hide();
+	form.addEventListener('submit', function(e) {
+		e.preventDefault();
 
-	$.ajax({
-		type: "POST",
-		url: "/mail.php", //Change
-		data: th.serialize() +'&referer=' + replUrl
-	}).done(function( data ) {
-		let res = JSON.parse(data);
-		console.log(res);
+		var formData = new FormData(form);
+		const params = new URLSearchParams([...new FormData(e.target).entries()]);
 
-		if (!res.validation && !checkingRequiredFields(th, res.massages)) {
-			btnSubmit.removeAttr("disabled");
+		if(e.target.classList.contains('has-error')) {
 			return false;
 		}
 
-		if(res.error)
-			$('.error-message').html(res.error);
-		else
-			$('.error-message').html("");
+		if(getCookie('fta')) {
+			formData.append("fta", true);
+		}
 
-		setTimeout(function() {
-			$.magnificPopup.close();
-			$.magnificPopup.open({
-				items: {
-					src: (res.answer == 'ok') ? '.thanks' : '.error',
-					type: 'inline'
-				}
+		var url = window.location.href;
+		var replUrl = url.replace('?', '&');
+		btn.innerHTML = 'Отправляем...';
+		btn.setAttribute('disabled', true);
+
+		formData.append("page", window.location.origin + window.location.pathname);
+		window.location.search.slice(1).split("&").forEach(function(pair) {
+			var param = pair.split("=");
+			formData.append(param[0], param[1]);
+		});
+		if(getCookie('__gtm_campaign_url')) {
+			var source = new URL(getCookie('__gtm_campaign_url'));
+			source.search.slice(1).split("&").forEach(function(pair) {
+				var param = pair.split("=");
+				formData.append(param[0], param[1]);
 			});
-
-			if(res.answer == 'ok') {
-				th.trigger("reset");
-				$('.dz-preview').remove();
-				$('.file-upload').removeClass('dz-started');
-			}
-			btnSubmit.removeAttr("disabled");
-		}, 100);
-
-		dropzone.removeAllFiles(true);
-
-	}).fail(function( jqXHR, textStatus ) {
-		console.log(jqXHR);
-		$('.error-message').html("Request failed: " + textStatus);
-		setTimeout(function() {
-			$.magnificPopup.close();
-			$.magnificPopup.open({
-				items: {
-					src: '.error',
-					type: 'inline'
-				}
-			});
-			btnSubmit.removeAttr("disabled");
-		}, 100);
+		}
+		fetch('/mail.php', {
+			method: 'POST',
+			body: formData
+		})
+		.then(res => res.json())
+		.then(data => {
+			form.reset();
+			btn.innerHTML = 'Отправить';
+			btn.removeAttribute('disabled');
+			Alpine.store('state').isModalOpen = false;
+			Alpine.store('modalShow').on = false;
+			titleModal.innerText = successArr[0];
+			textModal.innerText = successArr[1];
+			Alpine.store('state').isResponseModalOpen = true;
+		})
+		.catch(error => {
+			console.error("Ошибка отправки данных формы: " + error);
+			btn.innerHTML = 'Отправить';
+			btn.removeAttribute('disabled');
+			Alpine.store('state').isModalOpen = false;
+			Alpine.store('modalShow').on = false;
+			titleModal.innerText = errorArr[0];
+			textModal.innerText = errorArr[1];
+			Alpine.store('state').isResponseModalOpen = true;
+		});
+		return false;
 	});
-	return false;
 });

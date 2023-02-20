@@ -398,4 +398,9 @@ document.addEventListener('alpine:init', (data) => {
 		on: false,
 	});
 
+	Alpine.store('state', {
+		isModalOpen: false,
+		isResponseModalOpen: false
+	})	
+
 })
