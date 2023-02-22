@@ -82,7 +82,7 @@ document.querySelectorAll("form").forEach(function(form) {
 			btn.innerHTML = 'Отправить';
 			btn.removeAttribute('disabled');
 			Alpine.store('state').isModalOpen = false;
-			Alpine.store('modalShow').on = false;
+			Alpine.store('modalShow').on = 0;
 			titleModal.innerText = successArr[0];
 			textModal.innerText = successArr[1];
 			Alpine.store('state').isResponseModalOpen = true;
@@ -92,7 +92,7 @@ document.querySelectorAll("form").forEach(function(form) {
 			btn.innerHTML = 'Отправить';
 			btn.removeAttribute('disabled');
 			Alpine.store('state').isModalOpen = false;
-			Alpine.store('modalShow').on = false;
+			Alpine.store('modalShow').on = 0;
 			titleModal.innerText = errorArr[0];
 			textModal.innerText = errorArr[1];
 			Alpine.store('state').isResponseModalOpen = true;

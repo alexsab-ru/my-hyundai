@@ -368,7 +368,7 @@ document.addEventListener('alpine:init', (data) => {
 	}));
 
 	Alpine.store('modalShow', {
-		on: false,
+		on: 0,
 		title: '',
 		open: function($dispatch, title, descr, subject, button) {
 			// https://support.calltouch.ru/hc/ru/articles/360017483240-Открытие-формы-виджета
@@ -385,12 +385,13 @@ document.addEventListener('alpine:init', (data) => {
 					}
 				},100);
 			} else {
-				this.on = true;
+				this.on = 1;
 				$dispatch('set-title', title);
 				$dispatch('set-descr', descr);
 				$dispatch('set-subject', subject);
 				$dispatch('set-button', button);
 			}
+			// console.log('open1', this.on)
 		}
 	});
 
