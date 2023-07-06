@@ -1,6 +1,5 @@
 import Papa from 'papaparse';
 
-
 let list = [],
 	results = [],
 	urls = ['calc.csv', 'faq.csv', 'feedback.csv', 'specials.csv', 'services.csv'],
